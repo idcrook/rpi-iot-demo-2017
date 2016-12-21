@@ -1,0 +1,55 @@
+# -*- ssh-config -*-
+
+# assigned host name: rpit5
+Host demo-rpi2
+  HostName 192.168.8.22
+  User pi
+  StrictHostKeyChecking no
+
+# assigned host name: rpit3
+Host demo-rpi3
+  HostName 192.168.8.23
+  User pi
+  StrictHostKeyChecking no
+
+# assigned host name: rpit4
+Host demo-rpi4
+  HostName 192.168.8.24
+  User pi
+  StrictHostKeyChecking no
+
+# assigned host name: rpip5
+Host demo-rpi5
+  HostName 192.168.8.25
+  User pi
+  StrictHostKeyChecking no
+
+# assigned host name: rpip6
+Host demo-rpi6
+  HostName 192.168.8.26
+  User pi
+  StrictHostKeyChecking no
+
+# assigned host name: rpip7
+Host demo-rpi7
+  HostName 192.168.8.27
+  User pi
+  StrictHostKeyChecking no
+
+# assigned host name: rpip8
+Host demo-rpi8
+  HostName 192.168.8.28
+  User pi
+  StrictHostKeyChecking no
+
+# assigned host name: rpip9
+Host demo-rpi9
+  HostName 192.168.8.29
+  User pi
+  StrictHostKeyChecking no
+
+# assigned host name: rpip10
+Host demo-rpi10
+  HostName 192.168.8.30
+  User pi
+  StrictHostKeyChecking no
