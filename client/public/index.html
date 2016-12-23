@@ -7,9 +7,9 @@
      #div_g {
        position: absolute;
        left: 10px;
-       right: 10px;
+       right: 16px;
        top: 40px;
-       bottom: 50px;
+       bottom: 26px;
      }
     </style>
     <script src="jquery-1.10.2.js"></script>
@@ -57,8 +57,8 @@
 
    var topic1regex = /cputemp$/;
    var topic2regex = /gputemp$/;
-   var lastTopic1 = 50/2;
-   var lastTopic2 = 50/2;
+   var lastTopic1 = 32.2; // corresponds to about 90F
+   var lastTopic2 = lastTopic1;
 
    var chart; // global variable for chart
    var data = [];
@@ -150,8 +150,8 @@
 		       //drawXAxis: true,
 		       axes: {
 			 x: {
-                           axisLabelFormatter: function(x) {
-                             return x;
+                           axisLabelFormatter: function(d) {
+                             return (d.getHours()<10?'0':'') + d.getHours() + ":" + (d.getMinutes()<10?'0':'') + d.getMinutes() + "." + (d.getSeconds()<10?'0':'') + d.getSeconds() ;
                            }
 			 },
 			 y: {
