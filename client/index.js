@@ -1,10 +1,12 @@
 
-var ip = require('ip'),
-    os = require('os'),
-    dns = require('dns'),
-    jsonfile = require('jsonfile'),
-    express = require('express'),
-    mqtt = require('mqtt');
+var     os = require('os'),
+	dns = require('dns'),
+	cp = require("child_process"),
+	fs = require("fs"),
+	ip = require('ip'),
+	jsonfile = require('jsonfile'),
+	express = require('express'),
+	mqtt = require('mqtt');
 
 // Read in config file
 var configFile = './client-config.json';
@@ -74,10 +76,17 @@ client.on('connect', (connack) => {
 // http://blog.dioty.co/2014/12/raspberry-pi-sensors-and-dioty-mqtt.html
 
 var piTempLib = {
-  read: function() {
+  // this is synchronous for now
+  readSync: function() {
+    var cpu_temp = fs.readFileSync("/sys/class/thermal/thermal_zone0/temp");
+    cpu_temp = ((cpu_temp/1000).toPrecision(3));
+
+    var vcgencmd = cp.spawnSync('/opt/vc/bin/vcgencmd', ['measure_temp']);
+    var gpu_temp = vcgencmd.stdout.toString().replace("\n", "").replace("temp=", "").replace("'C","");
+
     var obj = {
-      cpuTemp: 35.5,
-      gpuTemp: 35.6,
+      cpuTemp: cpu_temp,
+      gpuTemp: gpu_temp,
       isValid: true,
       errors: 0
     };
@@ -102,7 +111,7 @@ var sensor = {
   },
 
   read: function() {
-    var readout = piTempLib.read();
+    var readout = piTempLib.readSync();
     this.totalReads++;
     console.log('cpu: '+readout.cpuTemp+' gpu: '+readout.gpuTemp+
                 ', valid: '+readout.isValid+
