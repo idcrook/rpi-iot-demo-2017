@@ -12,9 +12,9 @@
        bottom: 10px;
      }
     </style>
-    <!-- <script src="jquery-1.10.2.js"></script>
-       -->
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="jquery-1.10.2.js"></script>
+
+    <!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
   <script src="dygraph-combined.js"></script>
   <script src="mqttws31.js" type="text/javascript"></script>
   <script type="text/javascript">
@@ -75,17 +75,17 @@
 
    //what is done when a message arrives from the broker
    function onMessageArrived(message) {
-     console.log(message.destinationName, '', message.payloadString);
+     //console.log(message.destinationName, '', message.payloadString);
 
      var x = new Date();  // current time
      var thenum = message.payloadString.replace( /^\D+/g, ''); //remove any text spaces from the message
 
      if (topic1regex.test(message.destinationName)) {
-       data.push([x, thenum, lastTopic2]);
+       data.push([x, CtoF(thenum), CtoF(lastTopic2)]);
        lastTopic1 = thenum;
      }
      if (topic2regex.test(message.destinationName)) {
-       data.push([x, lastTopic1, thenum]);
+       data.push([x, CtoF(lastTopic1), CtoF(thenum)]);
        lastTopic2 = thenum;
      }
 
@@ -99,6 +99,11 @@
    function isNumber(n) {
      return !isNaN(parseFloat(n)) && isFinite(n);
    };
+
+   //convert °C to °F
+   function CtoF(c) {
+     return (c * (9.0/5.0) + 32.0)
+   }
 
    //function that is called once the document has loaded
    function init() {
@@ -130,11 +135,11 @@
 			 },
 			 y: {
                            axisLabelFormatter: function(y) {
-                             return y + ' °C';
+                             return y + ' °F';
                            }
 			 }
                        },
-                       valueRange: [0, 50],
+                       valueRange: [CtoF(18), CtoF(58)],
                        labels: ['Time', 'CPU Temp', 'GPU Temp']
                      });
    }
