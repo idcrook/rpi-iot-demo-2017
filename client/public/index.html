@@ -14,7 +14,7 @@
     </style>
     <!-- <script src="jquery-1.10.2.js"></script>
        -->
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <script src="dygraph-combined-dev.js"></script>
   <script src="mqttws31.js" type="text/javascript"></script>
   <script type="text/javascript">
@@ -29,9 +29,11 @@
     */
 
    //settings BEGIN
-   var MQTTbroker = 'rpit5.local';
+   var MQTTbroker = "rpit5.local";
    var MQTTport = 9001;
-   var MQTTsubTopic = '$SYS/broker/clients/active';
+   //var MQTTsubTopic = '$SYS/broker/clients/active';
+   var MQTTtopic = "iot-demo/rpit5";
+   var MQTTsubTopic = MQTTtopic + "/raspi/#";
    //settings END
 
    var chart; // global variable for chart
@@ -66,7 +68,7 @@
 
    //what is done when a message arrives from the broker
    function onMessageArrived(message) {
-     //console.log(message.destinationName, '',message.payloadString);
+     console.log(message.destinationName, '',message.payloadString);
 
      var x = new Date();  // current time
      var thenum = message.payloadString.replace( /^\D+/g, ''); //remove any text spaces from the message

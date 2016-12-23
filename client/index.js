@@ -64,6 +64,32 @@ const connectOptions = {
   }
 };
 
+//app.get('/config/:value', function (req, res) {
+//  console.log("config param = " + req.params.value);
+
+app.get('/api/config', function (req, res) {
+  var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+  var obj = {
+    mqttBrokerHost: config.mqttBrokerHost,
+    mqttBrokerPortWebsockets: config.mqttBrokerPortWebsockets,
+    baseTopic: baseTopic,
+    subTopic1: baseTopic + '/raspi/#'
+  };
+
+  console.log("API request from " + ip + " ...");
+  console.dir(obj);
+
+  if( true ) {
+    res.status(200).json(obj);
+    /* res.setHeader('Content-Type', 'application/json');
+     * res.status(200).send(JSON.stringify(obj));*/
+  } else {
+    res.status(400).send('error');
+  }
+});
+
+
+
 // Start listening (usually port 3000)
 var server = app.listen(config.expressServerPort, function () {
   var host = server.address().address;
