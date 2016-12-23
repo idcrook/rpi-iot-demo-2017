@@ -3,17 +3,12 @@
 var cp = require("child_process");
 var fs = require("fs");
 
-var cpu_temperature = fs.readFileSync("/sys/class/thermal/thermal_zone0/temp");
-cpu_temperature = ((cpu_temperature/1000).toPrecision(3));
 
-console.log(`CPU: ${cpu_temperature}°C`);
+var cpu_temp = fs.readFileSync("/sys/class/thermal/thermal_zone0/temp");
+cpu_temp = ((cpu_temp/1000).toPrecision(3));
 
+var vcgencmd = cp.spawnSync('/opt/vc/bin/vcgencmd', ['measure_temp']);
+var gpu_temp = vcgencmd.stdout.toString().replace("\n", "").replace("temp=", "").replace("'C","");
 
-var child = cp.exec('/opt/vc/bin/vcgencmd measure_temp', (error, stdout, stderr) => {
-  if (error) {
-    console.error(`exec error: ${error}`);
-    return;
-  }
-  console.log(`GPU: ${stdout}`);
-  //console.log(`stderr: ${stderr}`);
-});
+console.log(`CPU: ${cpu_temp}°C`);
+console.log(`GPU: ${gpu_temp}°C`);
