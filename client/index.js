@@ -20,13 +20,13 @@ var clientHostname = os.hostname() ;
 var clientHostnameLocal = clientHostname + ".local";
 console.log('clientHostname: '+clientHostname);
 
-/* var brokerAddr = dns.lookup(config.mqttBrokerHost, {family: 4} ,  (err, address, family) => {
- *   if (err) throw err;
- *   //console.log('IP Family: '+family);
- *   console.log('brokerAddr: '+address);
- *   return address;
- * });
- * */
+var brokerAddr = dns.lookup(config.mqttBrokerHost, {family: 4} ,  (err, address, family) => {
+  if (err) throw err;
+  //console.log('IP Family: '+family);
+  console.log('brokerAddr: '+address);
+  return address;
+});
+
 
 const client = mqtt.connect('mqtt://' + config.mqttBrokerHost);
 
