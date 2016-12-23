@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>MQTT Data - Real Time</title>
+    <style type="text/css">
+     #div_g {
+       position: absolute;
+       left: 10px;
+       right: 10px;
+       top: 40px;
+       bottom: 10px;
+     }
+    </style>
+    <!-- <script src="jquery-1.10.2.js"></script>
+       -->
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+  <script src="dygraph-combined-dev.js"></script>
+  <script src="mqttws31.js" type="text/javascript"></script>
+  <script type="text/javascript">
+
+
+   /*
+      by @bordignon on twitter Feb 2014
+      Adapted for Dycharts by Malcolm Yeoman
+      https://tinker.yeoman.com.au/2015/05/11/simple-browser-based-graphical-display-of-mqtt-data/
+
+      adapted for MQTT iot-demo by @idcrook, December 2016
+    */
+
+   //settings BEGIN
+   var MQTTbroker = 'rpit5.local';
+   var MQTTport = 9001;
+   var MQTTsubTopic = '$SYS/broker/clients/active';
+   //settings END
+
+   var chart; // global variable for chart
+   var data = [];
+   var g;
+
+   //mqtt broker
+   var client = new Paho.MQTT.Client(MQTTbroker, MQTTport,
+				     "myclientid_" + parseInt(Math.random() * 100, 10));
+   client.onMessageArrived = onMessageArrived;
+   client.onConnectionLost = onConnectionLost;
+
+   //mqtt connecton options including the mqtt broker subscriptions
+   var options = {
+     timeout: 3,
+     onSuccess: function () {
+       console.log("mqtt connected");
+       // Connection succeeded; subscribe to our topics
+       client.subscribe(MQTTsubTopic, {qos: 1});
+     },
+     onFailure: function (message) {
+       console.log("Connection failed, ERROR: " + message.errorMessage);
+       //window.setTimeout(location.reload(),20000); //wait 20seconds before trying to connect again.
+     }
+   };
+
+   //can be used to reconnect on connection lost
+   function onConnectionLost(responseObject) {
+     console.log("connection lost: " + responseObject.errorMessage);
+     window.setTimeout(location.reload(),20000); //wait 20seconds before trying to connect again.
+   };
+
+   //what is done when a message arrives from the broker
+   function onMessageArrived(message) {
+     //console.log(message.destinationName, '',message.payloadString);
+
+     var x = new Date();  // current time
+     var thenum = message.payloadString.replace( /^\D+/g, ''); //remove any text spaces from the message
+
+     data.push([x,thenum]);
+     data.shift();
+     g.updateOptions( { 'file': data } );
+
+   };
+
+   //check if a real number
+   function isNumber(n) {
+     return !isNaN(parseFloat(n)) && isFinite(n);
+   };
+
+   //function that is called once the document has loaded
+   function init() {
+
+     // Connect to MQTT broker
+     client.connect(options);
+
+   };
+
+   //settings for the chart
+   $(document).ready(function() {
+     var t = new Date();
+     for (var i = 100; i >= 0; i--) {
+       var x = new Date(t.getTime() - i * 1000);
+       data.push([x, 0]);
+     }
+
+     g = new Dygraph(document.getElementById("div_g"), data,
+                     {
+                       drawPoints: true,
+                       showRoller: false,
+		       drawXAxis: true,
+                       //valueRange: [-500, 500],
+                       labels: ['Time', 'Active Users']
+                     });
+   }
+   );
+
+  </script>
+  </head>
+  <body onload="init();"><!--Start the javascript ball rolling and connect to the mqtt broker-->
+
+    <div id="div_g" ></div>
+
+  </body>
+</html>

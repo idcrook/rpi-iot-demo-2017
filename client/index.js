@@ -1,32 +1,37 @@
+/* jshint undef: true, node: true */
 
 var     os = require('os'),
 	dns = require('dns'),
 	cp = require("child_process"),
 	fs = require("fs"),
+	path = require("path"),
 	ip = require('ip'),
 	jsonfile = require('jsonfile'),
 	express = require('express'),
 	mqtt = require('mqtt');
+
+var app = express();
+
+// Serve public content
+// - basically any file in the public folder will be available.
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Read in config file
 var configFile = './client-config.json';
 var config = jsonfile.readFileSync(configFile);
 console.dir(config);
 
-// determine our IP address
-var addr = ip.address();
-console.log('my addr: '+addr);
-
 // determine our hostname
 var clientHostname = os.hostname() ;
 var clientId = clientHostname;
 var clientHostnameLocal = clientHostname + ".local";
-console.log('clientHostname: '+clientHostname);
+console.log('MQTT client: '+clientHostname);
 
+// If this lookup fails, will raise an exception
 var brokerAddr = dns.lookup(config.mqttBrokerHost, {family: 4} ,  (err, address, family) => {
   if (err) throw err;
   //console.log('IP Family: '+family);
-  console.log('broker addr: '+address);
+  console.log('MQTT broker: '+address);
   return address;
 });
 
@@ -58,6 +63,18 @@ const connectOptions = {
     retain: true
   }
 };
+
+// Start listening (usually port 3000)
+var server = app.listen(config.expressServerPort, function () {
+  var host = server.address().address;
+  var port = server.address().port;
+  var addr = ip.address();
+  // console.dir(addr);
+  console.log('HTTP server            http://%s:%s', addr, port);
+  console.log('HTTP server alt addr   http://%s:%s', clientHostnameLocal, port);
+});
+
+
 
 // Create MQTT client
 const client = mqtt.connect(connectUrl, connectOptions);

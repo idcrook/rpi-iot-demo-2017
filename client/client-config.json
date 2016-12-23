@@ -1,3 +1,4 @@
 {
-  "mqttBrokerHost": "rpit5.local"
+  "mqttBrokerHost": "rpit5.local",
+  "expressServerPort": 3000
 }

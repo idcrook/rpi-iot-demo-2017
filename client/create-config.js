@@ -5,7 +5,8 @@ var jsonfile = require('jsonfile');
 var configFile = './client-config.json';
 
 var config = {
-  mqttBrokerHost: 'rpit5.local'
+  mqttBrokerHost: 'rpit5.local',
+  expressServerPort: 3000
 };
 
 jsonfile.writeFile(configFile, config, {spaces: 2}, function(err) {
