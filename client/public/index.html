@@ -9,7 +9,7 @@
        left: 10px;
        right: 10px;
        top: 40px;
-       bottom: 10px;
+       bottom: 50px;
      }
     </style>
     <script src="jquery-1.10.2.js"></script>
@@ -28,6 +28,7 @@
       adapted for MQTT iot-demo by @idcrook, December 2016
     */
 
+
    //settings BEGIN
    var MQTTbroker = "rpit5.local";
    var MQTTport = 9001;
@@ -35,6 +36,23 @@
    var MQTTtopic = "iot-demo/rpit5";
    var MQTTsubTopic1 = MQTTtopic + "/raspi/cputemp";
    var MQTTsubTopic2 = MQTTtopic + "/raspi/gputemp";
+
+   // load config from server
+   $.getJSON( "api/config", function( data ) {
+     $.each( data, function( key, val ) {
+       if        (key === 'mqttBrokerHost') {
+	 MQTTbroker = val;
+       } else if (key === 'mqttBrokerPortWebsockets') {
+	 MQTTport = val;
+       } else if (key === 'baseTopic') {
+	 MQTTtopic = val;
+	 MQTTsubTopic1 = MQTTtopic + "/raspi/cputemp";
+	 MQTTsubTopic2 = MQTTtopic + "/raspi/gputemp";
+       }
+     });
+
+   });
+
    //settings END
 
    var topic1regex = /cputemp$/;
@@ -52,14 +70,17 @@
    client.onMessageArrived = onMessageArrived;
    client.onConnectionLost = onConnectionLost;
 
-   //mqtt connecton options including the mqtt broker subscriptions
+   // mqtt connection options including the mqtt broker subscriptions
    var options = {
      timeout: 3,
      onSuccess: function () {
        console.log("mqtt connected");
+       console.log(MQTTtopic);
        // Connection succeeded; subscribe to our topics
        client.subscribe(MQTTsubTopic1, {qos: 1});
        client.subscribe(MQTTsubTopic2, {qos: 1});
+       console.log('subscribe ' + MQTTsubTopic1);
+       console.log('subscribe ' + MQTTsubTopic2);
      },
      onFailure: function (message) {
        console.log("Connection failed, ERROR: " + message.errorMessage);
