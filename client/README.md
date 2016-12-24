@@ -24,3 +24,19 @@ node index.js
 If everything is working, can visit the URL (the HTTP :3000 ones) for a "real-time" graph of the Pi temperatures.
 
 Browser must support WebSockets for it to work.  Most modern ones do.
+
+### MQTT Topic Structure
+
+PubSub topic structure being used in this demo
+
+``` javascript
+// Topic Structure
+// =================
+// iot-demo     \
+// `-<clientId>  } base topic for this client
+//   |          /
+//   |-> connected        - 'true' or 'false'
+//   `-raspi
+//     |-> cputemp        - degrees C
+//     `-> gputemp        - degrees C
+```
