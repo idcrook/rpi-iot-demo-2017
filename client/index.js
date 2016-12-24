@@ -73,7 +73,8 @@ app.get('/api/config', function (req, res) {
     mqttBrokerHost: config.mqttBrokerHost,
     mqttBrokerPortWebsockets: config.mqttBrokerPortWebsockets,
     baseTopic: baseTopic,
-    subTopic1: baseTopic + '/raspi/#'
+    subTopic1: '/raspi/cputemp',
+    subTopic2: '/raspi/gputemp'
   };
 
   console.log("API request from " + ip + " ...");
