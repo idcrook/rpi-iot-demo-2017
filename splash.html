@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Pi+IoT+JS</title>
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/moon.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+     var link = document.createElement( 'link' );
+     link.rel = 'stylesheet';
+     link.type = 'text/css';
+     link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+     document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+
+	<section>
+	  <h2>Pi + JS = IoT</h2>
+	  <p>It doesn't take a wizard of Oz to make "things" talk.</p>
+	  <p>Get a hands-on Internet of Things (IoT) demo with Raspberry Pi's and Javascript at our <a href="https://www.meetup.com/NoCo-JavaScript-Meetup/events/234847429/">next meetup</a> (see last slide)</p>
+	  <h4>Requirements</h4>
+	  <p>Bring a Laptop or Smartphone with Wi-Fi
+	    <br />
+	    Can share others' but also useful if it's got:
+	      <li><code>SSH</code> client</li>
+	    </ul>
+	  </p>
+	</section>
+
+	<section>
+	  <img src="img/05_klossnerj_internetofthings_03-24-2014-100535431-orig.jpg" />
+	</section>
+
+	<section>
+	  <h2>Pi+IoT+JS</h2>
+	  <p>
+            <a href="https://github.com/idcrook/rpi-iot-demo-2017" target="_blank">https://github.com/idcrook/rpi-iot-demo-2017</a>
+	    <br />
+	    <a href="https://www.meetup.com/NoCo-JavaScript-Meetup/events/234847429/" target="_blank">January 9, 2017</a>
+	    <br />
+	    <a href="https://www.meetup.com/NoCo-JavaScript-Meetup/" target="_blank">NoCo JavaScript Meetup</a>
+	  </p>
+	  <p>
+	    David Crook
+	    <br />
+	    <i class="fa fa-twitter-square"> <a href="https://twitter.com/idcrook">@idcrook</a></i>
+	    <i class="fa fa-github-square"> <a href="https://github.com/idcrook">@idcrook</a></i>
+	    <br />
+	    <i class="fa fa-envelope-square"> <a href="mailto:idcrook@idcrook.com">idcrook@idcrook.com</a></i>
+	  </p>
+	</section>
+
+
+
+      </div>
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+     // More info https://github.com/hakimel/reveal.js#configuration
+     Reveal.initialize({
+       history: true,
+
+       // More info https://github.com/hakimel/reveal.js#dependencies
+       dependencies: [
+	 { src: 'plugin/markdown/marked.js' },
+	 { src: 'plugin/markdown/markdown.js' },
+	 { src: 'plugin/notes/notes.js', async: true },
+	 { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+       ]
+     });
+    </script>
+  </body>
+</html>

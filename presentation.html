@@ -1,0 +1,267 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Pi+IoT+JS</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+			  <section>
+			    <h2>Pi+IoT+JS</h2>
+			    <p>
+                              <a href="https://github.com/idcrook/rpi-iot-demo-2017" target="_blank">https://github.com/idcrook/rpi-iot-demo-2017</a>
+			      <br />
+			      January 9, 2017
+			    </p>
+			    <p>
+			      David Crook
+			      <br />
+			      <i class="fa fa-twitter-square"> <a href="https://twitter.com/idcrook">@idcrook</a></i>
+			      <i class="fa fa-github-square"> <a href="https://github.com/idcrook">@idcrook</a></i>
+			      <br />
+			      <i class="fa fa-envelope-square"> <a href="mailto:idcrook@idcrook.com">idcrook@idcrook.com</a></i>
+			    </p>
+			  </section>
+
+			  <section>
+			    <h2>Internet of Things</h2>
+
+			    <blockquote cite="https://www.lifewire.com/funny-internet-quotes-3482759">
+			      &ldquo;Oh, so they have internet on computers now!&rdquo; <b>~Homer Simpson</b>
+			    </blockquote>
+
+			    <p>The Internet of Things (often abbreviated as "<b>IoT</b>") refers to ever-growing network of physical objects that feature an IP address and can communicate using the Internet.</p>
+
+			    <p><b>Consumer Examples</b>: <a href="http://github.crookster.org/timetemp/charts/weekly/" target="_blank">Weather stations</a>, garage doors, baby monitors, Canary security system, Hue light bulbs, WeMo plugs, Nest thermostat, Amazon Echo ...</p>
+
+			  </section>
+
+			  <section>
+			    <h2>Quiz</h2>
+
+			    <blockquote >
+			      <b>Question</b>: Do you know what the &ldquo;<b>S</b>&rdquo; in &ldquo;<b>IoT</b>&rdquo; stands for?<br />
+			    </blockquote>
+
+			    <blockquote class="fragment" data-fragment-index="0">
+			      <b>Answer</b>: Security.
+			    </blockquote>
+
+			  </section>
+
+			  <section data-markdown>
+			    <script type="text/template">
+			      ## Javascript and Iot
+
+			      **Node.js** is an excellent choice in IoT platforms
+
+			       - low resource requirements (e.g. Pi)
+			       - event-based I/O, data streams
+
+			      IoT Frameworks: [Node RED](https://developer.ibm.com/recipes/tutorials/deploy-watson-iot-node-on-raspberry-pi/), [Particle.io](https://docs.particle.io/guide/getting-started/intro/raspberry-pi/), [AWS IoT Device SDK](http://docs.aws.amazon.com/iot/latest/developerguide/iot-device-sdk-node.html)
+
+			      Communications: HTTP, WebSockets, [MQTT](https://github.com/mqttjs/MQTT.js), [RabbitMQ](https://www.rabbitmq.com/tutorials/tutorial-one-javascript.html)
+
+			      Robotics: [Johnny Five](http://johnny-five.io/examples/raspi-io/), [Cylon.js](https://cylonjs.com/documentation/platforms/raspberry-pi/)
+			    </script>
+			  </section>
+
+			  <section>
+			    <h3>Single Board Computers</h3>
+			    <ul>
+			      <li>run complete, modern operating systems</li>
+			      <li>small, low-power, low-cost form factors</li>
+			      <li>include full assortment of connectivity</li>
+			    </ul>
+			    <table>
+			      <thead>
+				<tr>
+				  <th>SBC</th>
+				  <th>Price</th>
+				</tr>
+			      </thead>
+			      <tbody>
+				<tr>
+				  <td>Raspberry Pi Zero</td>
+				  <td>$5</td>
+				</tr>
+				<tr>
+				  <td>RasPi Model B (Clearance)</td>
+				  <td>$10</td>
+				</tr>
+				<tr>
+				  <td>RasPi 3 (incl. WiFi+BT)</td>
+				  <td>$35</td>
+				</tr>
+				<tr>
+				  <td>Many more exist</td>
+				  <td>...</td>
+				</tr>
+			      </tbody>
+			    </table>
+			  </section>
+
+			  <section>
+			    <h2>Pieces of Pi</h2>
+			    <p>The Pi's in front of you are models B+ / 2 B
+			      <ul>
+				<li>Running Raspbian (Linux) off µSD card</li>
+				<ul>
+				  <li>5 W power (cell-phone charger)</li>
+				  <li>Wired Ethernet cable</li>
+				</ul>
+				<li>Pi also talks with onboard 40-pin header</li>
+				<ul>
+				  <li><em>We'll use some of these pins today!</em></li>
+				  <li>"breadboard" makes wiring easier</li>
+				</ul>
+			      </ul>
+			    </p>
+			  </section>
+
+			  <section>
+			    <h2>Demo Description</h2>
+			    <p>Requirements
+			      <ul>
+				<li>Networked and Powered Pi</li>
+				<ul>
+				  <li>Mounted on Pi Pad</li>
+				  <li>Wires and components</li>
+				</ul>
+				<li>Laptop or smartphone with Wi-Fi</li>
+			      </ul>
+			    </p>
+			  </section>
+
+			  <section>
+			    <h2>Demo Instructions</h2>
+			  </section>
+
+			  <section>
+			    <h2>Wiring Guidelines</h2>
+			  </section>
+
+			  <section>
+			    <h4>Connecting to Pi - SSH</h4>
+			      Username: <b><code>pi</code></b> Password: <b><code>raspberry</code></b>
+			      <table>
+				<!-- <thead>
+				     <tr>
+				     <th>NAME</th>
+				     <th>IP</th>
+				     </tr>
+				     </thead> -->
+				<tbody>
+				  <tr>
+				    <td><code>rpit3</code></td>
+				    <td><code>192.168.8.23</code></td>
+				  </tr>
+				  <tr>
+				    <td><code>rpit4</code></td>
+				    <td><code>192.168.8.24</code></td>
+				  </tr>
+				  <tr>
+				    <td><code>rpip5</code></td>
+				    <td><code>192.168.8.25</code></td>
+				  </tr>
+				  <tr>
+				    <td><code>rpip6</code></td>
+				    <td><code>192.168.8.26</code></td>
+				  </tr>
+				  <tr>
+				    <td><code>rpip7</code></td>
+				    <td><code>192.168.8.27</code></td>
+				  </tr>
+				  <tr>
+				    <td><code>rpip8</code></td>
+				    <td><code>192.168.8.28</code></td>
+				  </tr>
+				  <tr>
+				    <td><code>rpip9</code></td>
+				    <td><code>192.168.8.29</code></td>
+				  </tr>
+				  <tr>
+				    <td><code>rpip10</code></td>
+				    <td><code>192.168.8.30</code></td>
+				  </tr>
+				</tbody>
+			      </table>
+			      <code>&lt;NAME&gt;.local</code> works too (Zeroconf)
+
+			  </section>
+
+			  <section data-background="http://i.giphy.com/XXvnnrJJnOVl6.gif">
+			    <h1>Watch it light up</h1>
+			    <p>.</p>
+			    <p>.</p>
+			    <p>.</p>
+			  </section>
+
+			  <section>
+			    <h2>Pretty Code</h2>
+			    <pre><code class="lang-javascript" data-trim contenteditable>
+function linkify( selector ) {
+  if( supports3DTransforms ) {
+
+    var nodes = document.querySelectorAll( selector );
+
+    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
+      var node = nodes[i];
+
+      if( !node.className ) {
+        node.className += ' roll';
+      }
+    }
+  }
+}
+			    </code></pre>
+			  </section>
+
+			  <section>
+			    <h4>Future directions</h4>
+			    <img src="img/InternetOfRansomwareThings.png" />
+			  </section>
+
+
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
