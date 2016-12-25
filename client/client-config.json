@@ -1,5 +1,6 @@
 {
   "mqttBrokerHost": "rpit5.local",
   "mqttBrokerPortWebsockets": 9001,
+  "sensorReadInterval": 2000,
   "expressServerPort": 3000
 }

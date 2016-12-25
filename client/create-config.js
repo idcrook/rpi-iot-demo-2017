@@ -7,6 +7,7 @@ var configFile = './client-config.json';
 var config = {
   mqttBrokerHost: 'rpit5.local',
   mqttBrokerPortWebsockets: 9001,
+  sensorReadInterval: 2000,       // every two seconds
   expressServerPort: 3000
 };
 
