@@ -1,16 +1,17 @@
 /* jshint undef: true, node: true */
 
-var     os = require('os'),
-	dns = require('dns'),
-	cp = require("child_process"),
-	fs = require("fs"),
-	path = require("path"),
+var os = require('os'),
+    dns = require('dns'),
+    cp = require("child_process"),
+    fs = require("fs"),
+    path = require("path"),
 
-	express = require('express'),
-	jsonfile = require('jsonfile'),
-	ip = require('ip'),
-	mqtt = require('mqtt'),
-	onoff = require('onoff');
+    express = require('express'),
+    ip = require('ip'),
+    jsonfile = require('jsonfile'),
+    mqtt = require('mqtt'),
+    onoff = require('onoff'),
+    uuid = require('uuid');
 
 
 // Read in config file
@@ -52,7 +53,7 @@ const pubGpuTemp = baseTopic + '/raspi/gputemp';
 
 const connectUrl = 'mqtt://' + config.mqttBrokerHost;
 const connectOptions = {
-  clientId: clientId, // FIXME: should be more uniquified
+  clientId: clientId + '-' + uuid.v4(),
   will: {
     topic: pubConnected,
     payload: new Buffer('false'),
@@ -86,8 +87,6 @@ app.get('/api/config', function (req, res) {
 
   if( true ) {
     res.status(200).json(obj);
-    /* res.setHeader('Content-Type', 'application/json');
-     * res.status(200).send(JSON.stringify(obj));*/
   } else {
     res.status(400).send('error');
   }
@@ -99,8 +98,10 @@ var server = app.listen(config.expressServerPort, function () {
   var port = server.address().port;
   var addr = ip.address();
   // console.dir(addr);
-  console.log('HTTP server            http://%s:%s', addr, port);
-  console.log('HTTP server alt addr   http://%s:%s', clientHostnameLocal, port);
+  console.log(' * ');
+  console.log(' * HTTP server            http://%s:%s', addr, port);
+  console.log(' * HTTP server alt addr   http://%s:%s', clientHostnameLocal, port);
+  console.log(' * ');
 });
 
 // Connect an MQTT client object
