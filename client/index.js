@@ -5,36 +5,32 @@ var     os = require('os'),
 	cp = require("child_process"),
 	fs = require("fs"),
 	path = require("path"),
-	ip = require('ip'),
-	jsonfile = require('jsonfile'),
+
 	express = require('express'),
-	mqtt = require('mqtt');
+	jsonfile = require('jsonfile'),
+	ip = require('ip'),
+	mqtt = require('mqtt'),
+	onoff = require('onoff');
 
-var app = express();
-
-// Serve public content
-// - basically any file in the public folder will be available.
-app.use(express.static(path.join(__dirname, 'public')));
 
 // Read in config file
 var configFile = './client-config.json';
 var config = jsonfile.readFileSync(configFile);
 console.dir(config);
 
-// determine our hostname
-var clientHostname = os.hostname() ;
-var clientId = clientHostname;
-var clientHostnameLocal = clientHostname + ".local";
-console.log('MQTT client: '+clientHostname);
-
-// If this lookup fails, will raise an exception
+// Lookup MQTT broker IP address
+// If this lookup fails (cannot resolve broker), will raise an exception
 var brokerAddr = dns.lookup(config.mqttBrokerHost, {family: 4} ,  (err, address, family) => {
   if (err) throw err;
-  //console.log('IP Family: '+family);
-  console.log('MQTT broker: '+address);
+  console.log('MQTT broker: '+address+` (${config.mqttBrokerHost})`);
   return address;
 });
 
+// determine our hostname (and derived names)
+var clientHostname = os.hostname() ;
+var clientHostnameLocal = clientHostname + ".local";
+var clientId = clientHostname;
+console.log('MQTT client: '+clientHostname);
 
 // Topic Structure
 // =================
@@ -46,7 +42,8 @@ var brokerAddr = dns.lookup(config.mqttBrokerHost, {family: 4} ,  (err, address,
 //     |-> cputemp        - degrees C
 //     `-> gputemp        - degrees C
 
-// So subscribing to topic 'iot-demo/+/connected' is connected status
+// So subscribing to topic 'iot-demo/+/connected' is connected status across
+// all the clients
 
 const baseTopic = 'iot-demo' + '/' + clientId;
 const pubConnected = baseTopic + '/connected';
@@ -55,7 +52,7 @@ const pubGpuTemp = baseTopic + '/raspi/gputemp';
 
 const connectUrl = 'mqtt://' + config.mqttBrokerHost;
 const connectOptions = {
-  clientId: clientId,
+  clientId: clientId, // FIXME: should be more uniquified
   will: {
     topic: pubConnected,
     payload: new Buffer('false'),
@@ -64,9 +61,16 @@ const connectOptions = {
   }
 };
 
-//app.get('/config/:value', function (req, res) {
-//  console.log("config param = " + req.params.value);
+// Create webserving framework
+var app = express();
 
+// HTTP serve static content - files in 'public' subdirectory will be served.
+app.use(express.static(path.join(__dirname, 'public')));
+
+// GET endpoint for retrieving details about this client.
+//
+// For example, used in WebSockets streaming demo page to let page know which
+// topic contains the info for this client
 app.get('/api/config', function (req, res) {
   var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
   var obj = {
@@ -89,9 +93,7 @@ app.get('/api/config', function (req, res) {
   }
 });
 
-
-
-// Start listening (usually port 3000)
+// Start webserver listening (usually port 3000)
 var server = app.listen(config.expressServerPort, function () {
   var host = server.address().address;
   var port = server.address().port;
@@ -101,12 +103,10 @@ var server = app.listen(config.expressServerPort, function () {
   console.log('HTTP server alt addr   http://%s:%s', clientHostnameLocal, port);
 });
 
-
-
-// Create MQTT client
+// Connect an MQTT client object
 const client = mqtt.connect(connectUrl, connectOptions);
 
-
+// Process MQTT connection acknowledgement event
 client.on('connect', (connack) => {
   if (connack.returnCode !== 0) {
     console.dir(connack);
@@ -116,15 +116,18 @@ client.on('connect', (connack) => {
 });
 
 
-// inspired by
+// Parts of the following code inspired by
 // http://blog.dioty.co/2014/12/raspberry-pi-sensors-and-dioty-mqtt.html
 
+// Utility object to perform the actual sensor reads
 var piTempLib = {
-  // this is synchronous for now
+  // this is synchronous. an asynchronous version would be better
   readSync: function() {
+    // CPU temperature sensor value is available in Linux sysfs
     var cpu_temp = fs.readFileSync("/sys/class/thermal/thermal_zone0/temp");
     cpu_temp = ((cpu_temp/1000).toPrecision(3));
 
+    // GPU temperature sensor can be read using a utility program
     var vcgencmd = cp.spawnSync('/opt/vc/bin/vcgencmd', ['measure_temp']);
     var gpu_temp = vcgencmd.stdout.toString().replace("\n", "").replace("temp=", "").replace("'C","");
 
@@ -148,6 +151,7 @@ var piTempLib = {
   }
 };
 
+// Make an object to wrap sensor reads, as well as publish to MQTT topics
 var sensor = {
   initialize: function() {
     this.totalReads = 0;
@@ -166,24 +170,27 @@ var sensor = {
       client.publish(pubGpuTemp, readout.gpuTemp.toString(), {qos: 0, retain: true});
     }
 
+    // Schedule onto event loop for many many more times
     if (this.totalReads < 9999999) {
       setTimeout(function() {
         sensor.read();
-      }, 2000);
+      }, config.sensorReadInterval);
     }
   }
 };
 
 
 if (sensor.initialize()) {
+  // Launch the main Sensor Read+Publish LOOP!
   sensor.read();
 } else {
-  console.warn('Failed to initialize sensor');
+  var errMsg = 'Failed to initialize sensor';
+  console.warn(errMsg);
+  throw new Error(errMsg);
 }
 
-
+// Some of the following code borrowed ideas from
 // https://blog.risingstack.com/getting-started-with-nodejs-and-mqtt/
-
 
 /**
  * Want to handle Ctrl-C and other exits gracefully
@@ -197,8 +204,8 @@ function handleAppExit (options, err) {
   }
 
   if (options.cleanup) {
-    // LWT will handle this
-
+    // Turns out LWT (Last Will and Testament) MQTT feature in library will
+    // handle this (need a synchronous version for it to work right anyway)
     client.publish(pubConnected, 'false', {qos: 1, retain: true}, function() {
       console.log(pubConnected + " is published");
       client.end(); // Close the connection when published
@@ -213,8 +220,10 @@ function handleAppExit (options, err) {
   }
 }
 
-// Begin reading from stdin so the process does not exit. requires a SIGINT (Ctrl-C), etc.
-process.stdin.resume();
+//// Begin reading from stdin so the process does not exit.
+//process.stdin.resume();
+
+// Handle a SIGINT (Ctrl-C), etc. here
 
 /**
  * Handle the different ways an application can shutdown
