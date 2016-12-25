@@ -1,0 +1,90 @@
+# -*- graphviz-dot -*-
+
+
+graph demotopo {
+
+
+  label="Network Diagram";
+  fontname="Arial";
+  rankdir=LR;
+
+  node [
+    shape=box,
+    fontname="Arial",
+    fontsize=36,
+    style=filled,
+    color="#d3edea"
+  ];
+  splines="compound"
+  sep=0.1
+
+  rpit5  [ label="192.168.8.22  rpit5 " shape=box image="img/rpibp.svg" fontcolor=green labelloc=t color="#ffffff"];
+  rpit3  [ label="192.168.8.23  rpit3 " shape=box image="img/rpibp.svg" fontcolor=green labelloc=t color="#ffffff"];
+  rpit4  [ label="192.168.8.24  rpit4 " shape=box image="img/rpibp.svg" fontcolor=green labelloc=t color="#ffffff"];
+  rpip5  [ label="192.168.8.25  rpip5 " shape=box image="img/rpibp.svg" fontcolor=green labelloc=t color="#ffffff"];
+  rpip6  [ label="192.168.8.26  rpip6 " shape=box image="img/rpibp.svg" fontcolor=green labelloc=t color="#ffffff"];
+  rpip7  [ label="192.168.8.27  rpip7 " shape=box image="img/rpibp.svg" fontcolor=green labelloc=t color="#ffffff"];
+  rpip8  [ label="192.168.8.28  rpip8 " shape=box image="img/rpibp.svg" fontcolor=green labelloc=t color="#ffffff"];
+  rpip9  [ label="192.168.8.29  rpip9 " shape=box image="img/rpibp.svg" fontcolor="#3a6629" labelloc=t color="#ffffff"];
+
+  rpip10 [ label=<
+          <table border="0" cellborder="1" cellspacing="0" cellpadding="4">
+          <tr><td bgcolor="lightblue"><b>rpip10</b></td></tr>
+          <tr><td bgcolor="lightblue" align="left">IP: 192.168.8.30</td></tr>
+          </table>
+          > shape=box image="img/rpibp.svg" fontcolor=red labelloc=t color="#ffffff"];
+
+
+
+  network [ label="" shape=none color="#ff2200" ];
+
+  server [ label="Broker" shape=box image="img/servers.png" labelloc=c color="#ffffff" ];
+
+  cloud [ label="The Internet" shape=none, image="img/cloud.png" labelloc=b color="#ffffff"]
+
+
+  {
+	  rank = same;
+	  rpit5;
+	  server;
+	  network;
+	  cloud;
+  }
+
+  rpit5 -- network    [color="#ff2200" minlen=2];
+
+  server -- cloud    [color="#0022ff"];
+  network -- server  [color="#ff2200"];
+
+
+  {
+	  rank = same;
+	  rpit3;
+	  rpit4;
+	  rpip5;
+  }
+
+  {
+	  rank = same;
+	  rpip6;
+	  rpip7;
+	  rpip8;
+  }
+
+  {
+	  rank = same;
+	  rpip9;
+	  rpip10;
+  }
+
+  rpit3               -- network  [color="#ff2200"];
+  rpit4               -- network  [color="#ff2200"];
+  rpip5               -- network  [color="#ff2200"];
+  rpip6               -- network  [color="#ff2200"];
+
+  rpip7               -- network [color="#ff2200" minlen=3];
+  rpip8               -- network [color="#ff2200"];
+  rpip9               -- network [color="#ff2200"];
+  rpip10              -- network [color="#ff2200" minlen=2];
+
+}
