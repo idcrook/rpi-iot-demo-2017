@@ -31,15 +31,19 @@
 		       'rpip10'];
 
      var connectedColors = {
-       'true': '#00FF22',
-       'false':'#FF2200',
-       'blank':'#add8e6'
+       'true': '#FFFF22',
+       'false':'#bde8f6',
+       'blank':'#add8e6',
+       'greenled_on':  '#00FF22',
+       'greenled_off': '#107F10',
+       'redled_on':    '#FF2200',
+       'redled_off':   '#7F1010'
      };
 
 
      var MQTTbroker = "rpit5.local";
      var MQTTport = 9001;
-     //var MQTTsubTopic = '$SYS/broker/clients/active';
+     var MQTTsysTopic = '$SYS/broker/clients/active';
      var MQTTtopic = "iot-demo/+/connected";
 
      // load config from server
@@ -68,9 +72,12 @@
        timeout: 3,
        onSuccess: function () {
 	 console.log("mqtt connected");
-	 console.log(MQTTtopic);
+	 /* console.log(MQTTsysTopic);
+	    console.log(MQTTtopic);*/
 	 // Connection succeeded; subscribe to our topics
+	 client.subscribe(MQTTsysTopic, {qos: 1});
 	 client.subscribe(MQTTtopic, {qos: 1});
+	 console.log('subscribe ' + MQTTsysTopic);
 	 console.log('subscribe ' + MQTTtopic);
        },
        onFailure: function (message) {
@@ -85,36 +92,32 @@
        window.setTimeout(location.reload(),20000); //wait 20seconds before trying to connect again.
      };
 
-     // what is done when a message arrives from the broker
      var connectedRegex = /^iot-demo\/(\w+)\/connected$/;
+     var sysClientsRegex = /\$SYS\/broker\/clients\/active/;
+
+     // what is done when a message arrives from the broker
      function onMessageArrived(message) {
        //console.log(message.destinationName, '', message.payloadString);
 
-       //var x = new Date();  // current time
-       //var thenum = message.payloadString.replace( /^\D+/g, ''); //remove any text spaces from the message
        if (connectedRegex.test(message.destinationName)) {
 	 var matches = connectedRegex.exec(message.destinationName);
 	 var client = matches[1];
-	 console.log("found client " + client);
+	 // console.log("found client " + client);
 
 	 if        (message.payloadString === 'true') {
-	   svgModifyTableElement(client, connectedColors[message.payloadString], '');
+	   svgModifyTableElement(client, 0, connectedColors[message.payloadString], '');
 	 } else if  (message.payloadString === 'false') {
-	   svgModifyTableElement(client, connectedColors[message.payloadString], '');
+	   svgModifyTableElement(client, 0, connectedColors[message.payloadString], '');
 	 } else {
-	   svgModifyTableElement(client, connectedColors['blank'], '');
+	   svgModifyTableElement(client, 0, connectedColors['blank'], '');
 	 }
        }
 
-       /* if (topic1regex.test(message.destinationName)) {
-	  data.push([x, CtoF(thenum), CtoF(lastTopic2)]);
-	  lastTopic1 = thenum;
-	* }
-	* if (topic2regex.test(message.destinationName)) {
-	  data.push([x, CtoF(lastTopic1), CtoF(thenum)]);
-	  lastTopic2 = thenum;
-	* }*/
-
+       if (sysClientsRegex.test(message.destinationName)) {
+	 var count = parseInt(message.payloadString);
+	 console.log("active clients: " + count);
+	 svgModifyBroker('broker', count, "");
+       }
 
      };
 
@@ -123,29 +126,69 @@
        return !isNaN(parseFloat(n)) && isFinite(n);
      };
 
-     function svgModifyTableElement(component, color, text) {
-       //console.log(`svgModifyTableElement (${component}, ${color}, ${text})`);
+     function svgModifyTableElement(component, slot, color, text) {
+       console.log(`svgModifyTableElement (${component}, ${slot}, ${color}, ${text})`);
        var svgDoc = document.getElementById("svg_image_id")
       			    .getSVGDocument();
 
        var svg = svgDoc.getElementsByTagName('svg')[0];
 
        try {
+	 var graphNode = svg.getElementById(component);
+	 console.dir(graphNode);
 
+	 // highly dependent on graphviz dot SVG output
+	 var slots = [ { polygon1: graphNode.children[3],
+			 polygon2: graphNode.children[4] },
+		       { polygon1: graphNode.children[6],
+			 polygon2: graphNode.children[7] },
+		       { polygon1: graphNode.children[9],
+			 polygon2: graphNode.children[10] },
+		       { polygon1: graphNode.children[12],
+			 polygon2: graphNode.children[13] }];
+
+	 if (slot !== '') {
+	   // fill color
+	   slots[slot].polygon1.setAttribute('fill', color);
+	   // outline color
+	   if (color === connectedColors.blank) {
+	     slots[slot].polygon2.setAttribute('stroke', '#ffffff');
+	   } else {
+	     slots[slot].polygon2.setAttribute('stroke', connectedColors.blank);
+	   }
+	 } else {
+	   for (var i = 0; i <4; i++) {
+	     // fill color
+	     slots[i].polygon1.setAttribute('fill', color);
+	     // outline color
+	     if (color === connectedColors.blank) {
+	       slots[i].polygon2.setAttribute('stroke', '#ffffff');
+	     } else {
+	       slots[i].polygon2.setAttribute('stroke', connectedColors.blank);
+	     }
+	   }
+
+	 }
+       } catch (err) {
+	 console.error("component [" + component + "] not in SVG; skipping");
+       }
+     }
+
+     function svgModifyBroker(component, count, empty) {
+       //console.log(`svgModifyBroker (${component}, ${count}, ${empty})`);
+       var svgDoc = document.getElementById("svg_image_id")
+      			    .getSVGDocument();
+
+       var svg = svgDoc.getElementsByTagName('svg')[0];
+
+       try {
 	 var graphNode = svg.getElementById(component);
 	 //console.dir(graphNode);
 
 	 // highly dependent on graphviz dot SVG output
-	 var polygon1 = graphNode.children[6];
-	 var polygon2 = graphNode.children[7];
-	 //console.dir(polygon1);
-	 //console.dir(polygon2);
-	 polygon1.setAttribute('fill', color);
-	 if (color === '#add8e6') {
-	   polygon2.setAttribute('stroke', '#ffffff');
-	 } else {
-	   polygon2.setAttribute('stroke', '#add8e6');
-	 }
+	 var text = graphNode.children[11]
+	 //console.dir(text);
+	 text.innerHTML = count;
        } catch (err) {
 	 console.error("component [" + component + "] not in SVG; skipping");
        }
@@ -156,8 +199,9 @@
      //function that is called once the document has loaded
      function init() {
 
+       // tweak the SVG since the output of graphviz has some issues
        var svgDoc = document.getElementById("svg_image_id")
-      			 .getSVGDocument();
+      			    .getSVGDocument();
 
        var svg = svgDoc.getElementsByTagName('svg')[0];
 
@@ -171,7 +215,11 @@
 
        for (let c of clientList) {
 	 // Initialize to the same 'lightblue'
-	 svgModifyTableElement(c, '#add8e6', '');
+	 svgModifyTableElement(c, '', connectedColors.blank, '');
+
+	 // initially set the red and green led indicators to off
+	 svgModifyTableElement(c, 2,  connectedColors.redled_off, '');
+	 svgModifyTableElement(c, 3,  connectedColors.greenled_off, '');
        }
 
        console.dir(svg);
