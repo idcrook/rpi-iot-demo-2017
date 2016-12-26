@@ -17,6 +17,21 @@
     <!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"<html> -->
 
     <script>
+     var clientList = ['rpit5',
+		       'rpit3',
+		       'rpit4',
+		       'rpip5',
+		       'rpip6',
+		       'rpip7',
+		       'rpip8',
+		       'rpip9',
+		       'rpip10'];
+
+     var connectedColors = {
+       'true': '#00FF22',
+       'false':'#FF2200'
+     };
+
      function svgMod(component, color, level, text) {
        var svg = document.getElementById("svg_image_id")
       			 .getSVGDocument();
@@ -47,15 +62,27 @@
        }
      }
 
-     function svgModifyPiConnected(component, color, text) {
+     function svgModifyTableElement(component, color, text) {
+       console.log(`svgModifyTableElement (${component}, ${color}, ${text})`);
        var svgDoc = document.getElementById("svg_image_id")
       			    .getSVGDocument();
 
        var svg = svgDoc.getElementsByTagName('svg')[0];
 
+       var graphNode = svg.getElementById(component);
+       //console.dir(graphNode);
 
-
-
+       // highly dependent on graphviz dot SVG output
+       var polygon1 = graphNode.children[6];
+       var polygon2 = graphNode.children[7];
+       //console.dir(polygon1);
+       //console.dir(polygon2);
+       polygon1.setAttribute('fill', color);
+       if (color === '#add8e6') {
+	 polygon2.setAttribute('stroke', '#ffffff');
+       } else {
+	 polygon2.setAttribute('stroke', '#add8e6');
+       }
      }
 
 
@@ -74,9 +101,15 @@
        // set size to match viewport
        svg.setAttribute('height', '100%');
        svg.setAttribute('width',  '100%');
+       // https://www.w3.org/TR/SVG/coords.html#PreserveAspectRatioAttribute
        //svg.setAttribute('preserveAspectRatio',  'xMinYMin meet');
 
-       svgModifyPiConnected('rpit5', '#FF2200', '');
+       for (let c of clientList) {
+	 // Initialize to the same 'lightblue'
+	 svgModifyTableElement(c, '#add8e6', '');
+
+       }
+
 
      };
 
