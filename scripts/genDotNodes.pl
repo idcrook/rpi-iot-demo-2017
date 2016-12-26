@@ -40,11 +40,13 @@ for $line (@lines) {
 	$output_line = qq|  ${host} [ label=<
             <table border="0" cellborder="1" cellspacing="0" cellpadding="4">
             <tr>
-	      <td bgcolor="lightblue"><b>${host}</b></td>
+	      <td bgcolor="lightblue" colspan="2"><b>${host}</b></td>
+	      <td bgcolor="white">&nbsp;</td>
+	      <td bgcolor="white">&nbsp;</td>
 	      <td bgcolor="white">&nbsp;</td>
             </tr>
             <tr>
-              <td bgcolor="lightblue" align="left" colspan="2">IP: ${output_ip}</td>
+              <td bgcolor="lightblue" align="left" colspan="5">IP: ${output_ip}</td>
             </tr>
             </table>
             > id=${host} shape=box image="img/rpibp.svg" fontcolor=red labelloc=t color="#ffffff"];|;
