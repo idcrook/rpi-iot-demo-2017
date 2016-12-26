@@ -13,10 +13,13 @@
      }
     </style>
     <script src="jquery-1.10.2.js"></script>
+    <script src="dygraph-combined.js"></script>
+    <script src="mqttws31.js" type="text/javascript"></script>
 
-    <!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"<html> -->
 
-    <script>
+    <script type="text/javascript">
+
+     //settings BEGIN
      var clientList = ['rpit5',
 		       'rpit3',
 		       'rpit4',
@@ -29,38 +32,96 @@
 
      var connectedColors = {
        'true': '#00FF22',
-       'false':'#FF2200'
+       'false':'#FF2200',
+       'blank':'#add8e6'
      };
 
-     function svgMod(component, color, level, text) {
-       var svg = document.getElementById("svg_image_id")
-      			 .getSVGDocument();
-       // Put up the text of the message; this should probably be removed
-       var msg = svg.getElementById('msg');
-       msg.textContent = component + ': ' + text;
-       msg.style.setProperty("fill", color, "");
-       try {
-	 var shape = svg.getElementById(component);
-	 shape.style.setProperty("fill", color, "");
-	 var type = shape.getAttribute('type');
-	 if (type && type == 'num') {
-	   // Print the numeric 'level'
-	   shape.textContent = level;
-	   shape.style.setProperty("fill", color, "");
+
+     var MQTTbroker = "rpit5.local";
+     var MQTTport = 9001;
+     //var MQTTsubTopic = '$SYS/broker/clients/active';
+     var MQTTtopic = "iot-demo/+/connected";
+
+     // load config from server
+     $.getJSON( "api/config", function( data ) {
+       $.each( data, function( key, val ) {
+	 if        (key === 'mqttBrokerHost') {
+	   MQTTbroker = val;
+	 } else if (key === 'mqttBrokerPortWebsockets') {
+	   MQTTport = val;
 	 }
-	 if (type && type == 'slider') {
-	   var width = level;
-	   var maxw = shape.getAttribute('maxw');
-	   if (maxw) {
-	     width = level > maxw ? maxw : level;
-	   }
-	   shape.setAttribute("width", width);
-	   shape.style.setProperty("fill", color, "");
-	 }
-       } catch (err) {
-	 console.log("component [" + component + "] not in SVG; skipping");
+       });
+
+     });
+
+     //settings END
+
+
+     //mqtt broker
+     var client = new Paho.MQTT.Client(MQTTbroker, MQTTport,
+				       "myclientid_" + parseInt(Math.random() * 100, 10));
+     client.onMessageArrived = onMessageArrived;
+     client.onConnectionLost = onConnectionLost;
+
+     // mqtt connection options including the mqtt broker subscriptions
+     var options = {
+       timeout: 3,
+       onSuccess: function () {
+	 console.log("mqtt connected");
+	 console.log(MQTTtopic);
+	 // Connection succeeded; subscribe to our topics
+	 client.subscribe(MQTTtopic, {qos: 1});
+	 console.log('subscribe ' + MQTTtopic);
+       },
+       onFailure: function (message) {
+	 console.log("Connection failed, ERROR: " + message.errorMessage);
+	 //window.setTimeout(location.reload(),20000); //wait 20seconds before trying to connect again.
        }
-     }
+     };
+
+     //can be used to reconnect on connection lost
+     function onConnectionLost(responseObject) {
+       console.log("connection lost: " + responseObject.errorMessage);
+       window.setTimeout(location.reload(),20000); //wait 20seconds before trying to connect again.
+     };
+
+     // what is done when a message arrives from the broker
+     var connectedRegex = /^iot-demo\/(\w+)\/connected$/;
+     function onMessageArrived(message) {
+       //console.log(message.destinationName, '', message.payloadString);
+
+       //var x = new Date();  // current time
+       //var thenum = message.payloadString.replace( /^\D+/g, ''); //remove any text spaces from the message
+       if (connectedRegex.test(message.destinationName)) {
+	 var matches = connectedRegex.exec(message.destinationName);
+	 var client = matches[1];
+	 console.log("found client " + client);
+
+	 if        (message.payloadString === 'true') {
+	   svgModifyTableElement(client, connectedColors[message.payloadString], '');
+	 } else if  (message.payloadString === 'false') {
+	   svgModifyTableElement(client, connectedColors[message.payloadString], '');
+	 } else {
+	   svgModifyTableElement(client, connectedColors['blank'], '');
+	 }
+       }
+
+       /* if (topic1regex.test(message.destinationName)) {
+	  data.push([x, CtoF(thenum), CtoF(lastTopic2)]);
+	  lastTopic1 = thenum;
+	* }
+	* if (topic2regex.test(message.destinationName)) {
+	  data.push([x, CtoF(lastTopic1), CtoF(thenum)]);
+	  lastTopic2 = thenum;
+	* }*/
+
+
+     };
+
+     //check if a real number
+     function isNumber(n) {
+       return !isNaN(parseFloat(n)) && isFinite(n);
+     };
 
      function svgModifyTableElement(component, color, text) {
        //console.log(`svgModifyTableElement (${component}, ${color}, ${text})`);
@@ -69,26 +130,31 @@
 
        var svg = svgDoc.getElementsByTagName('svg')[0];
 
-       var graphNode = svg.getElementById(component);
-       //console.dir(graphNode);
+       try {
 
-       // highly dependent on graphviz dot SVG output
-       var polygon1 = graphNode.children[6];
-       var polygon2 = graphNode.children[7];
-       //console.dir(polygon1);
-       //console.dir(polygon2);
-       polygon1.setAttribute('fill', color);
-       if (color === '#add8e6') {
-	 polygon2.setAttribute('stroke', '#ffffff');
-       } else {
-	 polygon2.setAttribute('stroke', '#add8e6');
+	 var graphNode = svg.getElementById(component);
+	 //console.dir(graphNode);
+
+	 // highly dependent on graphviz dot SVG output
+	 var polygon1 = graphNode.children[6];
+	 var polygon2 = graphNode.children[7];
+	 //console.dir(polygon1);
+	 //console.dir(polygon2);
+	 polygon1.setAttribute('fill', color);
+	 if (color === '#add8e6') {
+	   polygon2.setAttribute('stroke', '#ffffff');
+	 } else {
+	   polygon2.setAttribute('stroke', '#add8e6');
+	 }
+       } catch (err) {
+	 console.error("component [" + component + "] not in SVG; skipping");
        }
+
      }
 
 
      //function that is called once the document has loaded
      function init() {
-       // FIXME: Connect to MQTT broker
 
        var svgDoc = document.getElementById("svg_image_id")
       			 .getSVGDocument();
@@ -109,6 +175,10 @@
        }
 
        console.dir(svg);
+
+       // Connect to MQTT broker
+       client.connect(options);
+
 
      };
 
