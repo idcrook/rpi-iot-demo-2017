@@ -63,7 +63,7 @@
      }
 
      function svgModifyTableElement(component, color, text) {
-       console.log(`svgModifyTableElement (${component}, ${color}, ${text})`);
+       //console.log(`svgModifyTableElement (${component}, ${color}, ${text})`);
        var svgDoc = document.getElementById("svg_image_id")
       			    .getSVGDocument();
 
@@ -94,22 +94,21 @@
       			 .getSVGDocument();
 
        var svg = svgDoc.getElementsByTagName('svg')[0];
-       /* console.log(svgDoc);
-	* console.dir(svgDoc);*/
-       /* console.dir(svg);*/
 
        // set size to match viewport
        svg.setAttribute('height', '100%');
        svg.setAttribute('width',  '100%');
+
        // https://www.w3.org/TR/SVG/coords.html#PreserveAspectRatioAttribute
        //svg.setAttribute('preserveAspectRatio',  'xMinYMin meet');
+       svg.setAttribute('preserveAspectRatio',  'xMidYMid meet');
 
        for (let c of clientList) {
 	 // Initialize to the same 'lightblue'
 	 svgModifyTableElement(c, '#add8e6', '');
-
        }
 
+       console.dir(svg);
 
      };
 
