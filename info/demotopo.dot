@@ -125,7 +125,17 @@ graph demotopo {
 
   network [ label="" color="#ff2200" ];
 
-  broker [ label="   Broker   " id="broker" shape=circle image="img/servers.png" labelloc=t color="lightblue" ];
+  broker [ label=<
+            <table border="0" cellborder="1" cellspacing="0" cellpadding="4">
+            <tr>
+	      <td bgcolor="lightblue" colspan="2"><b>Broker</b></td>
+            </tr>
+            <tr>
+              <td bgcolor="lightblue" align="left">Clients:</td>
+	      <td bgcolor="#ffffff"><b>0</b></td>
+            </tr>
+            </table>
+            > id="broker" shape=circle image="img/servers.png" labelloc=b color="lightblue" ];
 
   cloud  [ label="The Internet" id="cloud"  shape=circle image="img/cloud.png"   labelloc=b color="#ffffff"]
 
@@ -140,29 +150,27 @@ graph demotopo {
 	  rank = same;
 	  rpip6;
 	  rpip7;
-  }
-
-  {
-	  rank = same;
 	  rpip8;
-	  rpip9;
   }
 
   {
 	  rank = same;
-	  rpit5;
-	  broker;
-	  network;
-	  cloud;
+	  rpip9;
 	  rpip10;
+  }
+
+  {
+  	  rank = same;
+  	  // rpit5;
+  	  broker;
+  	  cloud;
+
   }
 
 
 
   broker -- cloud    [color="#0022ff" weight=1 penwidth=6  minlen=5];
-  network -- broker  [color="#ff2200" weight=1 penwidth=6  minlen=4];
-
-  rpit5               -- network  [color="#ff2200" weight=1 penwidth=6];
+  network -- broker  [color="#ff2200" weight=1 penwidth=6 ];
 
   rpit3               -- network  [color="#ff2200" weight=1 penwidth=6 minlen=3 ] ;
   rpit4               -- network  [color="#ff2200" weight=1 penwidth=6];
@@ -175,5 +183,7 @@ graph demotopo {
   rpip9               -- network  [color="#ff2200" weight=1 penwidth=6 minlen=1];
 
   rpip10              -- network  [color="#ff2200" weight=1 penwidth=6];
+
+  rpit5               -- network  [color="#ff2200" weight=1 penwidth=6];
 
 }
