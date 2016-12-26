@@ -28,12 +28,12 @@
 <!-- network -->
 <g id="node10" class="node">
 <title>network</title>
-<polygon fill="#ff2200" stroke="transparent" points="1231,-247 1177,-247 1177,-211 1231,-211 1231,-247"/>
+<polygon fill="#ff2200" stroke="#ff2200" points="1231,-247 1177,-247 1177,-211 1231,-211 1231,-247"/>
 </g>
 <!-- rpit5&#45;&#45;network -->
-<g id="edge1" class="edge">
+<g id="edge3" class="edge">
 <title>rpit5&#45;&#45;network</title>
-<path fill="none" stroke="#ff2200" d="M661.7986,-380.124C676.6205,-387.1465 691.7529,-393.2354 707,-398 754.9362,-412.9797 1116.2784,-424.4034 1159,-398 1209.7519,-366.6336 1209.1047,-283.8487 1206.0621,-247.0611"/>
+<path fill="none" stroke="#ff2200" stroke-width="6" d="M661.7986,-380.124C676.6205,-387.1465 691.7529,-393.2354 707,-398 754.9362,-412.9797 1116.2784,-424.4034 1159,-398 1209.7519,-366.6336 1209.1047,-283.8487 1206.0621,-247.0611"/>
 </g>
 <!-- rpit3 -->
 <g id="rpit3" class="node">
@@ -53,7 +53,7 @@
 <!-- rpit3&#45;&#45;network -->
 <g id="edge4" class="edge">
 <title>rpit3&#45;&#45;network</title>
-<path fill="none" stroke="#ff2200" d="M280.0705,-1091.7856C357.9776,-898.407 521.6225,-570.157 781,-416 855.2477,-371.872 1102.7678,-436.6106 1168,-380 1206.6728,-346.4385 1207.771,-279.5177 1205.7668,-247.2424"/>
+<path fill="none" stroke="#ff2200" stroke-width="6" d="M280.0705,-1091.7856C357.9776,-898.407 521.6225,-570.157 781,-416 855.2477,-371.872 1102.7678,-436.6106 1168,-380 1206.6728,-346.4385 1207.771,-279.5177 1205.7668,-247.2424"/>
 </g>
 <!-- rpit4 -->
 <g id="rpit4" class="node">
@@ -73,7 +73,7 @@
 <!-- rpit4&#45;&#45;network -->
 <g id="edge5" class="edge">
 <title>rpit4&#45;&#45;network</title>
-<path fill="none" stroke="#ff2200" d="M702.6129,-1091.9514C719.3918,-904.1905 777.3304,-587.5995 975,-416 1040.8922,-358.7982 1104.7878,-440.1502 1168,-380 1204.9971,-344.7951 1206.9472,-278.9699 1205.4639,-247.1473"/>
+<path fill="none" stroke="#ff2200" stroke-width="6" d="M702.6129,-1091.9514C719.3918,-904.1905 777.3304,-587.5995 975,-416 1040.8922,-358.7982 1104.7878,-440.1502 1168,-380 1204.9971,-344.7951 1206.9472,-278.9699 1205.4639,-247.1473"/>
 </g>
 <!-- rpip5 -->
 <g id="rpip5" class="node">
@@ -93,7 +93,7 @@
 <!-- rpip5&#45;&#45;network -->
 <g id="edge6" class="edge">
 <title>rpip5&#45;&#45;network</title>
-<path fill="none" stroke="#ff2200" d="M988.5452,-1091.9939C980.9844,-1080.4743 974.3508,-1068.4569 969,-1056 916.0255,-932.674 936.5096,-884.2305 969,-754 1014.5777,-571.312 1101.4045,-556.1172 1168,-380 1185.5388,-333.6172 1196.4632,-275.9028 1201.2209,-247.1075"/>
+<path fill="none" stroke="#ff2200" stroke-width="6" d="M988.5452,-1091.9939C980.9844,-1080.4743 974.3508,-1068.4569 969,-1056 916.0255,-932.674 936.5096,-884.2305 969,-754 1014.5777,-571.312 1101.4045,-556.1172 1168,-380 1185.5388,-333.6172 1196.4632,-275.9028 1201.2209,-247.1075"/>
 </g>
 <!-- rpip6 -->
 <g id="rpip6" class="node">
@@ -113,7 +113,7 @@
 <!-- rpip6&#45;&#45;network -->
 <g id="edge7" class="edge">
 <title>rpip6&#45;&#45;network</title>
-<path fill="none" stroke="#ff2200" d="M1204,-753.7133C1204,-582.4654 1204,-318.0357 1204,-247.0514"/>
+<path fill="none" stroke="#ff2200" stroke-width="6" d="M1204,-753.7133C1204,-582.4654 1204,-318.0357 1204,-247.0514"/>
 </g>
 <!-- rpip7 -->
 <g id="rpip7" class="node">
@@ -133,7 +133,7 @@
 <!-- rpip7&#45;&#45;network -->
 <g id="edge8" class="edge">
 <title>rpip7&#45;&#45;network</title>
-<path fill="none" stroke="#ff2200" d="M1447.7706,-757.6633C1444.8452,-756.4068 1441.921,-755.1848 1439,-754 1364.2057,-723.6622 1315.6404,-777.4054 1261,-718 1244.6723,-700.2484 1212.8161,-333.5415 1205.5156,-247.1262"/>
+<path fill="none" stroke="#ff2200" stroke-width="6" d="M1447.7706,-757.6633C1444.8452,-756.4068 1441.921,-755.1848 1439,-754 1364.2057,-723.6622 1315.6404,-777.4054 1261,-718 1244.6723,-700.2484 1212.8161,-333.5415 1205.5156,-247.1262"/>
 </g>
 <!-- rpip8 -->
 <g id="rpip8" class="node">
@@ -153,7 +153,7 @@
 <!-- rpip8&#45;&#45;network -->
 <g id="edge9" class="edge">
 <title>rpip8&#45;&#45;network</title>
-<path fill="none" stroke="#ff2200" d="M1269.8104,-416.6337C1259.2654,-405.0015 1249.5417,-392.7801 1241,-380 1213.1036,-338.2613 1206.2121,-277.4623 1204.5291,-247.3336"/>
+<path fill="none" stroke="#ff2200" stroke-width="6" d="M1325.2918,-415.8761C1314.3235,-404.0893 1303.7749,-392.07 1294,-380 1258.4674,-336.1242 1227.2896,-276.8056 1212.7288,-247.2772"/>
 </g>
 <!-- rpip9 -->
 <g id="rpip9" class="node">
@@ -173,7 +173,7 @@
 <!-- rpip9&#45;&#45;network -->
 <g id="edge10" class="edge">
 <title>rpip9&#45;&#45;network</title>
-<path fill="none" stroke="#ff2200" d="M1739.9669,-419.1317C1736.9795,-418.0431 1733.9899,-416.9982 1731,-416 1627.4371,-381.4238 1324.3722,-450.4972 1241,-380 1201.7373,-346.8006 1200.42,-279.3957 1202.3162,-247.0767"/>
+<path fill="none" stroke="#ff2200" stroke-width="6" d="M1739.9542,-419.1694C1736.9709,-418.0689 1733.9855,-417.0115 1731,-416 1638.7126,-384.7334 1376.6729,-431.5729 1294,-380 1244.4141,-349.0674 1218.6517,-279.9172 1208.8176,-247.0356"/>
 </g>
 <!-- rpip10 -->
 <g id="rpip10" class="node">
@@ -193,31 +193,31 @@
 <!-- rpip10&#45;&#45;network -->
 <g id="edge11" class="edge">
 <title>rpip10&#45;&#45;network</title>
-<path fill="none" stroke="#ff2200" d="M1159.0098,-229C1164.985,-229 1170.9603,-229 1176.9356,-229"/>
+<path fill="none" stroke="#ff2200" stroke-width="6" d="M1159.0098,-229C1164.985,-229 1170.9603,-229 1176.9356,-229"/>
 </g>
-<!-- server -->
-<g id="node11" class="node">
-<title>server</title>
-<polygon fill="#add8e6" stroke="#add8e6" points="1372.5,-278 1249.5,-278 1249.5,-180 1372.5,-180 1372.5,-278"/>
-<image xlink:href="img/servers.png" width="123px" height="98px" preserveAspectRatio="xMinYMin meet" x="1249.5" y="-278"/>
-<text text-anchor="middle" x="1311" y="-191.2" font-family="Arial" font-size="36.00" fill="#000000">Broker</text>
+<!-- broker -->
+<g id="broker" class="node">
+<title>broker</title>
+<ellipse fill="#add8e6" stroke="#add8e6" cx="1432" cy="-229" rx="129.3012" ry="129.3012"/>
+<image xlink:href="img/servers.png" width="128px" height="128px" preserveAspectRatio="xMinYMin meet" x="1368" y="-293"/>
+<text text-anchor="middle" x="1432" y="-309.3041" font-family="Arial" font-size="36.00" fill="#000000"> &#160;&#160;Broker &#160;&#160;</text>
 </g>
-<!-- network&#45;&#45;server -->
-<g id="edge3" class="edge">
-<title>network&#45;&#45;server</title>
-<path fill="none" stroke="#ff2200" d="M1231.168,-229C1237.197,-229 1243.2259,-229 1249.2549,-229"/>
+<!-- network&#45;&#45;broker -->
+<g id="edge2" class="edge">
+<title>network&#45;&#45;broker</title>
+<path fill="none" stroke="#ff2200" stroke-width="6" d="M1231.1641,-229C1254.961,-229 1278.758,-229 1302.555,-229"/>
 </g>
 <!-- cloud -->
-<g id="node12" class="node">
+<g id="cloud" class="node">
 <title>cloud</title>
-<polygon fill="#ffffff" stroke="#ffffff" points="1601.5,-253 1390.5,-253 1390.5,-205 1601.5,-205 1601.5,-253"/>
-<image xlink:href="img/cloud.png" width="64px" height="48px" preserveAspectRatio="xMinYMin meet" x="1464" y="-253"/>
-<text text-anchor="middle" x="1496" y="-216.2" font-family="Arial" font-size="36.00" fill="#000000">The Internet</text>
+<ellipse fill="#ffffff" stroke="#ffffff" cx="1800" cy="-229" rx="149.3993" ry="149.3993"/>
+<image xlink:href="img/cloud.png" width="64px" height="60px" preserveAspectRatio="xMinYMin meet" x="1768" y="-259"/>
+<text text-anchor="middle" x="1800" y="-100.9416" font-family="Arial" font-size="36.00" fill="#000000">The Internet</text>
 </g>
-<!-- server&#45;&#45;cloud -->
-<g id="edge2" class="edge">
-<title>server&#45;&#45;cloud</title>
-<path fill="none" stroke="#0022ff" d="M1372.7871,-229C1378.5627,-229 1384.3383,-229 1390.1139,-229"/>
+<!-- broker&#45;&#45;cloud -->
+<g id="edge1" class="edge">
+<title>broker&#45;&#45;cloud</title>
+<path fill="none" stroke="#0022ff" stroke-width="6" d="M1561.7344,-229C1591.3625,-229 1620.9905,-229 1650.6186,-229"/>
 </g>
 </g>
 </svg>
