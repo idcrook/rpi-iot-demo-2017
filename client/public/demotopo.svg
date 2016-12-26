@@ -15,15 +15,15 @@
 <title>rpit5</title>
 <polygon fill="#ffffff" stroke="#ffffff" points="689,-380 237,-380 237,-78 689,-78 689,-380"/>
 <image xlink:href="img/rpibp.svg" width="452px" height="302px" preserveAspectRatio="xMinYMin meet" x="237" y="-380"/>
-<polygon fill="#add8e6" stroke="transparent" points="314,-329 314,-379 497,-379 497,-329 314,-329"/>
-<polygon fill="none" stroke="#ffffff" points="314,-329 314,-379 497,-379 497,-329 314,-329"/>
-<text text-anchor="start" x="366" y="-346.2" font-family="Arial" font-weight="bold" font-size="36.00" fill="#ff0000">rpit5</text>
-<polygon fill="#ffffff" stroke="transparent" points="497,-329 497,-379 613,-379 613,-329 497,-329"/>
-<polygon fill="none" stroke="#ffffff" points="497,-329 497,-379 613,-379 613,-329 497,-329"/>
-<text text-anchor="start" x="549.5" y="-345.2" font-family="Arial" font-size="36.00" fill="#ff0000"> </text>
-<polygon fill="#add8e6" stroke="transparent" points="314,-279 314,-329 613,-329 613,-279 314,-279"/>
-<polygon fill="none" stroke="#ffffff" points="314,-279 314,-329 613,-329 613,-279 314,-279"/>
-<text text-anchor="start" x="319" y="-295.2" font-family="Arial" font-size="36.00" fill="#ff0000">IP: {192.168.8.22}</text>
+<polygon fill="#add8e6" stroke="transparent" points="326,-329 326,-379 497,-379 497,-329 326,-329"/>
+<polygon fill="none" stroke="#ffffff" points="326,-329 326,-379 497,-379 497,-329 326,-329"/>
+<text text-anchor="start" x="372" y="-346.2" font-family="Arial" font-weight="bold" font-size="36.00" fill="#ff0000">rpit5</text>
+<polygon fill="#ffffff" stroke="transparent" points="497,-329 497,-379 601,-379 601,-329 497,-329"/>
+<polygon fill="none" stroke="#ffffff" points="497,-329 497,-379 601,-379 601,-329 497,-329"/>
+<text text-anchor="start" x="543.5" y="-345.2" font-family="Arial" font-size="36.00" fill="#ff0000"> </text>
+<polygon fill="#add8e6" stroke="transparent" points="326,-279 326,-329 601,-329 601,-279 326,-279"/>
+<polygon fill="none" stroke="#ffffff" points="326,-279 326,-329 601,-329 601,-279 326,-279"/>
+<text text-anchor="start" x="331" y="-295.2" font-family="Arial" font-size="36.00" fill="#ff0000">IP: 192.168.8.22</text>
 </g>
 <!-- network -->
 <g id="node10" class="node">
@@ -40,15 +40,15 @@
 <title>rpit3</title>
 <polygon fill="#ffffff" stroke="#ffffff" points="452,-1394 0,-1394 0,-1092 452,-1092 452,-1394"/>
 <image xlink:href="img/rpibp.svg" width="452px" height="302px" preserveAspectRatio="xMinYMin meet" x="0" y="-1394"/>
-<polygon fill="#add8e6" stroke="transparent" points="77,-1343 77,-1393 260,-1393 260,-1343 77,-1343"/>
-<polygon fill="none" stroke="#ffffff" points="77,-1343 77,-1393 260,-1393 260,-1343 77,-1343"/>
-<text text-anchor="start" x="129" y="-1360.2" font-family="Arial" font-weight="bold" font-size="36.00" fill="#ff0000">rpit3</text>
-<polygon fill="#ffffff" stroke="transparent" points="260,-1343 260,-1393 376,-1393 376,-1343 260,-1343"/>
-<polygon fill="none" stroke="#ffffff" points="260,-1343 260,-1393 376,-1393 376,-1343 260,-1343"/>
-<text text-anchor="start" x="312.5" y="-1359.2" font-family="Arial" font-size="36.00" fill="#ff0000"> </text>
-<polygon fill="#add8e6" stroke="transparent" points="77,-1293 77,-1343 376,-1343 376,-1293 77,-1293"/>
-<polygon fill="none" stroke="#ffffff" points="77,-1293 77,-1343 376,-1343 376,-1293 77,-1293"/>
-<text text-anchor="start" x="82" y="-1309.2" font-family="Arial" font-size="36.00" fill="#ff0000">IP: {192.168.8.23}</text>
+<polygon fill="#add8e6" stroke="transparent" points="89,-1343 89,-1393 260,-1393 260,-1343 89,-1343"/>
+<polygon fill="none" stroke="#ffffff" points="89,-1343 89,-1393 260,-1393 260,-1343 89,-1343"/>
+<text text-anchor="start" x="135" y="-1360.2" font-family="Arial" font-weight="bold" font-size="36.00" fill="#ff0000">rpit3</text>
+<polygon fill="#ffffff" stroke="transparent" points="260,-1343 260,-1393 364,-1393 364,-1343 260,-1343"/>
+<polygon fill="none" stroke="#ffffff" points="260,-1343 260,-1393 364,-1393 364,-1343 260,-1343"/>
+<text text-anchor="start" x="306.5" y="-1359.2" font-family="Arial" font-size="36.00" fill="#ff0000"> </text>
+<polygon fill="#add8e6" stroke="transparent" points="89,-1293 89,-1343 364,-1343 364,-1293 89,-1293"/>
+<polygon fill="none" stroke="#ffffff" points="89,-1293 89,-1343 364,-1343 364,-1293 89,-1293"/>
+<text text-anchor="start" x="94" y="-1309.2" font-family="Arial" font-size="36.00" fill="#ff0000">IP: 192.168.8.23</text>
 </g>
 <!-- rpit3&#45;&#45;network -->
 <g id="edge4" class="edge">
@@ -60,15 +60,15 @@
 <title>rpit4</title>
 <polygon fill="#ffffff" stroke="#ffffff" points="922,-1394 470,-1394 470,-1092 922,-1092 922,-1394"/>
 <image xlink:href="img/rpibp.svg" width="452px" height="302px" preserveAspectRatio="xMinYMin meet" x="470" y="-1394"/>
-<polygon fill="#add8e6" stroke="transparent" points="547,-1343 547,-1393 730,-1393 730,-1343 547,-1343"/>
-<polygon fill="none" stroke="#ffffff" points="547,-1343 547,-1393 730,-1393 730,-1343 547,-1343"/>
-<text text-anchor="start" x="599" y="-1360.2" font-family="Arial" font-weight="bold" font-size="36.00" fill="#ff0000">rpit4</text>
-<polygon fill="#ffffff" stroke="transparent" points="730,-1343 730,-1393 846,-1393 846,-1343 730,-1343"/>
-<polygon fill="none" stroke="#ffffff" points="730,-1343 730,-1393 846,-1393 846,-1343 730,-1343"/>
-<text text-anchor="start" x="782.5" y="-1359.2" font-family="Arial" font-size="36.00" fill="#ff0000"> </text>
-<polygon fill="#add8e6" stroke="transparent" points="547,-1293 547,-1343 846,-1343 846,-1293 547,-1293"/>
-<polygon fill="none" stroke="#ffffff" points="547,-1293 547,-1343 846,-1343 846,-1293 547,-1293"/>
-<text text-anchor="start" x="552" y="-1309.2" font-family="Arial" font-size="36.00" fill="#ff0000">IP: {192.168.8.24}</text>
+<polygon fill="#add8e6" stroke="transparent" points="559,-1343 559,-1393 730,-1393 730,-1343 559,-1343"/>
+<polygon fill="none" stroke="#ffffff" points="559,-1343 559,-1393 730,-1393 730,-1343 559,-1343"/>
+<text text-anchor="start" x="605" y="-1360.2" font-family="Arial" font-weight="bold" font-size="36.00" fill="#ff0000">rpit4</text>
+<polygon fill="#ffffff" stroke="transparent" points="730,-1343 730,-1393 834,-1393 834,-1343 730,-1343"/>
+<polygon fill="none" stroke="#ffffff" points="730,-1343 730,-1393 834,-1393 834,-1343 730,-1343"/>
+<text text-anchor="start" x="776.5" y="-1359.2" font-family="Arial" font-size="36.00" fill="#ff0000"> </text>
+<polygon fill="#add8e6" stroke="transparent" points="559,-1293 559,-1343 834,-1343 834,-1293 559,-1293"/>
+<polygon fill="none" stroke="#ffffff" points="559,-1293 559,-1343 834,-1343 834,-1293 559,-1293"/>
+<text text-anchor="start" x="564" y="-1309.2" font-family="Arial" font-size="36.00" fill="#ff0000">IP: 192.168.8.24</text>
 </g>
 <!-- rpit4&#45;&#45;network -->
 <g id="edge5" class="edge">
@@ -80,15 +80,15 @@
 <title>rpip5</title>
 <polygon fill="#ffffff" stroke="#ffffff" points="1392,-1394 940,-1394 940,-1092 1392,-1092 1392,-1394"/>
 <image xlink:href="img/rpibp.svg" width="452px" height="302px" preserveAspectRatio="xMinYMin meet" x="940" y="-1394"/>
-<polygon fill="#add8e6" stroke="transparent" points="1017,-1343 1017,-1393 1205,-1393 1205,-1343 1017,-1343"/>
-<polygon fill="none" stroke="#ffffff" points="1017,-1343 1017,-1393 1205,-1393 1205,-1343 1017,-1343"/>
-<text text-anchor="start" x="1066.5" y="-1360.2" font-family="Arial" font-weight="bold" font-size="36.00" fill="#ff0000">rpip5</text>
-<polygon fill="#ffffff" stroke="transparent" points="1205,-1343 1205,-1393 1316,-1393 1316,-1343 1205,-1343"/>
-<polygon fill="none" stroke="#ffffff" points="1205,-1343 1205,-1393 1316,-1393 1316,-1343 1205,-1343"/>
-<text text-anchor="start" x="1255" y="-1359.2" font-family="Arial" font-size="36.00" fill="#ff0000"> </text>
-<polygon fill="#add8e6" stroke="transparent" points="1017,-1293 1017,-1343 1316,-1343 1316,-1293 1017,-1293"/>
-<polygon fill="none" stroke="#ffffff" points="1017,-1293 1017,-1343 1316,-1343 1316,-1293 1017,-1293"/>
-<text text-anchor="start" x="1022" y="-1309.2" font-family="Arial" font-size="36.00" fill="#ff0000">IP: {192.168.8.25}</text>
+<polygon fill="#add8e6" stroke="transparent" points="1029,-1343 1029,-1393 1205,-1393 1205,-1343 1029,-1343"/>
+<polygon fill="none" stroke="#ffffff" points="1029,-1343 1029,-1393 1205,-1393 1205,-1343 1029,-1343"/>
+<text text-anchor="start" x="1072.5" y="-1360.2" font-family="Arial" font-weight="bold" font-size="36.00" fill="#ff0000">rpip5</text>
+<polygon fill="#ffffff" stroke="transparent" points="1205,-1343 1205,-1393 1304,-1393 1304,-1343 1205,-1343"/>
+<polygon fill="none" stroke="#ffffff" points="1205,-1343 1205,-1393 1304,-1393 1304,-1343 1205,-1343"/>
+<text text-anchor="start" x="1249" y="-1359.2" font-family="Arial" font-size="36.00" fill="#ff0000"> </text>
+<polygon fill="#add8e6" stroke="transparent" points="1029,-1293 1029,-1343 1304,-1343 1304,-1293 1029,-1293"/>
+<polygon fill="none" stroke="#ffffff" points="1029,-1293 1029,-1343 1304,-1343 1304,-1293 1029,-1293"/>
+<text text-anchor="start" x="1034" y="-1309.2" font-family="Arial" font-size="36.00" fill="#ff0000">IP: 192.168.8.25</text>
 </g>
 <!-- rpip5&#45;&#45;network -->
 <g id="edge6" class="edge">
@@ -100,15 +100,15 @@
 <title>rpip6</title>
 <polygon fill="#ffffff" stroke="#ffffff" points="1430,-1056 978,-1056 978,-754 1430,-754 1430,-1056"/>
 <image xlink:href="img/rpibp.svg" width="452px" height="302px" preserveAspectRatio="xMinYMin meet" x="978" y="-1056"/>
-<polygon fill="#add8e6" stroke="transparent" points="1055,-1005 1055,-1055 1243,-1055 1243,-1005 1055,-1005"/>
-<polygon fill="none" stroke="#ffffff" points="1055,-1005 1055,-1055 1243,-1055 1243,-1005 1055,-1005"/>
-<text text-anchor="start" x="1104.5" y="-1022.2" font-family="Arial" font-weight="bold" font-size="36.00" fill="#ff0000">rpip6</text>
-<polygon fill="#ffffff" stroke="transparent" points="1243,-1005 1243,-1055 1354,-1055 1354,-1005 1243,-1005"/>
-<polygon fill="none" stroke="#ffffff" points="1243,-1005 1243,-1055 1354,-1055 1354,-1005 1243,-1005"/>
-<text text-anchor="start" x="1293" y="-1021.2" font-family="Arial" font-size="36.00" fill="#ff0000"> </text>
-<polygon fill="#add8e6" stroke="transparent" points="1055,-955 1055,-1005 1354,-1005 1354,-955 1055,-955"/>
-<polygon fill="none" stroke="#ffffff" points="1055,-955 1055,-1005 1354,-1005 1354,-955 1055,-955"/>
-<text text-anchor="start" x="1060" y="-971.2" font-family="Arial" font-size="36.00" fill="#ff0000">IP: {192.168.8.26}</text>
+<polygon fill="#add8e6" stroke="transparent" points="1067,-1005 1067,-1055 1243,-1055 1243,-1005 1067,-1005"/>
+<polygon fill="none" stroke="#ffffff" points="1067,-1005 1067,-1055 1243,-1055 1243,-1005 1067,-1005"/>
+<text text-anchor="start" x="1110.5" y="-1022.2" font-family="Arial" font-weight="bold" font-size="36.00" fill="#ff0000">rpip6</text>
+<polygon fill="#ffffff" stroke="transparent" points="1243,-1005 1243,-1055 1342,-1055 1342,-1005 1243,-1005"/>
+<polygon fill="none" stroke="#ffffff" points="1243,-1005 1243,-1055 1342,-1055 1342,-1005 1243,-1005"/>
+<text text-anchor="start" x="1287" y="-1021.2" font-family="Arial" font-size="36.00" fill="#ff0000"> </text>
+<polygon fill="#add8e6" stroke="transparent" points="1067,-955 1067,-1005 1342,-1005 1342,-955 1067,-955"/>
+<polygon fill="none" stroke="#ffffff" points="1067,-955 1067,-1005 1342,-1005 1342,-955 1067,-955"/>
+<text text-anchor="start" x="1072" y="-971.2" font-family="Arial" font-size="36.00" fill="#ff0000">IP: 192.168.8.26</text>
 </g>
 <!-- rpip6&#45;&#45;network -->
 <g id="edge7" class="edge">
@@ -120,15 +120,15 @@
 <title>rpip7</title>
 <polygon fill="#ffffff" stroke="#ffffff" points="1900,-1056 1448,-1056 1448,-754 1900,-754 1900,-1056"/>
 <image xlink:href="img/rpibp.svg" width="452px" height="302px" preserveAspectRatio="xMinYMin meet" x="1448" y="-1056"/>
-<polygon fill="#add8e6" stroke="transparent" points="1525,-1005 1525,-1055 1713,-1055 1713,-1005 1525,-1005"/>
-<polygon fill="none" stroke="#ffffff" points="1525,-1005 1525,-1055 1713,-1055 1713,-1005 1525,-1005"/>
-<text text-anchor="start" x="1574.5" y="-1022.2" font-family="Arial" font-weight="bold" font-size="36.00" fill="#ff0000">rpip7</text>
-<polygon fill="#ffffff" stroke="transparent" points="1713,-1005 1713,-1055 1824,-1055 1824,-1005 1713,-1005"/>
-<polygon fill="none" stroke="#ffffff" points="1713,-1005 1713,-1055 1824,-1055 1824,-1005 1713,-1005"/>
-<text text-anchor="start" x="1763" y="-1021.2" font-family="Arial" font-size="36.00" fill="#ff0000"> </text>
-<polygon fill="#add8e6" stroke="transparent" points="1525,-955 1525,-1005 1824,-1005 1824,-955 1525,-955"/>
-<polygon fill="none" stroke="#ffffff" points="1525,-955 1525,-1005 1824,-1005 1824,-955 1525,-955"/>
-<text text-anchor="start" x="1530" y="-971.2" font-family="Arial" font-size="36.00" fill="#ff0000">IP: {192.168.8.27}</text>
+<polygon fill="#add8e6" stroke="transparent" points="1537,-1005 1537,-1055 1713,-1055 1713,-1005 1537,-1005"/>
+<polygon fill="none" stroke="#ffffff" points="1537,-1005 1537,-1055 1713,-1055 1713,-1005 1537,-1005"/>
+<text text-anchor="start" x="1580.5" y="-1022.2" font-family="Arial" font-weight="bold" font-size="36.00" fill="#ff0000">rpip7</text>
+<polygon fill="#ffffff" stroke="transparent" points="1713,-1005 1713,-1055 1812,-1055 1812,-1005 1713,-1005"/>
+<polygon fill="none" stroke="#ffffff" points="1713,-1005 1713,-1055 1812,-1055 1812,-1005 1713,-1005"/>
+<text text-anchor="start" x="1757" y="-1021.2" font-family="Arial" font-size="36.00" fill="#ff0000"> </text>
+<polygon fill="#add8e6" stroke="transparent" points="1537,-955 1537,-1005 1812,-1005 1812,-955 1537,-955"/>
+<polygon fill="none" stroke="#ffffff" points="1537,-955 1537,-1005 1812,-1005 1812,-955 1537,-955"/>
+<text text-anchor="start" x="1542" y="-971.2" font-family="Arial" font-size="36.00" fill="#ff0000">IP: 192.168.8.27</text>
 </g>
 <!-- rpip7&#45;&#45;network -->
 <g id="edge8" class="edge">
@@ -140,15 +140,15 @@
 <title>rpip8</title>
 <polygon fill="#ffffff" stroke="#ffffff" points="1722,-718 1270,-718 1270,-416 1722,-416 1722,-718"/>
 <image xlink:href="img/rpibp.svg" width="452px" height="302px" preserveAspectRatio="xMinYMin meet" x="1270" y="-718"/>
-<polygon fill="#add8e6" stroke="transparent" points="1347,-667 1347,-717 1535,-717 1535,-667 1347,-667"/>
-<polygon fill="none" stroke="#ffffff" points="1347,-667 1347,-717 1535,-717 1535,-667 1347,-667"/>
-<text text-anchor="start" x="1396.5" y="-684.2" font-family="Arial" font-weight="bold" font-size="36.00" fill="#ff0000">rpip8</text>
-<polygon fill="#ffffff" stroke="transparent" points="1535,-667 1535,-717 1646,-717 1646,-667 1535,-667"/>
-<polygon fill="none" stroke="#ffffff" points="1535,-667 1535,-717 1646,-717 1646,-667 1535,-667"/>
-<text text-anchor="start" x="1585" y="-683.2" font-family="Arial" font-size="36.00" fill="#ff0000"> </text>
-<polygon fill="#add8e6" stroke="transparent" points="1347,-617 1347,-667 1646,-667 1646,-617 1347,-617"/>
-<polygon fill="none" stroke="#ffffff" points="1347,-617 1347,-667 1646,-667 1646,-617 1347,-617"/>
-<text text-anchor="start" x="1352" y="-633.2" font-family="Arial" font-size="36.00" fill="#ff0000">IP: {192.168.8.28}</text>
+<polygon fill="#add8e6" stroke="transparent" points="1359,-667 1359,-717 1535,-717 1535,-667 1359,-667"/>
+<polygon fill="none" stroke="#ffffff" points="1359,-667 1359,-717 1535,-717 1535,-667 1359,-667"/>
+<text text-anchor="start" x="1402.5" y="-684.2" font-family="Arial" font-weight="bold" font-size="36.00" fill="#ff0000">rpip8</text>
+<polygon fill="#ffffff" stroke="transparent" points="1535,-667 1535,-717 1634,-717 1634,-667 1535,-667"/>
+<polygon fill="none" stroke="#ffffff" points="1535,-667 1535,-717 1634,-717 1634,-667 1535,-667"/>
+<text text-anchor="start" x="1579" y="-683.2" font-family="Arial" font-size="36.00" fill="#ff0000"> </text>
+<polygon fill="#add8e6" stroke="transparent" points="1359,-617 1359,-667 1634,-667 1634,-617 1359,-617"/>
+<polygon fill="none" stroke="#ffffff" points="1359,-617 1359,-667 1634,-667 1634,-617 1359,-617"/>
+<text text-anchor="start" x="1364" y="-633.2" font-family="Arial" font-size="36.00" fill="#ff0000">IP: 192.168.8.28</text>
 </g>
 <!-- rpip8&#45;&#45;network -->
 <g id="edge9" class="edge">
@@ -160,15 +160,15 @@
 <title>rpip9</title>
 <polygon fill="#ffffff" stroke="#ffffff" points="2192,-718 1740,-718 1740,-416 2192,-416 2192,-718"/>
 <image xlink:href="img/rpibp.svg" width="452px" height="302px" preserveAspectRatio="xMinYMin meet" x="1740" y="-718"/>
-<polygon fill="#add8e6" stroke="transparent" points="1817,-667 1817,-717 2005,-717 2005,-667 1817,-667"/>
-<polygon fill="none" stroke="#ffffff" points="1817,-667 1817,-717 2005,-717 2005,-667 1817,-667"/>
-<text text-anchor="start" x="1866.5" y="-684.2" font-family="Arial" font-weight="bold" font-size="36.00" fill="#ff0000">rpip9</text>
-<polygon fill="#ffffff" stroke="transparent" points="2005,-667 2005,-717 2116,-717 2116,-667 2005,-667"/>
-<polygon fill="none" stroke="#ffffff" points="2005,-667 2005,-717 2116,-717 2116,-667 2005,-667"/>
-<text text-anchor="start" x="2055" y="-683.2" font-family="Arial" font-size="36.00" fill="#ff0000"> </text>
-<polygon fill="#add8e6" stroke="transparent" points="1817,-617 1817,-667 2116,-667 2116,-617 1817,-617"/>
-<polygon fill="none" stroke="#ffffff" points="1817,-617 1817,-667 2116,-667 2116,-617 1817,-617"/>
-<text text-anchor="start" x="1822" y="-633.2" font-family="Arial" font-size="36.00" fill="#ff0000">IP: {192.168.8.29}</text>
+<polygon fill="#add8e6" stroke="transparent" points="1829,-667 1829,-717 2005,-717 2005,-667 1829,-667"/>
+<polygon fill="none" stroke="#ffffff" points="1829,-667 1829,-717 2005,-717 2005,-667 1829,-667"/>
+<text text-anchor="start" x="1872.5" y="-684.2" font-family="Arial" font-weight="bold" font-size="36.00" fill="#ff0000">rpip9</text>
+<polygon fill="#ffffff" stroke="transparent" points="2005,-667 2005,-717 2104,-717 2104,-667 2005,-667"/>
+<polygon fill="none" stroke="#ffffff" points="2005,-667 2005,-717 2104,-717 2104,-667 2005,-667"/>
+<text text-anchor="start" x="2049" y="-683.2" font-family="Arial" font-size="36.00" fill="#ff0000"> </text>
+<polygon fill="#add8e6" stroke="transparent" points="1829,-617 1829,-667 2104,-667 2104,-617 1829,-617"/>
+<polygon fill="none" stroke="#ffffff" points="1829,-617 1829,-667 2104,-667 2104,-617 1829,-617"/>
+<text text-anchor="start" x="1834" y="-633.2" font-family="Arial" font-size="36.00" fill="#ff0000">IP: 192.168.8.29</text>
 </g>
 <!-- rpip9&#45;&#45;network -->
 <g id="edge10" class="edge">
@@ -180,15 +180,15 @@
 <title>rpip10</title>
 <polygon fill="#ffffff" stroke="#ffffff" points="1159,-380 707,-380 707,-78 1159,-78 1159,-380"/>
 <image xlink:href="img/rpibp.svg" width="452px" height="302px" preserveAspectRatio="xMinYMin meet" x="707" y="-380"/>
-<polygon fill="#add8e6" stroke="transparent" points="784,-329 784,-379 982,-379 982,-329 784,-329"/>
-<polygon fill="none" stroke="#ffffff" points="784,-329 784,-379 982,-379 982,-329 784,-329"/>
-<text text-anchor="start" x="828.5" y="-346.2" font-family="Arial" font-weight="bold" font-size="36.00" fill="#ff0000">rpip10</text>
-<polygon fill="#ffffff" stroke="transparent" points="982,-329 982,-379 1083,-379 1083,-329 982,-329"/>
-<polygon fill="none" stroke="#ffffff" points="982,-329 982,-379 1083,-379 1083,-329 982,-329"/>
-<text text-anchor="start" x="1027" y="-345.2" font-family="Arial" font-size="36.00" fill="#ff0000"> </text>
-<polygon fill="#add8e6" stroke="transparent" points="784,-279 784,-329 1083,-329 1083,-279 784,-279"/>
-<polygon fill="none" stroke="#ffffff" points="784,-279 784,-329 1083,-329 1083,-279 784,-279"/>
-<text text-anchor="start" x="789" y="-295.2" font-family="Arial" font-size="36.00" fill="#ff0000">IP: {192.168.8.30}</text>
+<polygon fill="#add8e6" stroke="transparent" points="796,-329 796,-379 982,-379 982,-329 796,-329"/>
+<polygon fill="none" stroke="#ffffff" points="796,-329 796,-379 982,-379 982,-329 796,-329"/>
+<text text-anchor="start" x="834.5" y="-346.2" font-family="Arial" font-weight="bold" font-size="36.00" fill="#ff0000">rpip10</text>
+<polygon fill="#ffffff" stroke="transparent" points="982,-329 982,-379 1071,-379 1071,-329 982,-329"/>
+<polygon fill="none" stroke="#ffffff" points="982,-329 982,-379 1071,-379 1071,-329 982,-329"/>
+<text text-anchor="start" x="1021" y="-345.2" font-family="Arial" font-size="36.00" fill="#ff0000"> </text>
+<polygon fill="#add8e6" stroke="transparent" points="796,-279 796,-329 1071,-329 1071,-279 796,-279"/>
+<polygon fill="none" stroke="#ffffff" points="796,-279 796,-329 1071,-329 1071,-279 796,-279"/>
+<text text-anchor="start" x="801" y="-295.2" font-family="Arial" font-size="36.00" fill="#ff0000">IP: 192.168.8.30</text>
 </g>
 <!-- rpip10&#45;&#45;network -->
 <g id="edge11" class="edge">
