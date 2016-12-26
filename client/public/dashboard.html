@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Dashboard - IoT Demo</title>
+    <style type="text/css">
+     #div_g {
+       position: absolute;
+       left: 10px;
+       right: 16px;
+       top: 40px;
+       bottom: 26px;
+     }
+    </style>
+    <script src="jquery-1.10.2.js"></script>
+
+    <!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"<html> -->
+
+    <script>
+     function svgMod(component, color, level, text) {
+       var svg = document.getElementById("svg_image_id")
+      			 .getSVGDocument();
+       // Put up the text of the message; this should probably be removed
+       var msg = svg.getElementById('msg');
+       msg.textContent = component + ': ' + text;
+       msg.style.setProperty("fill", color, "");
+       try {
+	 var shape = svg.getElementById(component);
+	 shape.style.setProperty("fill", color, "");
+	 var type = shape.getAttribute('type');
+	 if (type && type == 'num') {
+	   // Print the numeric 'level'
+	   shape.textContent = level;
+	   shape.style.setProperty("fill", color, "");
+	 }
+	 if (type && type == 'slider') {
+	   var width = level;
+	   var maxw = shape.getAttribute('maxw');
+	   if (maxw) {
+	     width = level > maxw ? maxw : level;
+	   }
+	   shape.setAttribute("width", width);
+	   shape.style.setProperty("fill", color, "");
+	 }
+       } catch (err) {
+	 console.log("component [" + component + "] not in SVG; skipping");
+       }
+     }
+
+     function svgModifyPiConnected(component, color, text) {
+       var svgDoc = document.getElementById("svg_image_id")
+      			    .getSVGDocument();
+
+       var svg = svgDoc.getElementsByTagName('svg')[0];
+
+
+
+
+     }
+
+
+     //function that is called once the document has loaded
+     function init() {
+       // FIXME: Connect to MQTT broker
+
+       var svgDoc = document.getElementById("svg_image_id")
+      			 .getSVGDocument();
+
+       var svg = svgDoc.getElementsByTagName('svg')[0];
+       /* console.log(svgDoc);
+	* console.dir(svgDoc);*/
+       /* console.dir(svg);*/
+
+       // set size to match viewport
+       svg.setAttribute('height', '100%');
+       svg.setAttribute('width',  '100%');
+       //svg.setAttribute('preserveAspectRatio',  'xMinYMin meet');
+
+       svgModifyPiConnected('rpit5', '#FF2200', '');
+
+     };
+
+    </script>
+  </head>
+  <body onload="init();"><!--Start the javascript ball rolling and connect to the mqtt broker
+			      <!-- <body> -->
+    <div id="div_g" ></div>
+    <embed src="demotopo.svg" type="image/svg+xml" id="svg_image_id" />
+  </body>
+</html>
