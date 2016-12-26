@@ -198,34 +198,34 @@
 <!-- broker -->
 <g id="broker" class="node">
 <title>broker</title>
-<ellipse fill="#add8e6" stroke="#add8e6" cx="1026" cy="-227.1995" rx="125.7302" ry="125.7302"/>
+<ellipse fill="#add8e6" stroke="#add8e6" cx="1026" cy="-227.1995" rx="138.6859" ry="138.6859"/>
 <image xlink:href="img/servers.png" width="128px" height="128px" preserveAspectRatio="xMinYMin meet" x="962" y="-291.2"/>
-<polygon fill="#add8e6" stroke="transparent" points="945,-172.7021 945,-222.7021 1107,-222.7021 1107,-172.7021 945,-172.7021"/>
-<polygon fill="none" stroke="#add8e6" points="945,-172.7021 945,-222.7021 1107,-222.7021 1107,-172.7021 945,-172.7021"/>
-<text text-anchor="start" x="967.5" y="-189.9021" font-family="Arial" font-weight="bold" font-size="36.00" fill="#000000">Broker</text>
-<polygon fill="#add8e6" stroke="transparent" points="945,-122.7021 945,-172.7021 1076,-172.7021 1076,-122.7021 945,-122.7021"/>
-<polygon fill="none" stroke="#add8e6" points="945,-122.7021 945,-172.7021 1076,-172.7021 1076,-122.7021 945,-122.7021"/>
-<text text-anchor="start" x="950" y="-138.9021" font-family="Arial" font-size="36.00" fill="#000000">Clients:</text>
-<polygon fill="#ffffff" stroke="transparent" points="1076,-122.7021 1076,-172.7021 1107,-172.7021 1107,-122.7021 1076,-122.7021"/>
-<polygon fill="none" stroke="#add8e6" points="1076,-122.7021 1076,-172.7021 1107,-172.7021 1107,-122.7021 1076,-122.7021"/>
-<text text-anchor="start" x="1081" y="-139.9021" font-family="Arial" font-weight="bold" font-size="36.00" fill="#000000">0</text>
+<polygon fill="#add8e6" stroke="transparent" points="936,-159.9741 936,-209.9741 1116,-209.9741 1116,-159.9741 936,-159.9741"/>
+<polygon fill="none" stroke="#add8e6" points="936,-159.9741 936,-209.9741 1116,-209.9741 1116,-159.9741 936,-159.9741"/>
+<text text-anchor="start" x="967.5" y="-177.1741" font-family="Arial" font-weight="bold" font-size="36.00" fill="#000000">Broker</text>
+<polygon fill="#add8e6" stroke="transparent" points="936,-109.9741 936,-159.9741 1075,-159.9741 1075,-109.9741 936,-109.9741"/>
+<polygon fill="none" stroke="#add8e6" points="936,-109.9741 936,-159.9741 1075,-159.9741 1075,-109.9741 936,-109.9741"/>
+<text text-anchor="start" x="941" y="-126.1741" font-family="Arial" font-size="36.00" fill="#000000"> Active: </text>
+<polygon fill="#ffffff" stroke="transparent" points="1075,-109.9741 1075,-159.9741 1116,-159.9741 1116,-109.9741 1075,-109.9741"/>
+<polygon fill="none" stroke="#add8e6" points="1075,-109.9741 1075,-159.9741 1116,-159.9741 1116,-109.9741 1075,-109.9741"/>
+<text text-anchor="start" x="1080" y="-127.1741" font-family="Arial" font-weight="bold" font-size="36.00" fill="#000000"> 0</text>
 </g>
 <!-- network&#45;&#45;broker -->
 <g id="edge2" class="edge">
 <title>network&#45;&#45;broker</title>
-<path fill="none" stroke="#ff2200" stroke-width="6" d="M1026,-412.3665C1026,-397.9912 1026,-376.4547 1026,-353.098"/>
+<path fill="none" stroke="#ff2200" stroke-width="6" d="M1026,-412.3665C1026,-400.7109 1026,-384.3473 1026,-366.1229"/>
 </g>
 <!-- cloud -->
 <g id="cloud" class="node">
 <title>cloud</title>
-<ellipse fill="#ffffff" stroke="#ffffff" cx="1391" cy="-227.1995" rx="149.3993" ry="149.3993"/>
-<image xlink:href="img/cloud.png" width="64px" height="60px" preserveAspectRatio="xMinYMin meet" x="1359" y="-257.2"/>
-<text text-anchor="middle" x="1391" y="-99.1411" font-family="Arial" font-size="36.00" fill="#000000">The Internet</text>
+<ellipse fill="#ffffff" stroke="#ffffff" cx="1403" cy="-227.1995" rx="149.3993" ry="149.3993"/>
+<image xlink:href="img/cloud.png" width="64px" height="60px" preserveAspectRatio="xMinYMin meet" x="1371" y="-257.2"/>
+<text text-anchor="middle" x="1403" y="-99.1411" font-family="Arial" font-size="36.00" fill="#000000">The Internet</text>
 </g>
 <!-- broker&#45;&#45;cloud -->
 <g id="edge1" class="edge">
 <title>broker&#45;&#45;cloud</title>
-<path fill="none" stroke="#0022ff" stroke-width="6" d="M1152.1816,-227.1995C1182.0339,-227.1995 1211.8862,-227.1995 1241.7385,-227.1995"/>
+<path fill="none" stroke="#0022ff" stroke-width="6" d="M1164.7979,-227.1995C1194.418,-227.1995 1224.0382,-227.1995 1253.6584,-227.1995"/>
 </g>
 </g>
 </svg>

@@ -131,8 +131,8 @@ graph demotopo {
 	      <td bgcolor="lightblue" colspan="2"><b>Broker</b></td>
             </tr>
             <tr>
-              <td bgcolor="lightblue" align="left">Clients:</td>
-	      <td bgcolor="#ffffff"><b>0</b></td>
+              <td bgcolor="lightblue" align="left"> Active: </td>
+	      <td bgcolor="#ffffff" align="right"><b> 0</b></td>
             </tr>
             </table>
             > id="broker" shape=circle image="img/servers.png" labelloc=b color="lightblue" ];
