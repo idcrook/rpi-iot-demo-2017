@@ -11,7 +11,7 @@
 <polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-1707 1920,-1707 1920,4 -4,4"/>
 <text text-anchor="middle" x="958" y="-22.8" font-family="Arial" font-size="64.00" fill="#000000">IoT Dashboard</text>
 <!-- rpit5 -->
-<g id="node1" class="node">
+<g id="rpit5" class="node">
 <title>rpit5</title>
 <polygon fill="#ffffff" stroke="#ffffff" points="1916,-1158 1464,-1158 1464,-856 1916,-856 1916,-1158"/>
 <image xlink:href="img/rpibp.svg" width="452px" height="302px" preserveAspectRatio="xMinYMin meet" x="1464" y="-1158"/>
@@ -36,7 +36,7 @@
 <path fill="none" stroke="#ff2200" d="M1690,-855.9972C1690,-849.9425 1690,-843.6385 1690,-838.0294"/>
 </g>
 <!-- rpit3 -->
-<g id="node2" class="node">
+<g id="rpit3" class="node">
 <title>rpit3</title>
 <polygon fill="#ffffff" stroke="#ffffff" points="452,-1703 0,-1703 0,-1401 452,-1401 452,-1703"/>
 <image xlink:href="img/rpibp.svg" width="452px" height="302px" preserveAspectRatio="xMinYMin meet" x="0" y="-1703"/>
@@ -56,7 +56,7 @@
 <path fill="none" stroke="#ff2200" d="M452.087,-1444.4112C800.2771,-1278.7167 1428,-980 1428,-980 1428,-980 1464,-847 1464,-847 1464,-847 1602.63,-830.438 1662.7391,-823.2568"/>
 </g>
 <!-- rpit4 -->
-<g id="node3" class="node">
+<g id="rpit4" class="node">
 <title>rpit4</title>
 <polygon fill="#ffffff" stroke="#ffffff" points="452,-1383 0,-1383 0,-1081 452,-1081 452,-1383"/>
 <image xlink:href="img/rpibp.svg" width="452px" height="302px" preserveAspectRatio="xMinYMin meet" x="0" y="-1383"/>
@@ -76,7 +76,7 @@
 <path fill="none" stroke="#ff2200" d="M452.087,-1170.6819C800.2771,-1076.2477 1428,-906 1428,-906 1428,-906 1464,-847 1464,-847 1464,-847 1602.63,-830.438 1662.7391,-823.2568"/>
 </g>
 <!-- rpip5 -->
-<g id="node4" class="node">
+<g id="rpip5" class="node">
 <title>rpip5</title>
 <polygon fill="#ffffff" stroke="#ffffff" points="452,-1063 0,-1063 0,-761 452,-761 452,-1063"/>
 <image xlink:href="img/rpibp.svg" width="452px" height="302px" preserveAspectRatio="xMinYMin meet" x="0" y="-1063"/>
@@ -96,7 +96,7 @@
 <path fill="none" stroke="#ff2200" d="M452.087,-907.4858C800.2771,-900.5336 1428,-888 1428,-888 1428,-888 1464,-847 1464,-847 1464,-847 1602.63,-830.438 1662.7391,-823.2568"/>
 </g>
 <!-- rpip6 -->
-<g id="node5" class="node">
+<g id="rpip6" class="node">
 <title>rpip6</title>
 <polygon fill="#ffffff" stroke="#ffffff" points="452,-743 0,-743 0,-441 452,-441 452,-743"/>
 <image xlink:href="img/rpibp.svg" width="452px" height="302px" preserveAspectRatio="xMinYMin meet" x="0" y="-743"/>
@@ -116,7 +116,7 @@
 <path fill="none" stroke="#ff2200" d="M439.5273,-743.1698C447.4058,-748.7474 452,-752 452,-752 452,-752 488,-855 488,-855 488,-855 940,-855 940,-855 940,-855 1528.4044,-827.5411 1662.864,-821.2663"/>
 </g>
 <!-- rpip7 -->
-<g id="node6" class="node">
+<g id="rpip7" class="node">
 <title>rpip7</title>
 <polygon fill="#ffffff" stroke="#ffffff" points="940,-846 488,-846 488,-544 940,-544 940,-846"/>
 <image xlink:href="img/rpibp.svg" width="452px" height="302px" preserveAspectRatio="xMinYMin meet" x="488" y="-846"/>
@@ -136,7 +136,7 @@
 <path fill="none" stroke="#ff2200" d="M940.1194,-735.5634C961.8468,-739.4611 976,-742 976,-742 976,-742 1532.4615,-802.7899 1662.8822,-817.0376"/>
 </g>
 <!-- rpip8 -->
-<g id="node7" class="node">
+<g id="rpip8" class="node">
 <title>rpip8</title>
 <polygon fill="#ffffff" stroke="#ffffff" points="940,-526 488,-526 488,-224 940,-224 940,-526"/>
 <image xlink:href="img/rpibp.svg" width="452px" height="302px" preserveAspectRatio="xMinYMin meet" x="488" y="-526"/>
@@ -156,7 +156,7 @@
 <path fill="none" stroke="#ff2200" d="M927.5273,-526.1698C935.4058,-531.7474 940,-535 940,-535 940,-535 976,-709 976,-709 976,-709 1428,-742 1428,-742 1428,-742 1464,-793 1464,-793 1464,-793 1602.63,-809.562 1662.7391,-816.7432"/>
 </g>
 <!-- rpip9 -->
-<g id="node8" class="node">
+<g id="rpip9" class="node">
 <title>rpip9</title>
 <polygon fill="#ffffff" stroke="#ffffff" points="1428,-700 976,-700 976,-398 1428,-398 1428,-700"/>
 <image xlink:href="img/rpibp.svg" width="452px" height="302px" preserveAspectRatio="xMinYMin meet" x="976" y="-700"/>
@@ -176,7 +176,7 @@
 <path fill="none" stroke="#ff2200" d="M1409.1201,-700.216C1420.8608,-708.7877 1428,-714 1428,-714 1428,-714 1464,-793 1464,-793 1464,-793 1602.63,-809.562 1662.7391,-816.7432"/>
 </g>
 <!-- rpip10 -->
-<g id="node9" class="node">
+<g id="rpip10" class="node">
 <title>rpip10</title>
 <polygon fill="#ffffff" stroke="#ffffff" points="1428,-380 976,-380 976,-78 1428,-78 1428,-380"/>
 <image xlink:href="img/rpibp.svg" width="452px" height="302px" preserveAspectRatio="xMinYMin meet" x="976" y="-380"/>

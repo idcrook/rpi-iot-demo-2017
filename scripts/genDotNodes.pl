@@ -47,7 +47,7 @@ for $line (@lines) {
               <td bgcolor="lightblue" align="left" colspan="2">IP: {$output_ip}</td>
             </tr>
             </table>
-            > shape=box image="img/rpibp.svg" fontcolor=red labelloc=t color="#ffffff"];|;
+            > id=${host} shape=box image="img/rpibp.svg" fontcolor=red labelloc=t color="#ffffff"];|;
 	#warn "$output_ip\n";
 	push @output_lines, $output_line;
     }
