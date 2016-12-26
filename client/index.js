@@ -68,7 +68,7 @@ var app = express();
 // HTTP serve static content - files in 'public' subdirectory will be served.
 app.use(express.static(path.join(__dirname, 'public')));
 
-// GET endpoint for retrieving details about this client.
+// HTTP GET endpoint for retrieving details about this client.
 //
 // For example, used in WebSockets streaming demo page to let page know which
 // topic contains the info for this client

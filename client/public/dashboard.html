@@ -31,7 +31,7 @@
 		       'rpip10'];
 
      var connectedColors = {
-       'true': '#FFFF22',
+       'true': '#FFFF40',
        'false':'#bde8f6',
        'blank':'#add8e6',
        'greenled_on':  '#00FF22',
@@ -127,7 +127,7 @@
      };
 
      function svgModifyTableElement(component, slot, color, text) {
-       console.log(`svgModifyTableElement (${component}, ${slot}, ${color}, ${text})`);
+       //console.log(`svgModifyTableElement (${component}, ${slot}, ${color}, ${text})`);
        var svgDoc = document.getElementById("svg_image_id")
       			    .getSVGDocument();
 
@@ -135,7 +135,7 @@
 
        try {
 	 var graphNode = svg.getElementById(component);
-	 console.dir(graphNode);
+	 //console.dir(graphNode);
 
 	 // highly dependent on graphviz dot SVG output
 	 var slots = [ { polygon1: graphNode.children[3],
@@ -172,7 +172,24 @@
        } catch (err) {
 	 console.error("component [" + component + "] not in SVG; skipping");
        }
+
+       try {
+	 var componentEdge = component + '_to_network';
+	 var graphEdge = svg.getElementById(componentEdge);
+	 //console.dir(graphEdge);
+	 // highly dependent on graphviz dot SVG output
+	 var path = graphEdge.children[1];
+	 if (color === connectedColors['true']) {
+	   path.setAttribute('stroke', connectedColors.greenled_on);
+	 } else {
+	   path.setAttribute('stroke', connectedColors.redled_on);
+	 }
+
+       }  catch (err) {
+	 console.error("something wrong with component [" + component + "_to_network] - not in SVG?; skipping");
+       }
      }
+
 
      function svgModifyBroker(component, count, empty) {
        //console.log(`svgModifyBroker (${component}, ${count}, ${empty})`);
@@ -218,8 +235,8 @@
 	 svgModifyTableElement(c, '', connectedColors.blank, '');
 
 	 // initially set the red and green led indicators to off
-	 svgModifyTableElement(c, 2,  connectedColors.redled_off, '');
-	 svgModifyTableElement(c, 3,  connectedColors.greenled_off, '');
+	 //svgModifyTableElement(c, 2,  connectedColors.redled_off, '');
+	 //svgModifyTableElement(c, 3,  connectedColors.greenled_off, '');
        }
 
        console.dir(svg);
