@@ -191,18 +191,18 @@ graph demotopo {
   broker -- cloud    [color="#0022ff" weight=1 penwidth=6  minlen=5];
   network -- broker  [color="#ff2200" weight=1 penwidth=6 ];
 
-  rpit3               -- network  [color="#ff2200" weight=1 penwidth=6 minlen=3 ] ;
-  rpit4               -- network  [color="#ff2200" weight=1 penwidth=6];
-  rpip5               -- network  [color="#ff2200" weight=1 penwidth=6];
-  rpip6               -- network  [color="#ff2200" weight=1 penwidth=6];
+  rpit3               -- network  [id="rpit3_to_network" color="#ff2200" weight=1 penwidth=6 minlen=3 ] ;
+  rpit4               -- network  [id="rpit4_to_network" color="#ff2200" weight=1 penwidth=6];
+  rpip5               -- network  [id="rpip5_to_network" color="#ff2200" weight=1 penwidth=6];
+  rpip6               -- network  [id="rpip6_to_network" color="#ff2200" weight=1 penwidth=6];
 
-  rpip7               -- network  [color="#ff2200" weight=1 penwidth=6 minlen=2];
-  rpip8               -- network  [color="#ff2200" weight=1 penwidth=6];
+  rpip7               -- network  [id="rpip7_to_network" color="#ff2200" weight=1 penwidth=6 minlen=2];
+  rpip8               -- network  [id="rpip8_to_network" color="#ff2200" weight=1 penwidth=6];
 
-  rpip9               -- network  [color="#ff2200" weight=1 penwidth=6 minlen=1];
+  rpip9               -- network  [id="rpip9_to_network" color="#ff2200" weight=1 penwidth=6 minlen=1];
 
-  rpip10              -- network  [color="#ff2200" weight=1 penwidth=6];
+  rpip10              -- network  [id="rpip10_to_network" color="#ff2200" weight=1 penwidth=6];
 
-  rpit5               -- network  [color="#ff2200" weight=1 penwidth=6];
+  rpit5               -- network  [id="rpit5_to_network" color="#ff2200" weight=1 penwidth=6];
 
 }

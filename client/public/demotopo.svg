@@ -37,7 +37,7 @@
 <polygon fill="#ff2200" stroke="#ff2200" points="1053,-478.0975 999,-478.0975 999,-442.0975 1053,-442.0975 1053,-478.0975"/>
 </g>
 <!-- rpit5&#45;&#45;network -->
-<g id="edge11" class="edge">
+<g id="rpit5_to_network" class="edge">
 <title>rpit5&#45;&#45;network</title>
 <path fill="none" stroke="#ff2200" stroke-width="6" d="M452.0237,-519.1751C456.6799,-517.3835 461.3411,-515.6874 466,-514.0975 566.6429,-479.7529 901.2329,-464.7656 998.971,-461.0537"/>
 </g>
@@ -63,7 +63,7 @@
 <text text-anchor="start" x="117" y="-1400.0975" font-family="Arial" font-size="40.00" fill="#ff0000">IP: 192.168.8.23</text>
 </g>
 <!-- rpit3&#45;&#45;network -->
-<g id="edge3" class="edge">
+<g id="rpit3_to_network" class="edge">
 <title>rpit3&#45;&#45;network</title>
 <path fill="none" stroke="#ff2200" stroke-width="6" d="M319.8641,-1190.0119C402.225,-975.5934 559.0957,-599.4846 676,-514.0975 727.5733,-476.4283 925.9403,-464.3352 998.8833,-461.1148"/>
 </g>
@@ -89,7 +89,7 @@
 <text text-anchor="start" x="587" y="-1400.0975" font-family="Arial" font-size="40.00" fill="#ff0000">IP: 192.168.8.24</text>
 </g>
 <!-- rpit4&#45;&#45;network -->
-<g id="edge4" class="edge">
+<g id="rpit4_to_network" class="edge">
 <title>rpit4&#45;&#45;network</title>
 <path fill="none" stroke="#ff2200" stroke-width="6" d="M697.5564,-1190.0599C663.0587,-1006.7308 637.946,-699.2042 801,-514.0975 826.9558,-484.6313 944.487,-468.6776 998.5892,-462.7827"/>
 </g>
@@ -115,7 +115,7 @@
 <text text-anchor="start" x="1057" y="-1400.0975" font-family="Arial" font-size="40.00" fill="#ff0000">IP: 192.168.8.25</text>
 </g>
 <!-- rpip5&#45;&#45;network -->
-<g id="edge5" class="edge">
+<g id="rpip5_to_network" class="edge">
 <title>rpip5&#45;&#45;network</title>
 <path fill="none" stroke="#ff2200" stroke-width="6" d="M977.7706,-1193.7609C974.8452,-1192.5044 971.921,-1191.2824 969,-1190.0975 894.2057,-1159.7597 842.1036,-1216.5714 791,-1154.0975 748.5084,-1102.1518 773.0979,-916.7769 791,-852.0975 835.3433,-691.8872 964.4914,-531.369 1009.9455,-478.3416"/>
 </g>
@@ -141,7 +141,7 @@
 <text text-anchor="start" x="879" y="-1062.0975" font-family="Arial" font-size="40.00" fill="#ff0000">IP: 192.168.8.26</text>
 </g>
 <!-- rpip6&#45;&#45;network -->
-<g id="edge6" class="edge">
+<g id="rpip6_to_network" class="edge">
 <title>rpip6&#45;&#45;network</title>
 <path fill="none" stroke="#ff2200" stroke-width="6" d="M1026,-851.8418C1026,-718.1599 1026,-535.7379 1026,-478.2271"/>
 </g>
@@ -167,7 +167,7 @@
 <text text-anchor="start" x="1349" y="-1062.0975" font-family="Arial" font-size="40.00" fill="#ff0000">IP: 192.168.8.27</text>
 </g>
 <!-- rpip7&#45;&#45;network -->
-<g id="edge7" class="edge">
+<g id="rpip7_to_network" class="edge">
 <title>rpip7&#45;&#45;network</title>
 <path fill="none" stroke="#ff2200" stroke-width="6" d="M1337.3342,-851.9564C1325.8646,-840.0039 1314.6371,-827.9648 1304,-816.0975 1193.8235,-693.1789 1076.8741,-531.7048 1038.7827,-478.1888"/>
 </g>
@@ -193,7 +193,7 @@
 <text text-anchor="start" x="1819" y="-1062.0975" font-family="Arial" font-size="40.00" fill="#ff0000">IP: 192.168.8.28</text>
 </g>
 <!-- rpip8&#45;&#45;network -->
-<g id="edge8" class="edge">
+<g id="rpip8_to_network" class="edge">
 <title>rpip8&#45;&#45;network</title>
 <path fill="none" stroke="#ff2200" stroke-width="6" d="M1739.9413,-855.3048C1736.962,-854.1924 1733.9809,-853.1223 1731,-852.0975 1647.8557,-823.5145 1408.7273,-866.942 1337,-816.0975 1216.6077,-730.7565 1309.7147,-611.6662 1199,-514.0975 1157.1001,-477.1728 1090.1343,-465.4919 1053.0052,-461.8003"/>
 </g>
@@ -219,7 +219,7 @@
 <text text-anchor="start" x="1425" y="-724.0975" font-family="Arial" font-size="40.00" fill="#ff0000">IP: 192.168.8.29</text>
 </g>
 <!-- rpip9&#45;&#45;network -->
-<g id="edge9" class="edge">
+<g id="rpip9_to_network" class="edge">
 <title>rpip9&#45;&#45;network</title>
 <path fill="none" stroke="#ff2200" stroke-width="6" d="M1345.7934,-519.6784C1341.1933,-517.7327 1336.5929,-515.8691 1332,-514.0975 1233.8534,-476.241 1107.6811,-464.7249 1053.1247,-461.3862"/>
 </g>
@@ -245,7 +245,7 @@
 <text text-anchor="start" x="1895" y="-724.0975" font-family="Arial" font-size="40.00" fill="#ff0000">IP: 192.168.8.30</text>
 </g>
 <!-- rpip10&#45;&#45;network -->
-<g id="edge10" class="edge">
+<g id="rpip10_to_network" class="edge">
 <title>rpip10&#45;&#45;network</title>
 <path fill="none" stroke="#ff2200" stroke-width="6" d="M1815.973,-517.2109C1812.9837,-516.1281 1809.9921,-515.0893 1807,-514.0975 1734.1894,-489.9626 1182.4602,-466.4015 1053.0877,-461.1704"/>
 </g>
