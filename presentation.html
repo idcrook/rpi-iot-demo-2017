@@ -71,6 +71,23 @@
 
 	</section>
 
+	<section data-markdown>
+	  <script type="text/template">
+			      ## Javascript and IoT
+
+			      **Node.js** is an excellent choice in IoT platforms
+
+			       - low resource requirements, e.g. Raspberry Pi
+			       - event-based I/O, data streams
+
+			      IoT Frameworks: [Node RED](https://developer.ibm.com/recipes/tutorials/deploy-watson-iot-node-on-raspberry-pi/), [Particle.io](https://docs.particle.io/guide/getting-started/intro/raspberry-pi/), [AWS IoT Device SDK](http://docs.aws.amazon.com/iot/latest/developerguide/iot-device-sdk-node.html)
+
+			      Communications: HTTP, WebSockets, [MQTT](https://github.com/mqttjs/MQTT.js), [AMQP](https://www.rabbitmq.com/tutorials/tutorial-one-javascript.html)
+
+			      Robotics: [Johnny Five](http://johnny-five.io/examples/raspi-io/), [Cylon.js](https://cylonjs.com/documentation/platforms/raspberry-pi/)
+	  </script>
+	</section>
+
 	<section>
 	  <h3>Single Board Computers</h3>
 	  <ul>
@@ -110,37 +127,19 @@
 	  </table>
 	</section>
 
-	<section data-markdown>
-	  <script type="text/template">
-			      ## Javascript and Iot
-
-			      **Node.js** is an excellent choice in IoT platforms
-
-			       - low resource requirements (e.g. Pi)
-			       - event-based I/O, data streams
-
-			      IoT Frameworks: [Node RED](https://developer.ibm.com/recipes/tutorials/deploy-watson-iot-node-on-raspberry-pi/), [Particle.io](https://docs.particle.io/guide/getting-started/intro/raspberry-pi/), [AWS IoT Device SDK](http://docs.aws.amazon.com/iot/latest/developerguide/iot-device-sdk-node.html)
-
-			      Communications: HTTP, WebSockets, [MQTT](https://github.com/mqttjs/MQTT.js), [AMQP](https://www.rabbitmq.com/tutorials/tutorial-one-javascript.html)
-
-			      Robotics: [Johnny Five](http://johnny-five.io/examples/raspi-io/), [Cylon.js](https://cylonjs.com/documentation/platforms/raspberry-pi/)
-	  </script>
-	</section>
-
-
 	<section>
 	  <h2>Pieces of Pi</h2>
 	  <p>The Pi's in front of you are models B+ / 2 B
 	    <ul>
-	      <li>Running <a href="https://www.raspberrypi.org/downloads/raspbian/">Raspbian (Linux)</a> off µSD card</li>
+	      <li>Running <a href="https://www.raspberrypi.org/downloads/raspbian/">Raspbian (Linux)</a> on µSD card</li>
 	      <ul>
-		<li>5 W power (cell-phone charger)</li>
+		<li>5 W power supply (cell-phone charger)</li>
 		<li>Wired Ethernet cable</li>
 	      </ul>
 	      <li>Pi also talks with onboard 40-pin header</li>
 	      <ul>
-		<li><em>We'll use some of these pins today!</em></li>
 		<li>"breadboard" makes wiring easier</li>
+		<li><em>We'll use some of these pins today!</em></li>
 	      </ul>
 	    </ul>
 	  </p>
@@ -149,30 +148,57 @@
 	<section>
 	  <h2>Demo Requirements</h2>
 	  <ul>
+	    <li>Laptop or Smartphone with Wi-Fi</li>
+	    <ul>
+	      <li>SSH client</li>
+	      <li>Can borrow among group</li>
+	    </ul>
+	  </ul>
+	  <!-- <p>&nbsp;</p> -->
+	  <ul>
 	    <li>Networked and Powered Pi</li>
 	    <ul>
 	      <li>Mounted on Pi Pad</li>
 	      <li>Wires and components</li>
 	    </ul>
-	    <li>Laptop or Smartphone with Wi-Fi</li>
-	    <ul>
-	      <li>SSH client</li>
-	    </ul>
-
 	  </ul>
 	</section>
 
 	<section>
-	  <h2>Demo Description</h1>
+	  <h2>Demo Description</h2>
+	    <ol>
+	      <li>Each Pi shares data using MQTT</li>
+	      <li>Chart live-streaming data on webpage</li>
+	      <li>Then, wire up LEDs to Pi and program</li>
+	    </ol>
+	    <p>There's an MQTT "broker" serving the LAN</p>
 	</section>
 
 	<section>
-	  <h2>MQTT Summary</h1>
+	  <h2>MQTT Summary</h2>
+	  <p><a href="http://mqtt.org/">http://mqtt.org/</a> &dash; <cite>'MQTT is a machine-to-machine (M2M)/"Internet of Things" connectivity protocol.'</cite></p>
+	  <ul>
+	    <li>PubSub model - Using "Topics"</li>
+	    <li>Simple to publish or consume data</li>
+	    <li>MQTT "Broker" server does most of the work</li>
+	  </ul>
+	  <p>In our demo, there's an MQTT Broker running on a Pi using WebSockets!</p>
+	</section>
+
+	<section>
+	  <h2>More on MQTT Topics</h2>
+	  Examples.
+	  Touch on wildcards.
 	</section>
 
 	<!-- Example of MQTT real-time temperature -->
 	<section mqtt>
 	  <h3>rpit5 Temperature:</h3>
+	  <p>rpit5 connected ->
+	    <span style="color: #fff000">
+            iot-demo/rpit5/connected
+            </span>
+	  </p>
 	  <h4>CPU:
             <span style="color: #fff000">
               iot-demo/rpit5/raspi/cputemp
@@ -187,15 +213,11 @@
 	    If MQTT streaming is:
 	    <ul>
 	      <li> <b>working:</b> live temperatures will be displayed above.</li>
-	      <li> <b>disabled:</b> just the topic paths will be displayed.</li>
+	      <li> <b>disabled:</b> just the topic paths will be displayed, like<pre>iot-demo/rpit5/raspi/cputemp</pre></li>
 	    </ul>
 	  </p>
 	</section>
 
-
-	<section>
-	  <h2>Wiring Guidelines</h2>
-	</section>
 
 	<section>
 	  <h4>Connecting to Pi - SSH</h4>
@@ -244,6 +266,10 @@
 	  </table>
 	  <code>&lt;NAME&gt;.local</code> works too (Zeroconf)
 
+	</section>
+
+	<section>
+	  <h2>Wiring Guidelines</h2>
 	</section>
 
 	<section data-background="http://i.giphy.com/XXvnnrJJnOVl6.gif">
@@ -301,8 +327,8 @@ function linkify( selector ) {
 	 { src: 'plugin/markdown/markdown.js' },
 	 { src: 'plugin/notes/notes.js', async: true },
          //add THIS dependencies for MQTT plugin
-         /* { src: 'plugin/mqtt/mqtt/mqttws31.js', async: true },
-	    { src: 'plugin/mqtt/mqtt/mqtt.js', async: true },*/
+         { src: 'plugin/mqtt/mqtt/mqttws31.js', async: true },
+	 { src: 'plugin/mqtt/mqtt/mqtt.js', async: true },
 	 { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
        ]
      });
