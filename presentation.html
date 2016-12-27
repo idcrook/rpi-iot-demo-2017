@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="css/reveal.css">
     <link rel="stylesheet" href="css/theme/night.css">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="css/font-awesome/4.7.0/font-awesome.min.css">
 
     <!-- Theme used for syntax highlighting of code -->
     <link rel="stylesheet" href="lib/css/zenburn.css">
@@ -261,11 +262,19 @@ function linkify( selector ) {
      Reveal.initialize({
        history: true,
 
+       mqtt_broker: 'rpit5.local', // Broker address
+       mqtt_port: '9001', // MQTT over Web Socket port
+       mqtt_username: '', // username [optional]
+       mqtt_password: '', // username [optional]
+
        // More info https://github.com/hakimel/reveal.js#dependencies
        dependencies: [
 	 { src: 'plugin/markdown/marked.js' },
 	 { src: 'plugin/markdown/markdown.js' },
 	 { src: 'plugin/notes/notes.js', async: true },
+         // add THIS dependencies for MQTT plugin
+         /* { src: 'plugin/mqtt/mqtt/mqttws31.js', async: true },
+	  * { src: 'plugin/mqtt/mqtt/mqtt.js', async: true },*/
 	 { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
        ]
      });
