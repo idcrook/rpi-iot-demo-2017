@@ -10,8 +10,9 @@
     <link rel="stylesheet" href="css/theme/night.css">
 
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
-    <link rel="stylesheet" href="css/font-awesome/4.7.0/font-awesome.min.css">
-
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="css/font-awesome/4.7.0/font-awesome.min.css">
+       -->
     <!-- Theme used for syntax highlighting of code -->
     <link rel="stylesheet" href="lib/css/zenburn.css">
 
@@ -166,6 +167,33 @@
 	</section>
 
 	<section>
+	  <h2>MQTT Summary</h1>
+	</section>
+
+	<!-- Example of MQTT real-time temperature -->
+	<section mqtt>
+	  <h3>rpit5 Temperature:</h3>
+	  <h4>CPU:
+            <span style="color: #fff000">
+              iot-demo/rpit5/raspi/cputemp
+            </span> °C
+	  </h4>
+	  <h4>GPU:
+            <span style="color: #fff000">
+              iot-demo/rpit5/raspi/gputemp
+            </span> °C
+	  </h4>
+	  <p>
+	    If MQTT streaming is:
+	    <ul>
+	      <li> <b>working:</b> live temperatures will be displayed above.</li>
+	      <li> <b>disabled:</b> just the topic paths will be displayed.</li>
+	    </ul>
+	  </p>
+	</section>
+
+
+	<section>
 	  <h2>Wiring Guidelines</h2>
 	</section>
 
@@ -264,17 +292,17 @@ function linkify( selector ) {
 
        mqtt_broker: 'rpit5.local', // Broker address
        mqtt_port: '9001', // MQTT over Web Socket port
-       mqtt_username: '', // username [optional]
-       mqtt_password: '', // username [optional]
+       mqtt_username: 'pi', // username [optional]
+       mqtt_password: 'raspberry', // username [optional]
 
        // More info https://github.com/hakimel/reveal.js#dependencies
        dependencies: [
 	 { src: 'plugin/markdown/marked.js' },
 	 { src: 'plugin/markdown/markdown.js' },
 	 { src: 'plugin/notes/notes.js', async: true },
-         // add THIS dependencies for MQTT plugin
+         //add THIS dependencies for MQTT plugin
          /* { src: 'plugin/mqtt/mqtt/mqttws31.js', async: true },
-	  * { src: 'plugin/mqtt/mqtt/mqtt.js', async: true },*/
+	    { src: 'plugin/mqtt/mqtt/mqtt.js', async: true },*/
 	 { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
        ]
      });
