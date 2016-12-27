@@ -1,8 +1,13 @@
 # -*- ssh-config -*-
 
+Host demo-*
+  ForwardAgent yes
+
+
 # assigned host name: rpit5
 Host demo-rpi2
   HostName 192.168.8.22
+  #HostName 10.0.1.45
   User pi
   StrictHostKeyChecking no
 
