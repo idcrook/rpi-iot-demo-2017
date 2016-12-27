@@ -10,7 +10,7 @@ var os = require('os'),
     ip = require('ip'),
     jsonfile = require('jsonfile'),
     mqtt = require('mqtt'),
-    onoff = require('onoff'),
+    Gpio = require('onoff').Gpio,
     uuid = require('uuid');
 
 
@@ -182,13 +182,74 @@ var sensor = {
 
 
 if (sensor.initialize()) {
-  // Launch the main Sensor Read+Publish LOOP!
+  // Launch the main Sensor Read + MQTT Publish LOOP!
   sensor.read();
 } else {
   var errMsg = 'Failed to initialize sensor';
   console.warn(errMsg);
   throw new Error(errMsg);
 }
+
+// GPIO for LEDs and switch
+var button_Gpio = 4;
+var redLed_Gpio = 17;
+var greenLed_Gpio = 27;
+
+// Header pin  | BCM Gpio pin   | WiringPi
+////////////////////////////////////////////
+//   1         |                |
+//   3         |  2		|  8
+//   5         |  3		|  9
+//   7         |  4 (button)	|  7
+//   9         |  		|
+//  11         | 17 (red LED)	|  0
+//  13         | 27 (green LED) |  2
+//  15         | 22             |  3
+
+
+// Configure the button pin, and set interrupts on both rising and falling
+// edges
+
+// Has internal pullup enabled by default on powerup. See:
+//   https://www.raspberrypi.org/forums/viewtopic.php?f=28&t=115274
+//   http://www.farnell.com/datasheets/1521578.pdf
+//    - Table 6-31 on pages 102 and 103
+
+// debounceTimeout described in onoff source code
+// https://github.com/fivdi/onoff/blob/master/onoff.js#L51
+var button = new Gpio(button_Gpio, 'in', 'both', {debounceTimeout: 20});
+
+// get onoff objects for the LED pins
+var redLed = new Gpio(redLed_Gpio, 'low');
+var greenLed = new Gpio(greenLed_Gpio, 'low');
+
+var buttonPressedCount = 0;
+var buttonReleasedCount = 0;
+
+console.log('Starting Watch for Button');
+button.watch(function (err, value) {
+  if (err) {
+    console.log('ERROR: ' + error)
+  }
+  if (value === 0) {
+    console.log('BUTTON PRESSED!');
+    // implement a toggle based on button presses
+    buttonPressedCount += 1;
+    if (buttonPressedCount % 2) {
+      redLed.writeSync(1); // 1 = on, 0 = off
+    } else {
+      redLed.writeSync(0); // 1 = on, 0 = off
+    }
+  } else {
+    console.log('BUTTON RELEASED!');
+    buttonReleasedCount += 1;
+    if (buttonReleasedCount % 2) {
+      greenLed.writeSync(1); // 1 = on, 0 = off
+    } else {
+      greenLed.writeSync(0); // 1 = on, 0 = off
+    }
+  }
+});
 
 // Some of the following code borrowed ideas from
 // https://blog.risingstack.com/getting-started-with-nodejs-and-mqtt/
