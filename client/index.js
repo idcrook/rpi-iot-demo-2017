@@ -21,7 +21,7 @@ console.dir(config);
 
 // Lookup MQTT broker IP address
 // If this lookup fails (cannot resolve broker), will raise an exception
-var brokerAddr = dns.lookup(config.mqttBrokerHost, {family: 4} ,  (err, address, family) => {
+var brokerAddr = dns.lookup(config.mqttBrokerHost, {family: 4} , (err, address, family) => {
   if (err) throw err;
   console.log('MQTT broker: '+address+` (${config.mqttBrokerHost})`);
   return address;
@@ -40,6 +40,8 @@ console.log('MQTT client: '+clientHostname);
 //   |          /
 //   |-> connected        - 'true' or 'false'
 //   `-raspi
+//     |-> redled         - 'on' or 'off'
+//     |-> greenled       - 'on' or 'off'
 //     |-> cputemp        - degrees C
 //     `-> gputemp        - degrees C
 
@@ -47,7 +49,10 @@ console.log('MQTT client: '+clientHostname);
 // all the clients
 
 const baseTopic = 'iot-demo' + '/' + clientId;
+
 const pubConnected = baseTopic + '/connected';
+const pubRedLed   = baseTopic + '/raspi/redled';
+const pubGreenLed = baseTopic + '/raspi/greenled';
 const pubCpuTemp = baseTopic + '/raspi/cputemp';
 const pubGpuTemp = baseTopic + '/raspi/gputemp';
 
@@ -227,6 +232,12 @@ var buttonPressedCount = 0;
 var buttonReleasedCount = 0;
 
 console.log('Starting Watch for Button');
+
+client.publish(pubRedLed, 'off', {qos: 1, retain: true});
+redLed.writeSync(0); // 1 = on, 0 = off
+client.publish(pubGreenLed, 'off', {qos: 1, retain: true});
+greenLed.writeSync(0); // 1 = on, 0 = off
+
 button.watch(function (err, value) {
   if (err) {
     console.log('ERROR: ' + error)
@@ -236,16 +247,20 @@ button.watch(function (err, value) {
     // implement a toggle based on button presses
     buttonPressedCount += 1;
     if (buttonPressedCount % 2) {
+      client.publish(pubRedLed, 'on', {qos: 1, retain: true});
       redLed.writeSync(1); // 1 = on, 0 = off
     } else {
+      client.publish(pubRedLed, 'off', {qos: 1, retain: true});
       redLed.writeSync(0); // 1 = on, 0 = off
     }
   } else {
     console.log('BUTTON RELEASED!');
     buttonReleasedCount += 1;
     if (buttonReleasedCount % 2) {
+      client.publish(pubGreenLed, 'on', {qos: 1, retain: true});
       greenLed.writeSync(1); // 1 = on, 0 = off
     } else {
+      client.publish(pubGreenLed, 'off', {qos: 1, retain: true});
       greenLed.writeSync(0); // 1 = on, 0 = off
     }
   }
@@ -266,19 +281,29 @@ function handleAppExit (options, err) {
   }
 
   if (options.cleanup) {
-    // Turns out LWT (Last Will and Testament) MQTT feature in library will
-    // handle this (need a synchronous version for it to work right anyway)
+
+    console.log('turning off LEDs');
+    client.publish(pubRedLed, 'off', {qos: 1, retain: true}, function() {
+      console.log(pubRedLed + " is published");
+      redLed.writeSync(0);   // 1 = on, 0 = off
+    });
+    client.publish(pubGreenLed, 'off', {qos: 1, retain: true},  function() {
+      console.log(pubGreenLed + " is published");
+      greenLed.writeSync(0); // 1 = on, 0 = off
+    });
+
+    // Turns out LWT (Last Will and Testament) MQTT feature in library also
+    // handles this
     client.publish(pubConnected, 'false', {qos: 1, retain: true}, function() {
       console.log(pubConnected + " is published");
-      client.end(); // Close the connection when published
     });
     console.log('handleAppExit cleanup');
   }
 
   if (options.exit) {
-    console.log('');
-    console.log('handleAppExit exit');
-    process.exit(errorCode);
+    console.log('handleAppExit exit (delaying onset by 2000 ms)');
+    setTimeout(function() { process.exit(errorCode);}, 2000);
+
   }
 }
 
@@ -294,6 +319,7 @@ process.on('exit', handleAppExit.bind(null, {
   cleanup: true
 }))
 process.on('SIGINT', handleAppExit.bind(null, {
+  cleanup: true,
   exit: true
 }))
 process.on('uncaughtException', handleAppExit.bind(null, {
