@@ -41,7 +41,7 @@ for $line (@lines) {
             <table border="0" cellborder="1" cellspacing="0" cellpadding="4">
             <tr>
 	      <td bgcolor="lightblue" colspan="2"><b>${host}</b></td>
-	      <td bgcolor="white">&nbsp;</td>
+	      <td bgcolor="white" color="black" align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 	      <td bgcolor="white">&nbsp;</td>
 	      <td bgcolor="white">&nbsp;</td>
             </tr>
