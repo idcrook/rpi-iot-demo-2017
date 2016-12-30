@@ -29,7 +29,7 @@ var clientList = ['rpit5',
 		  'rpip10'];
 
 var connectedColors = {
-  'true': '#c0c040',
+  'true': '#f0f000',
   'false':'#bde8f6',
   'blank':'#add8e6',
   'greenled_on':  '#00FF22',
@@ -69,9 +69,8 @@ client.onConnectionLost = onConnectionLost;
 var options = {
   timeout: 3,
   onSuccess: function () {
-    console.log("mqtt connected");
-    /* console.log(MQTTsysTopic);
-       console.log(MQTTtopic);*/
+    console.log("MQTT connected");
+
     // Connection succeeded; subscribe to our topics
     client.subscribe(MQTTsysTopic, {qos: 1});
     client.subscribe(MQTTtopic, {qos: 1});
@@ -93,9 +92,10 @@ function onConnectionLost(responseObject) {
   window.setTimeout(location.reload(),20000); //wait 20seconds before trying to connect again.
 };
 
-var connectedRegex = /^iot-demo\/(\w+)\/connected$/;
-var ledRegex       = /^iot-demo\/(\w+)\/raspi\/(\w+)led$/;
-var sysClientsRegex = /\$SYS\/broker\/clients\/active/;
+var connectedRegex   = /^iot-demo\/(\w+)\/connected$/;
+var ledRegex         = /^iot-demo\/(\w+)\/raspi\/(\w+)led$/;
+var temperatureRegex = /^iot-demo\/(\w+)\/raspi\/(\w+)temp$/;
+var sysClientsRegex  = /\$SYS\/broker\/clients\/active/;
 
 // what is done when a message arrives from the broker
 function onMessageArrived(message) {
@@ -138,9 +138,21 @@ function onMessageArrived(message) {
 	svgModifyTableElement(clientName, 3, connectedColors.greenled_off, '');
       }
     }
-
   }
 
+  if (temperatureRegex.test(message.destinationName)) {
+    var matches = temperatureRegex.exec(message.destinationName);
+    var clientName = matches[1];
+    var temperatureArea = matches[2];
+
+    var temperature = message.payloadString;
+
+    //console.log("found client " + clientName + " area " + temperatureArea + " " + temperature);
+    if (temperatureArea === 'cpu') {
+      svgModifyTableElement(clientName, 1, connectedColors['blank'], temperature);
+    }
+
+  }
 
   if (sysClientsRegex.test(message.destinationName)) {
     var count = parseInt(message.payloadString);
@@ -170,7 +182,9 @@ function svgModifyTableElement(component, slot, color, text) {
     var slots = [ { polygon1: graphNode.children[3],
 		    polygon2: graphNode.children[4] },
 		  { polygon1: graphNode.children[6],
-		    polygon2: graphNode.children[7] },
+		    polygon2: graphNode.children[7],
+		    text:     graphNode.children[8],
+		  },
 		  { polygon1: graphNode.children[9],
 		    polygon2: graphNode.children[10] },
 		  { polygon1: graphNode.children[12],
@@ -196,8 +210,12 @@ function svgModifyTableElement(component, slot, color, text) {
 	  slots[i].polygon2.setAttribute('stroke', connectedColors.blank);
 	}
       }
-
     }
+    if (slot === 1) {
+      // console.log(text);
+      slots[slot].text.innerHTML = text;
+    }
+
   } catch (err) {
     console.error("component [" + component + "] not in SVG; skipping");
   }
