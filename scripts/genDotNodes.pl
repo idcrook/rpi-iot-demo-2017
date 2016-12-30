@@ -41,12 +41,12 @@ for $line (@lines) {
             <table border="0" cellborder="1" cellspacing="0" cellpadding="4">
             <tr>
 	      <td bgcolor="lightblue" colspan="2"><b>${host}</b></td>
-	      <td bgcolor="white" color="black" align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	      <td bgcolor="white"     colspan="2" color="black" align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 	      <td bgcolor="white">&nbsp;</td>
 	      <td bgcolor="white">&nbsp;</td>
             </tr>
             <tr>
-              <td bgcolor="lightblue" align="left" colspan="5">IP: ${output_ip}</td>
+              <td bgcolor="lightblue" align="left" colspan="6">IP: ${output_ip}</td>
             </tr>
             </table>
             > id=${host} shape=box image="img/rpibp.svg" fontcolor=red labelloc=t color="#ffffff"];|;
