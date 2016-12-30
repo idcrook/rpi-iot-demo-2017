@@ -156,7 +156,7 @@ graph demotopo {
             </table>
             > id="broker" shape=circle image="img/servers.png" labelloc=b color="lightblue" ];
 
-  cloud  [ label="The Internet" id="cloud"  shape=circle image="img/cloud.png"   labelloc=b color="#ffffff"]
+//  cloud  [ label="The Internet" id="cloud"  shape=circle image="img/cloud.png"   labelloc=b color="#ffffff"]
 
   {
 	  rank = same;
@@ -180,15 +180,15 @@ graph demotopo {
 
   {
   	  rank = same;
-  	  // rpit5;
+  	  //rpit5;
   	  broker;
-  	  cloud;
+  	  // cloud;
 
   }
 
 
 
-  broker -- cloud    [color="#0022ff" weight=1 penwidth=6  minlen=5];
+  // broker -- cloud    [color="#0022ff" weight=1 penwidth=6  minlen=5];
   network -- broker  [color="#ff2200" weight=1 penwidth=6 ];
 
   rpit3               -- network  [id="rpit3_to_network" color="#ff2200" weight=1 penwidth=6 minlen=3 ] ;
