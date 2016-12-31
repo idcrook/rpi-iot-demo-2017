@@ -5,10 +5,10 @@ Description of the hardware and electrical circuits used in the demo.
 
 There are [Fritzing](http://fritzing.org/home/) files that also have editable versions of the design:
 
- - [Sketch_1_-_no_HW_debounce.fzz](https://github.com/idcrook/rpi-iot-demo-2017/raw/master/info/Sketch_1_-_no_HW_debounce.fzz)
- - [Sketch_1_-_with_HW_debounce.fzz](https://github.com/idcrook/rpi-iot-demo-2017/raw/master/info/Sketch_1_-_with_HW_debounce.fzz)
+ - Download [Sketch_1_-_no_HW_debounce.fzz](https://github.com/idcrook/rpi-iot-demo-2017/raw/master/info/Sketch_1_-_no_HW_debounce.fzz)
+ - Download [Sketch_1_-_with_HW_debounce.fzz](https://github.com/idcrook/rpi-iot-demo-2017/raw/master/info/Sketch_1_-_with_HW_debounce.fzz)
 
-A "debounce" circuit allows better reliability for determining switch presses.
+A "debounce" circuit allows better reliability for determining switch presses. It is simple to add on to an existing circuit.
 
 ## Parts list
 
