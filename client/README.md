@@ -4,11 +4,12 @@
 
 A javascript client that reads internal temperatures on a Pi and makes available using MQTT.
 
+Also runs a webserver for displaying charts and diagrams.
 
 ## Requirements
 
  - node.js
- - MQTT broker (server) available
+ - MQTT broker (server), with WebSockets enabled
 
 ## Getting started
 
@@ -21,7 +22,7 @@ npm install
 node index.js
 ```
 
-If everything is working, can visit the URL (the HTTP :3000 ones) for a "real-time" graph of the Pi temperatures.
+If everything is working, can visit URL ( http://example.com:3000 ) for a "real-time" graph of the Pi temperatures.
 
 Browser must support WebSockets for it to work.  Most modern ones do.
 
@@ -37,6 +38,15 @@ PubSub topic structure being used in this demo
 //   |          /
 //   |-> connected        - 'true' or 'false'
 //   `-raspi
+//     |-> redled         - 'on' or 'off'
+//     |-> greenled       - 'on' or 'off'
 //     |-> cputemp        - degrees C
 //     `-> gputemp        - degrees C
 ```
+
+
+So Topic "`iot-demo/+/connected`" is **status** across all the clients
+
+## Dashboard
+
+`dashboard.html` served from the Pi uses an SVG to display a diagram of real-time information.
