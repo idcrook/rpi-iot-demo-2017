@@ -3,22 +3,23 @@
 # MQTT demo client for Raspberry Pi
 
 Javascript client (node.js) that reads internal temperatures on a Pi and [makes available using MQTT](#mqtt-topic-structure).
-
 Also runs a webserver for displaying [charts](#temperature-chart) and [diagrams](#dashboard) on MQTT data.
-
 Also talks to GPIO hardware on Pi, [reading switches and lighting LEDs](https://github.com/idcrook/rpi-iot-demo-2017/blob/master/client/index.js#L240-L273).
 
 ## Requirements
 
- - Raspberry Pi.
-   - Tested with Raspbian jessie on Pi 2 and Pi B+ models
- - node.js
-   - NVM works well with latest Node (v7.3.0)
+ - Raspberry Pi. - Tested with Raspbian jessie on Pi 2 and Pi B+ models
+ - node.js - Tested with NVM, works well with latest Node (v7.3.0)
  - MQTT broker (server) on network, with WebSockets enabled
-   - This demo is using [mosquitto](https://mosquitto.org/) running on a Pi Model 2.
-
+   - This demo tested using [mosquitto](https://mosquitto.org/) running on a Pi Model 2. Refer to [config used](../conf/raspi-demo.conf).
 
 ## Getting started
+
+Get a copy by cloning from GitHub
+
+``` sh
+git clone https://github.com/idcrook/rpi-iot-demo-2017.git iot-demo
+```
 
 Edit the `create-config.js` script to match your environment. It has values for broker name/WS port.
 
