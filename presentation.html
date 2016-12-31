@@ -52,7 +52,7 @@
 	    &ldquo;Oh, so they have internet on computers now!&rdquo; <b>~Homer Simpson</b>
 	  </blockquote>
 
-	  <p>The Internet of Things (often abbreviated as "<b>IoT</b>") refers to ever-growing network of physical objects that feature an IP address and can communicate using the Internet.</p>
+	  <p>The Internet of Things (abbreviated as "<b>IoT</b>") refers to ever-growing network of physical objects that feature an IP address and can communicate using the Internet.</p>
 
 	  <p><b>Consumer Examples</b>: <a href="http://github.crookster.org/timetemp/charts/weekly/" target="_blank">Weather stations</a>, garage doors, baby monitors, Canary security system, Hue light bulbs, WeMo plugs, Nest thermostat, Amazon Echo ...</p>
 
@@ -62,11 +62,11 @@
 	  <h2>Quiz Time</h2>
 
 	  <blockquote >
-	    <b>Question</b>: Do you know what the &ldquo;<b>S</b>&rdquo; in &ldquo;<b>IoT</b>&rdquo; stands for?<br />
+	    <u>Question</u>: Does anyone know what the &ldquo;<b>S</b>&rdquo; in &ldquo;<b>IoT</b>&rdquo; stands for?<br />
 	  </blockquote>
 
 	  <blockquote class="fragment" data-fragment-index="0">
-	    <b>Answer</b>: Security.
+	    <u>Answer</u>: <b>S</b>ecurity.
 	  </blockquote>
 
 	</section>
@@ -115,14 +115,14 @@
 		<td>RasPi 3 (incl. WiFi+BT)</td>
 		<td>$35</td>
 	      </tr>
-	      <tr>
-		<td>Particle <a href="https://www.particle.io/products/hardware/electron-cellular-dev-kit">(Cellular)</a></td>
-		<td><a href="https://store.particle.io/products/photon" target="_blank">$19</a>-<a href="https://store.particle.io/products/electron-2g" target="_blank">$49</a></td>
-	      </tr>
-	      <tr>
-		<td>Many more exist</td>
-		<td>...</td>
-	      </tr>
+	      <!-- <tr>
+		   <td>Particle <a href="https://www.particle.io/products/hardware/electron-cellular-dev-kit">(Cellular)</a></td>
+		   <td><a href="https://store.particle.io/products/photon" target="_blank">$19</a>-<a href="https://store.particle.io/products/electron-2g" target="_blank">$49</a></td>
+		   </tr>
+		   <tr>
+		   <td>Many more exist</td>
+		   <td>...</td>
+		   </tr> -->
 	    </tbody>
 	  </table>
 	</section>
@@ -147,17 +147,19 @@
 
 	<section>
 	  <h2>Demo Requirements</h2>
+	  <p>Can share among groups</p>
+
 	  <ul>
 	    <li>Laptop or Smartphone with Wi-Fi</li>
 	    <ul>
 	      <li>SSH client</li>
-	      <li>Can borrow among group</li>
 	    </ul>
 	  </ul>
 	  <!-- <p>&nbsp;</p> -->
 	  <ul>
 	    <li>Networked and Powered Pi</li>
 	    <ul>
+	      (Provided)
 	      <li>Mounted on Pi Pad</li>
 	      <li>Wires and components</li>
 	    </ul>
@@ -165,13 +167,13 @@
 	</section>
 
 	<section>
-	  <h2>Demo Description</h2>
+	  <h2>Demo Overview</h2>
 	    <ol>
-	      <li>Each Pi shares data using MQTT</li>
+	      <li>Network and power up Pi</li>
 	      <li>Chart live-streaming data on webpage</li>
-	      <li>Then, wire up LEDs to Pi and program</li>
+	      <li>Wire LEDs to Pi and program</li>
 	    </ol>
-	    <p>There's an MQTT "broker" serving the LAN</p>
+	    <p>Each Pi shares data using MQTT</p>
 	</section>
 
 	<section>
@@ -182,7 +184,7 @@
 	    <li>Simple to publish or consume data</li>
 	    <li>MQTT "Broker" server does most of the work</li>
 	  </ul>
-	  <p>In our demo, there's an MQTT Broker running on a Pi using WebSockets!</p>
+	  <p>In our demo: MQTT Broker is using WebSockets and running on a Pi!</p>
 	</section>
 
 	<section>
