@@ -6,6 +6,9 @@ A javascript client that reads internal temperatures on a Pi and makes available
 
 Also runs a webserver for displaying charts and diagrams.
 
+![](https://github.com/idcrook/rpi-iot-demo-2017/raw/master/info/TemperatureChart_resize1.png)
+
+
 ## Requirements
 
  - node.js
@@ -26,7 +29,6 @@ If everything is working, can visit URL ( http://example.com:3000 ) for a "real-
 
 Browser must support WebSockets for it to work.  Most modern ones do.
 
-![](https://github.com/idcrook/rpi-iot-demo-2017/raw/master/info/TemperatureChart_resize1.png)
 
 ### MQTT Topic Structure
 
@@ -40,7 +42,7 @@ PubSub topic structure being used in this demo
 //   |          /
 //   |-> connected        - 'true' or 'false'
 //   `-raspi
-//     |-> redled         - i'on' or 'off'
+//     |-> redled         - 'on' or 'off'
 //     |-> greenled       - 'on' or 'off'
 //     |-> cputemp        - degrees C
 //     `-> gputemp        - degrees C
