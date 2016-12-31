@@ -29,13 +29,13 @@ var clientList = ['rpit5',
 		  'rpip10'];
 
 var connectedColors = {
-  'true': '#f0f000',
+  'true': '#c0f000',
   'false':'#bde8f6',
   'blank':'#add8e6',
   'greenled_on':  '#00FF22',
-  'greenled_off': '#107F10',
+  'greenled_off': '#80bF80',
   'redled_on':    '#FF2200',
-  'redled_off':   '#7F1010'
+  'redled_off':   '#bF8080'
 };
 
 var MQTTbroker = "rpit5.local";
@@ -181,12 +181,14 @@ function svgModifyTableElement(component, slot, color, text) {
     // highly dependent on graphviz dot SVG output
     var slots = [ { polygon1: graphNode.children[3],
 		    polygon2: graphNode.children[4] },
+
 		  { polygon1: graphNode.children[6],
 		    polygon2: graphNode.children[7],
-		    text:     graphNode.children[8],
-		  },
+		    text:     graphNode.children[8] },
+
 		  { polygon1: graphNode.children[9],
 		    polygon2: graphNode.children[10] },
+
 		  { polygon1: graphNode.children[12],
 		    polygon2: graphNode.children[13] }];
 
@@ -201,6 +203,10 @@ function svgModifyTableElement(component, slot, color, text) {
       }
     } else {
       for (var i = 0; i <4; i++) {
+	if (i === 1) {
+	  continue;
+	}
+
 	// fill color
 	slots[i].polygon1.setAttribute('fill', color);
 	// outline color
@@ -211,9 +217,20 @@ function svgModifyTableElement(component, slot, color, text) {
 	}
       }
     }
+
+    // temperature display
     if (slot === 1) {
-      // console.log(text);
-      slots[slot].text.innerHTML = text;
+      //console.log(slots[slot].text);
+      slots[slot].text.innerHTML = text + '°C';
+      // set background color based on temperature
+      if (parseFloat(text) > 37.0) {
+	// red
+	slots[slot].polygon1.setAttribute('fill', '#e00000');
+      } else {
+	// gray
+	slots[slot].polygon1.setAttribute('fill', '#e0e0e0');
+      }
+      slots[slot].text.setAttribute('fill', '#000000');
     }
 
   } catch (err) {
@@ -254,7 +271,7 @@ function svgModifyBroker(component, count, empty) {
 
     // highly dependent on graphviz dot SVG output
     var text = graphNode.children[11]
-    //console.dir(text);
+    console.dir(text);
     text.innerHTML = count;
   } catch (err) {
     console.error("component [" + component + "] not in SVG; skipping");
@@ -289,7 +306,7 @@ function init() {
     svgModifyTableElement(c, 3,  connectedColors.greenled_off, '');
   }
 
-  console.dir(svg);
+  //console.dir(svg);
 
   // Connect to MQTT broker
   client.connect(options);
