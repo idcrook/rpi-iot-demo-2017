@@ -26,7 +26,7 @@ If everything is working, can visit URL ( http://example.com:3000 ) for a "real-
 
 Browser must support WebSockets for it to work.  Most modern ones do.
 
-~[](https://github.com/idcrook/rpi-iot-demo-2017/raw/master/info/TemperatureChart_resize1.png)
+![](https://github.com/idcrook/rpi-iot-demo-2017/raw/master/info/TemperatureChart_resize1.png)
 
 ### MQTT Topic Structure
 
