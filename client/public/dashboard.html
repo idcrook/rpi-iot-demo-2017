@@ -28,9 +28,14 @@ var clientList = ['rpit5',
 		  'rpip9',
 		  'rpip10'];
 
-var connectedColors = {
-  'true': '#c0f000',
+const connectedColors = {
+  'true': '#c0ff00',
   'false':'#bde8f6',
+  'blank':'#add8e6',
+  'temperatureBackground_normal':'#e0e0e0',
+  'temperatureBackground_warm':'#e0a000',
+  'temperatureBackground_hot':'#ff7f7f',
+  'temperatureBackground_veryhot':'#ff007f',
   'blank':'#add8e6',
   'greenled_on':  '#00FF22',
   'greenled_off': '#80bF80',
@@ -110,6 +115,7 @@ function onMessageArrived(message) {
       svgModifyTableElement(clientName, 0, connectedColors['true'], '');
     } else if  (message.payloadString === 'false') {
       svgModifyTableElement(clientName, 0, connectedColors['false'], '');
+
     } else {
       svgModifyTableElement(clientName, 0, connectedColors['blank'], '');
     }
@@ -220,17 +226,26 @@ function svgModifyTableElement(component, slot, color, text) {
 
     // temperature display
     if (slot === 1) {
-      //console.log(slots[slot].text);
       slots[slot].text.innerHTML = text + '°C';
+      slots[slot].text.setAttribute('stroke', '#000');
+      slots[slot].text.setAttribute('fill', '#000');
+
       // set background color based on temperature
-      if (parseFloat(text) > 37.0) {
-	// red
-	slots[slot].polygon1.setAttribute('fill', '#e00000');
+      if (parseFloat(text) > 48.5 ) {
+	slots[slot].polygon1.setAttribute('fill', connectedColors.temperatureBackground_veryhot);
+	slots[slot].text.setAttribute('stroke', '#fcf');
+	slots[slot].text.setAttribute('fill', '#fcf');
+      } else if (parseFloat(text) > 44.0) {
+	slots[slot].polygon1.setAttribute('fill', connectedColors.temperatureBackground_hot);
+	slots[slot].text.setAttribute('stroke', '#404');
+	slots[slot].text.setAttribute('fill', '#005');
+      } else if (parseFloat(text) > 37.0) {
+	slots[slot].polygon1.setAttribute('fill', connectedColors.temperatureBackground_warm);
       } else {
-	// gray
-	slots[slot].polygon1.setAttribute('fill', '#e0e0e0');
+	slots[slot].polygon1.setAttribute('fill', connectedColors.temperatureBackground_normal);
+	//console.dir(slots[slot].polygon1);
       }
-      slots[slot].text.setAttribute('fill', '#000000');
+      //console.log(slots[slot].text);
     }
 
   } catch (err) {
