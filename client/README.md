@@ -26,6 +26,8 @@ If everything is working, can visit URL ( http://example.com:3000 ) for a "real-
 
 Browser must support WebSockets for it to work.  Most modern ones do.
 
+~[](https://github.com/idcrook/rpi-iot-demo-2017/raw/master/info/TemperatureChart_resize1.png)
+
 ### MQTT Topic Structure
 
 PubSub topic structure being used in this demo
@@ -38,7 +40,7 @@ PubSub topic structure being used in this demo
 //   |          /
 //   |-> connected        - 'true' or 'false'
 //   `-raspi
-//     |-> redled         - 'on' or 'off'
+//     |-> redled         - i'on' or 'off'
 //     |-> greenled       - 'on' or 'off'
 //     |-> cputemp        - degrees C
 //     `-> gputemp        - degrees C
@@ -50,3 +52,5 @@ So Topic "`iot-demo/+/connected`" is **status** across all the clients
 ## Dashboard
 
 `dashboard.html` served from the Pi uses an SVG to display a diagram of real-time information.
+
+![](https://github.com/idcrook/rpi-iot-demo-2017/raw/master/info/RasPi_IoT_Dashboard_animation.gif)
