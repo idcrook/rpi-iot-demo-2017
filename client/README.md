@@ -8,28 +8,14 @@ Also runs a webserver for displaying [charts](#temperature-chart) and [diagrams]
 
 Also talks to GPIO hardware on Pi, [reading switches and lighting LEDs](https://github.com/idcrook/rpi-iot-demo-2017/blob/master/client/index.js#L240-L273).
 
-## Implementation information
-
- - `client/index.js` Javascript (**node.js**)
-
-   [Publishes information using MQTT](#mqtt-topic-structure)
-   Serves webpages (described below) to display information from MQTT
-   Reads and Controls GPIO pins on a Raspberry Pi
-
- - `client/public/index.html`
-
-   Displays a [scrolling chart](#temperature-chart) of MQTT temperature data streaming from Raspberry Pi
-   - Uses MQTT over WebSockets + a Javascript graphing library
-
- - `client/public/dashboard.html`
-
-   Displays a ["dashboard"](#dashboard) for status and information from multiple Pis.
-   - Uses MQTT over WebSockets, Client Javascript, and SVG technologies
-
 ## Requirements
 
+ - Raspberry Pi.
+   - Tested with Raspbian jessie on Pi 2 and Pi B+ models
  - node.js
+   - NVM works well with latest Node (v7.3.0)
  - MQTT broker (server) on network, with WebSockets enabled
+   - This demo is using [mosquitto](https://mosquitto.org/) running on a Pi Model 2.
 
 
 ## Getting started
@@ -51,6 +37,24 @@ Browser must support WebSockets for it to work.  Most modern ones do.
 ### Temperature Chart
 
 ![](https://github.com/idcrook/rpi-iot-demo-2017/raw/master/info/TemperatureChart_resize1.png)
+
+## Implementation information
+
+ - `client/index.js` Javascript (**node.js**)
+
+   [Publishes information using MQTT](#mqtt-topic-structure)
+   Serves webpages (described below) to display information from MQTT
+   Reads and Controls GPIO pins on a Raspberry Pi
+
+ - `client/public/index.html`
+
+   Displays a [scrolling chart](#temperature-chart) of MQTT temperature data streaming from Raspberry Pi
+   - Uses MQTT over WebSockets + a Javascript graphing library
+
+ - `client/public/dashboard.html`
+
+   Displays a ["dashboard"](#dashboard) for status and information from multiple Pis.
+   - Uses MQTT over WebSockets, Client Javascript, and SVG technologies
 
 ## MQTT Topic Structure
 
