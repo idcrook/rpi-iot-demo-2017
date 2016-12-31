@@ -286,7 +286,7 @@ function svgModifyBroker(component, count, empty) {
 
     // highly dependent on graphviz dot SVG output
     var text = graphNode.children[11]
-    console.dir(text);
+    // console.dir(text);
     text.innerHTML = count;
   } catch (err) {
     console.error("component [" + component + "] not in SVG; skipping");
