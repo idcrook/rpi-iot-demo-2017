@@ -32,7 +32,7 @@
 <text text-anchor="start" x="50" y="-731.325" font-family="Arial" font-size="48.00" fill="#ff0000">IP: 192.168.8.22</text>
 </g>
 <!-- network -->
-<g id="node10" class="node">
+<g id="network" class="node">
 <title>network</title>
 <polygon fill="#ff2200" stroke="#ff2200" points="1053,-500.725 999,-500.725 999,-464.725 1053,-464.725 1053,-500.725"/>
 </g>
@@ -265,7 +265,7 @@
 <text text-anchor="start" x="1096" y="-125.3523" font-family="Arial" font-weight="bold" font-size="48.00" fill="#000000"> 0</text>
 </g>
 <!-- network&#45;&#45;broker -->
-<g id="edge1" class="edge">
+<g id="broker_to_network" class="edge">
 <title>network&#45;&#45;broker</title>
 <path fill="none" stroke="#ff2200" stroke-width="6" d="M1026,-464.343C1026,-455.0947 1026,-442.8976 1026,-429.0209"/>
 </g>
