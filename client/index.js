@@ -19,6 +19,8 @@ var configFile = './client-config.json';
 var config = jsonfile.readFileSync(configFile);
 console.dir(config);
 
+var APP_EXITING = false;
+
 // Lookup MQTT broker IP address
 // If this lookup fails (cannot resolve broker), will raise an exception
 var brokerAddr = dns.lookup(config.mqttBrokerHost, {family: 4} , (err, address, family) => {
@@ -172,14 +174,18 @@ var sensor = {
                 ', errors: '+readout.errors);
 
     if (readout.isValid) {
-      client.publish(pubCpuTemp, readout.cpuTemp.toString(), {qos: 0, retain: true});
-      client.publish(pubGpuTemp, readout.gpuTemp.toString(), {qos: 0, retain: true});
+      /* client.publish(pubCpuTemp, readout.cpuTemp.toString(), {qos: 0, retain: true});
+       * client.publish(pubGpuTemp, readout.gpuTemp.toString(), {qos: 0, retain: true});*/
+      client.publish(pubCpuTemp, readout.cpuTemp.toString(), {qos: 0, retain: false});
+      client.publish(pubGpuTemp, readout.gpuTemp.toString(), {qos: 0, retain: false});
     }
 
     // Schedule onto event loop for many many more times
     if (this.totalReads < 9999999) {
       setTimeout(function() {
-        sensor.read();
+	if (! APP_EXITING) {
+          sensor.read();
+	}
       }, config.sensorReadInterval);
     }
   }
@@ -280,6 +286,10 @@ function handleAppExit (options, err) {
     errorCode = 1;
   }
 
+  if (options.exit) {
+    APP_EXITING = true;
+  }
+
   if (options.cleanup) {
 
     console.log('turning off LEDs');
@@ -291,6 +301,10 @@ function handleAppExit (options, err) {
       console.log(pubGreenLed + " is published");
       greenLed.writeSync(0); // 1 = on, 0 = off
     });
+
+    client.publish(pubCpuTemp, '0.0', {qos: 0, retain: true});
+    client.publish(pubGpuTemp, '0.0', {qos: 0, retain: true});
+
 
     // Turns out LWT (Last Will and Testament) MQTT feature in library also
     // handles this
