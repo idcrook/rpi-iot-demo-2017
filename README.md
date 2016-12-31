@@ -1,11 +1,12 @@
-# rpi-iot-demo-2017
-
-Code + docs for Raspberry Pi IoT (Internet of Things) demo
-
-![][dashboard]
+#  Raspberry Pi IoT (Internet of Things) demo
 
  - [Presentation](http://idcrook.github.io/rpi-iot-demo-2017/presentation.html)
  - [Client code](https://github.com/idcrook/rpi-iot-demo-2017/tree/master/client)
+   - Runs Javascript in **node.js** to publish information using MQTT
+   - Serves webpages which use Javascript in browser to display information from MQTT
+
+![][dashboard]
+
 
 
 ## Older [rpi-hw-js-demo](https://github.com/idcrook/rpi-hw-js-demo) (c. 2016)
