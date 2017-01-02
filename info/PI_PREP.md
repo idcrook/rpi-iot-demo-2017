@@ -79,7 +79,7 @@ Installs with `npm` and is in `package.json`
 
 # Pi MQTT Broker Using Mosquitto
 
-Mosquitto is an MQTT Broker implementation in Python. The quad-core Raspberry Pi 2 or faster recommended.
+[Mosquitto](https://mosquitto.org/) is an MQTT Broker implementation in Python. The quad-core Raspberry Pi 2 or faster recommended.
 
 ## Install mosquitto
 

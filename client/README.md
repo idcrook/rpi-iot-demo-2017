@@ -19,11 +19,11 @@ The client code also:
 ## Requirements
 
  - node.js - Recommend node.js installation using NVM. Tested with latest node.js (v7.3.0).
-   - Refer to [PI_PREP.md](../info/PI_PREP.md)
+   - Refer to [PI_PREP.md][pi_prep]
  - MQTT Broker running on network, with WebSockets enabled
-   - This demo uses [mosquitto](https://mosquitto.org/) running on a Pi Model 2. Refer to [config](../conf/raspi-demo.conf) and [PI_PREP.md](../info/PI_PREP.md#pi-mqtt-broker-using-mosquitto).
+	 - This demo uses [mosquitto](https://mosquitto.org/) running on a Pi Model 2. Refer to [raspi-demo.conf][mosquitto_conf] and [Mosquitto on Pi][mosquitto_prep]
  - Raspberry Pi. - Tested with Raspbian jessie on Pi 2 and Pi B+ models
-   - (OPTIONAL) LEDs, Resistors, capacitor, a switch and wiring. See [SCHEMATICS.md](../info/SCHEMATICS.md) for details.
+   - (OPTIONAL) LEDs, Resistors, capacitor, a switch and wiring. See [SCHEMATICS.md][schematics] for details.
 
 ## MQTT Topic Structure
 
@@ -63,7 +63,7 @@ So Topic "`iot-demo/+/connected`" is **status** across all the clients
    Displays real-time status ["dashboard"](#dashboard) for multiple Pis using Javascript.
    - Uses web technologies like WebSockets and SVG. Uses MQTT (over WS) for realtime updates.
 
-For the MQTT Broker used in this demo, see [PI_PREP.md](../info/PI_PREP.md#pi-mqtt-broker-using-mosquitto). Can run broker on same Pi as client.
+For the MQTT Broker used in this demo, see [PI_PREP.md][mosquitto_prep]. Can run broker on same Pi as client.
 
 ## Getting Started With A Client Pi
 
@@ -90,3 +90,7 @@ If everything is working, can visit URL to view `index.html` ( e.g., http://clie
 [index_js]: https://github.com/idcrook/rpi-iot-demo-2017/blob/master/client/index.js
 [index_html]: https://github.com/idcrook/rpi-iot-demo-2017/blob/master/client/public/index.html
 [dashboard_html]: https://github.com/idcrook/rpi-iot-demo-2017/blob/master/client/public/dashboard.html
+[mosquitto_prep]: https://github.com/idcrook/rpi-iot-demo-2017/blob/master/info/PI_PREP.md#pi-mqtt-broker-using-mosquitto
+[mosquitto_conf]: https://github.com/idcrook/rpi-iot-demo-2017/blob/master/conf/raspi-demo.conf
+[pi_prep]: https://github.com/idcrook/rpi-iot-demo-2017/blob/master/info/PI_PREP.md
+[schematics]: https://github.com/idcrook/rpi-iot-demo-2017/blob/master/info/SCHEMATICS.md
