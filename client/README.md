@@ -2,70 +2,32 @@
 
 # MQTT demo client for Raspberry Pi
 
-Javascript client (node.js) that reads internal temperatures on a Pi and [makes available using MQTT](#mqtt-topic-structure).
+Javascript app (node.js) that reads temperatures on a Pi and [makes available using MQTT](#mqtt-topic-structure).
 
- - Also runs a webserver for displaying [charts](#temperature-chart) and [diagrams](#dashboard) on MQTT data.
- - Also talks to GPIO hardware on Pi, [reading switches and controlling LEDs](https://github.com/idcrook/rpi-iot-demo-2017/blob/master/client/index.js#L240-L273).
-
-## Requirements
-
- - Raspberry Pi. - Tested with Raspbian jessie on Pi 2 and Pi B+ models
-   - (OPTIONAL) LEDs, Resistors, capacitor, a switch and wiring.
- - node.js - Tested with NVM, works well with latest Node (v7.3.0)
- - MQTT broker (server) on network, with WebSockets enabled
-   - This demo tested using [mosquitto](https://mosquitto.org/) running on a Pi Model 2. Refer to [config used](../conf/raspi-demo.conf).
-
-See [PI_PREP.md](../info/PI_PREP.md) and [SCHEMATICS.md](../info/SCHEMATICS.md) for details.
-
-
-## Getting started
-
-Get a copy by cloning from GitHub
-
-``` sh
-git clone https://github.com/idcrook/rpi-iot-demo-2017.git iot-demo
-```
-
-Edit `create-config.js` script to match your environment. It has values for broker name/WS port.
-
-``` bash
-cd iot-demo
-cd client
-npm install
-./create-config.js
-node index.js
-```
-
-If everything is working, can visit URL ( http://example.com:3000 ) for a "real-time" graph of the Pi temperatures.
-
-Browser must support WebSockets for it to work.  Most modern ones do.
-
+The client code also:
+ - Runs webserver for displaying MQTT data [charts](#temperature-chart) and [diagrams](#dashboard).
+ - Talks to Pi GPIO hardware, [reading switches and controlling LEDs](https://github.com/idcrook/rpi-iot-demo-2017/blob/master/client/index.js#L240-L273).
 
 ### Temperature Chart
 
 ![](https://github.com/idcrook/rpi-iot-demo-2017/raw/master/info/TemperatureChart_resize1.png)
 
-## Implementation information
+### Dashboard
 
- - `client/index.js` Javascript (**node.js**)
+![](https://github.com/idcrook/rpi-iot-demo-2017/raw/master/info/RasPi_IoT_Dashboard_animation.gif)
 
-   [Publishes information using MQTT](#mqtt-topic-structure)
-   Serves webpages (described below) to display information from MQTT
-   Reads and Controls GPIO pins on a Raspberry Pi
+## Requirements
 
- - `client/public/index.html`
-
-   Displays a [scrolling chart](#temperature-chart) of MQTT temperature data streaming from Raspberry Pi
-   - Uses MQTT over WebSockets + a Javascript graphing library
-
- - `client/public/dashboard.html`
-
-   Displays a ["dashboard"](#dashboard) for status and information from multiple Pis.
-   - Uses MQTT over WebSockets, Client Javascript, and SVG technologies
+ - node.js - Recommend node.js installation using NVM. Tested with latest node.js (v7.3.0).
+   - Refer to [PI_PREP.md](../info/PI_PREP.md)
+ - MQTT Broker running on network, with WebSockets enabled
+   - This demo uses [mosquitto](https://mosquitto.org/) running on a Pi Model 2. Refer to [config](../conf/raspi-demo.conf) and [PI_PREP.md](../info/PI_PREP.md#pi-mqtt-broker-using-mosquitto).
+ - Raspberry Pi. - Tested with Raspbian jessie on Pi 2 and Pi B+ models
+   - (OPTIONAL) LEDs, Resistors, capacitor, a switch and wiring. See [SCHEMATICS.md](../info/SCHEMATICS.md) for details.
 
 ## MQTT Topic Structure
 
-PubSub topic structure being used in this demo
+MQTT PubSub topic structure being used in this demo
 
 ``` javascript
 // Topic Structure
@@ -81,11 +43,50 @@ PubSub topic structure being used in this demo
 //     `-> gputemp        - degrees C
 ```
 
-
 So Topic "`iot-demo/+/connected`" is **status** across all the clients
 
-## Dashboard
+## Implementation
 
-`dashboard.html` served from the Pi uses an SVG to display a diagram of real-time information.
+ - [client/index.js][index_js]
 
-![](https://github.com/idcrook/rpi-iot-demo-2017/raw/master/info/RasPi_IoT_Dashboard_animation.gif)
+   - Publishes [information topics using MQTT](#mqtt-topic-structure)
+   - Web server, for displaying MQTT data pages (described below)
+   - Read and Control GPIO pins on a Raspberry Pi (Switch, LEDs)
+
+ - [client/public/index.html][index_html]
+
+   Displays a [scrolling chart](#temperature-chart) of MQTT temperature data streaming from Raspberry Pi using Javascript
+   - Uses MQTT over WebSockets + a Javascript graphing library
+
+ - [client/public/dashboard.html][dashboard_html]
+
+   Displays real-time status ["dashboard"](#dashboard) for multiple Pis using Javascript.
+   - Uses web technologies like WebSockets and SVG. Uses MQTT (over WS) for realtime updates.
+
+For the MQTT Broker used in this demo, see [PI_PREP.md](../info/PI_PREP.md#pi-mqtt-broker-using-mosquitto). Can run broker on same Pi as client.
+
+## Getting Started With A Client Pi
+
+Assuming [requirements](#requirements) are met, you can get a copy of the code by cloning git repository from GitHub:
+
+``` sh
+git clone https://github.com/idcrook/rpi-iot-demo-2017.git iot-demo
+```
+
+Edit `create-config.js` script to match your environment. It has values for broker name/WS port.
+
+``` bash
+cd iot-demo
+cd client
+npm install
+./create-config.js
+node index.js
+```
+
+If everything is working, can visit URL to view `index.html` ( e.g., http://client:3000 ) for a "real-time" graph of the Pi temperatures. Your browser must support WebSockets for graphing to work-- most modern ones do.
+
+
+
+[index_js]: https://github.com/idcrook/rpi-iot-demo-2017/blob/master/client/index.js
+[index_html]: https://github.com/idcrook/rpi-iot-demo-2017/blob/master/client/public/index.html
+[dashboard_html]: https://github.com/idcrook/rpi-iot-demo-2017/blob/master/client/public/dashboard.html

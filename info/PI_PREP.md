@@ -37,8 +37,7 @@ sudo ln -s /home/pi/.nvm/versions/node/v7.3.0/bin/npm /usr/local/bin/npm
 
 to get `node` and `npm` in path.
 
-
-## turn off GUI login
+## Turn off GUI login
 
 You can get a lot more system memory and performance available  if you shut off the graphical desktop.
 
@@ -78,9 +77,9 @@ It can be used to tax the CPU (and heat up the Pi SoC chip).
 Installs with `npm` and is in `package.json`
 
 
-# Pi Server - Mosquitto (MQTT Broker)
+# Pi MQTT Broker Using Mosquitto
 
-Raspberry Pi 2 (quad core) or faster recommended.
+Mosquitto is an MQTT Broker implementation in Python. The quad-core Raspberry Pi 2 or faster recommended.
 
 ## Install mosquitto
 
@@ -106,9 +105,7 @@ sudo mosquitto_passwd -c /etc/mosquitto/credentials/passwd pi
 sudo service mosquitto restart
 ```
 
-
 ### test configuration
-
 
 ```bash
 mosquitto_sub -v -t '$SYS/broker/uptime'
