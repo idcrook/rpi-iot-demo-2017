@@ -1,16 +1,17 @@
-#  Raspberry Pi IoT (Internet of Things) demo
-
- - Presentation [slides](http://idcrook.github.io/rpi-iot-demo-2017/presentation.html)
- - [Client code and extensive documentation](https://github.com/idcrook/rpi-iot-demo-2017/tree/master/client)
-   - Runs Javascript in **node.js** to publish information using MQTT
-   - Serves webpages which use Javascript in browser to display information from MQTT
+#  Raspberry Pi IoT (Internet of Things) Demo
 
 ![][dashboard]
 
+ - Presentation [slides](http://idcrook.github.io/rpi-iot-demo-2017/presentation.html)
+ - [Client code and extensive documentation](https://github.com/idcrook/rpi-iot-demo-2017/tree/master/client/README.md)
+   - Publish MQTT using Javascript (**node.js**)
+   - Use Javascript to display MQTT data
 
+![][chart]
 
-## Older [rpi-hw-js-demo](https://github.com/idcrook/rpi-hw-js-demo) (c. 2016)
+#### Older [rpi-hw-js-demo](https://github.com/idcrook/rpi-hw-js-demo) (c. 2016)
 
-Link to a previous [Raspberry Pi RGB LED demonstration](https://github.com/idcrook/rpi-hw-js-demo)
+A previous [Raspberry Pi RGB LED demonstration](https://github.com/idcrook/rpi-hw-js-demo)
 
 [dashboard]: https://github.com/idcrook/rpi-iot-demo-2017/raw/master/info/RasPi_IoT_Dashboard_animation.gif
+[chart]: https://github.com/idcrook/rpi-iot-demo-2017/raw/master/info/TemperatureChart_resize1.png
