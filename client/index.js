@@ -174,8 +174,6 @@ var sensor = {
                 ', errors: '+readout.errors);
 
     if (readout.isValid) {
-      /* client.publish(pubCpuTemp, readout.cpuTemp.toString(), {qos: 0, retain: true});
-       * client.publish(pubGpuTemp, readout.gpuTemp.toString(), {qos: 0, retain: true});*/
       client.publish(pubCpuTemp, readout.cpuTemp.toString(), {qos: 0, retain: false});
       client.publish(pubGpuTemp, readout.gpuTemp.toString(), {qos: 0, retain: false});
     }
@@ -183,6 +181,7 @@ var sensor = {
     // Schedule onto event loop for many many more times
     if (this.totalReads < 9999999) {
       setTimeout(function() {
+	// cascade call, unless exiting
 	if (! APP_EXITING) {
           sensor.read();
 	}
@@ -201,11 +200,6 @@ if (sensor.initialize()) {
   throw new Error(errMsg);
 }
 
-// GPIO for LEDs and switch
-var button_Gpio = 4;
-var redLed_Gpio = 17;
-var greenLed_Gpio = 27;
-
 // Header pin  | BCM Gpio pin   | WiringPi
 ////////////////////////////////////////////
 //   1         |                |
@@ -217,17 +211,21 @@ var greenLed_Gpio = 27;
 //  13         | 27 (green LED) |  2
 //  15         | 22             |  3
 
+// GPIO for LEDs and switch
+var button_Gpio = 4;
+var redLed_Gpio = 17;
+var greenLed_Gpio = 27;
 
-// Configure the button pin, and set interrupts on both rising and falling
-// edges
+// Configure the button pin, and set interrupt servicing on both rising and
+// falling edges
 
 // Has internal pullup enabled by default on powerup. See:
 //   https://www.raspberrypi.org/forums/viewtopic.php?f=28&t=115274
 //   http://www.farnell.com/datasheets/1521578.pdf
 //    - Table 6-31 on pages 102 and 103
 
-// debounceTimeout described in onoff source code
-// https://github.com/fivdi/onoff/blob/master/onoff.js#L51
+// empirically, determined HW debounce required. debounceTimeout described in
+// onoff source code.  https://github.com/fivdi/onoff/blob/master/onoff.js#L51
 var button = new Gpio(button_Gpio, 'in', 'both', {debounceTimeout: 20});
 
 // get onoff objects for the LED pins
