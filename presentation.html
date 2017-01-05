@@ -16,8 +16,8 @@
     <!-- Theme used for syntax highlighting of code -->
     <!-- <link rel="stylesheet" href="lib/css/zenburn.css"> -->
     <!-- <link rel="stylesheet" href="lib/css/darkula.css"> -->
-    <!-- <link rel="stylesheet" href="lib/css/tomorrow-night-bright.css"> -->
-    <link rel="stylesheet" href="lib/css/xt256.css">
+    <link rel="stylesheet" href="lib/css/tomorrow-night-bright.css">
+    <!-- <link rel="stylesheet" href="lib/css/xt256.css"> -->
 
     <!-- Printing and PDF exports -->
     <script>
@@ -93,7 +93,7 @@
 	  <h2>MQTT</h2>
 	  <p><cite>'<a href="http://mqtt.org/" target="_blank">MQTT</a> is a machine-to-machine (M2M)/"Internet of Things" connectivity protocol.'</cite></p>
 	  <ul>
-	    <li>"PubSub" model. "Topics". Very simple.</li>
+	    <li>"<b>PubSub</b>" model with "Topics". Very simple.</li>
 	    <li>Low resource requirements at endpoints</li>
 	    <li>MQTT "Broker" server does most of the work</li>
 	  </ul>
@@ -135,7 +135,8 @@
 	</section>
 
 	<section>
-	  <h3>Single Board Computers</h3>
+	  <h2>Raspberry Pi</h2>
+	  <p>Raspberry Pi example of a SBC (Single Board Computer)</p>
 	  <ul>
 	    <li>run complete, modern operating systems</li>
 	    <li>small, low-power, low-cost form factors</li>
@@ -175,7 +176,7 @@
 
 	<section>
 	  <h2>Pieces of Pi</h2>
-	  <p>The Pi's in front of you are models B+ / 2 B
+	  <p>Raspberry Pi models "B+" or "2" in front of you
 	    <ul>
 	      <li>Running <a href="https://www.raspberrypi.org/downloads/raspbian/">Raspbian (Linux)</a> on µSD card</li>
 	      <ul>
@@ -192,106 +193,113 @@
 	</section>
 
 	<section>
+	  <h2>Demo Preview</h2>
+	  <ol>
+	    <li>Network and power up Pi</li>
+	    <li>Chart live-streaming data on webpage</li>
+	    <li>Wire LEDs to Pi and program</li>
+	  </ol>
+	  <p>Each Pi shares data using MQTT</p>
+	</section>
+
+	<section>
 	  <h2>Demo Requirements</h2>
-	  <p>Can share among groups</p>
 
 	  <ul>
-	    <li>Laptop or Smartphone with Wi-Fi</li>
+	    <li>Laptop or Smartphone having</li>
 	    <ul>
+	      <li>Wi-Fi</li>
 	      <li>SSH client</li>
+	      <li>Web browser</li>
 	    </ul>
+	    <li>Can share among groups</li>
 	  </ul>
-	  <!-- <p>&nbsp;</p> -->
 	  <ul>
+	    Each station has
 	    <li>Networked and Powered Pi</li>
 	    <ul>
-	      (Provided)
-	      <li>Mounted on Pi Pad</li>
-	      <li>Wires and components</li>
+	      <li>"Pi Pad" mount</li>
+	      <li>Components</li>
+	      <li>Wires and Breadboard</li>
 	    </ul>
 	  </ul>
 	</section>
 
 	<section>
-	  <h2>Demo Overview</h2>
-	    <ol>
-	      <li>Network and power up Pi</li>
-	      <li>Chart live-streaming data on webpage</li>
-	      <li>Wire LEDs to Pi and program</li>
-	    </ol>
-	    <p>Each Pi shares data using MQTT</p>
+
+	  <section>
+	    <h3>Running client</h3>
+	    <p>
+	      <ol>
+		<li>Connect to Wi-Fi</li>
+		<li>SSH into Pi</li>
+		username: <b>pi</b>
+		<br />password: <b>raspberry</b>
+		<li>Start node.js, using commands:</li>
+	      </ol>
+	    </p>
+	    <h2><pre>cd iot-demo/client</pre></h2>
+	    <h2><pre>screen -R</pre></h2>
+	    <h2><pre>   &lt;Enter&gt;</pre></h2>
+	    <h2><pre>node index.js</pre></h2>
+	    Temperature chart: <a href="http://example.com:3000/">http://name.local:3000</a>
+	  </section>
+
+	  <section>
+	    <h2>Client output</h2>
+	    <img src="img/rpit5_StartingClient.png" />
+	  </section>
+
+	  <section>
+	    <h3>SSH to Pi</h3>
+	    Username: <b><code>pi</code></b>
+	    <br />Password: <b><code>raspberry</code></b>
+	    <table>
+	      <thead>
+		<tr>
+		  <th>Name</th>
+		  <th>IP Address</th>
+		</tr>
+	      </thead>
+	      <tbody>
+		<tr>
+		  <td><code>rpit3</code></td>
+		  <td><code>192.168.8.23</code></td>
+		</tr>
+		<tr>
+		  <td><code>rpit4</code></td>
+		  <td><code>192.168.8.24</code></td>
+		</tr>
+		<tr>
+		  <td><code>rpip5</code></td>
+		  <td><code>192.168.8.25</code></td>
+		</tr>
+		<tr>
+		  <td><code>rpip6</code></td>
+		  <td><code>192.168.8.26</code></td>
+		</tr>
+		<tr>
+		  <td><code>rpip7</code></td>
+		  <td><code>192.168.8.27</code></td>
+		</tr>
+		<tr>
+		  <td><code>rpip8</code></td>
+		  <td><code>192.168.8.28</code></td>
+		</tr>
+		<tr>
+		  <td><code>rpip9</code></td>
+		  <td><code>192.168.8.29</code></td>
+		</tr>
+		<tr>
+		  <td><code>rpip10</code></td>
+		  <td><code>192.168.8.30</code></td>
+		</tr>
+	      </tbody>
+	    </table>
+	    Zeroconf also works: <code><b>&lt;name&gt;.local</b></code>
+	  </section>
 	</section>
 
-	<section>
-	  <h3>Running client</h3>
-	  <p>
-	    <ol>
-	      <li>Connect to Wi-Fi</li>
-	      <li>SSH into Pi</li>
-	      <li>Start node.js program</li>
-	    </ol>
-	  </p>
-	  <pre><code class="lang-bash" data-trim data-noescape style="font-size:1.1em">
-$ <b>cd iot-demo/client</b>
-$ <b>screen -R</b>    # (screen is optional, but useful)
-#    &lt;Enter&gt;
-$ <b>node index.js</b>
-	  </code></pre>
-	  <a href="http://example.com:3000/">http://client-name:3000</a> - go to in webbrowser
-	</section>
-
-	<section>
-	  <h2>Client output</h2>
-	  <img src="img/rpit5_StartingClient.png" />
-	</section>
-
-	<section>
-	  <h4>Connecting to Pi - SSH</h4>
-	  Username: <b><code>pi</code></b> Password: <b><code>raspberry</code></b>
-	  <table>
-	    <thead>
-	      <tr>
-		<th>NAME</th>
-		<th>IP</th>
-	      </tr>
-	    </thead>
-	    <tbody>
-	      <tr>
-		<td><code>rpit3</code></td>
-		<td><code>192.168.8.23</code></td>
-	      </tr>
-	      <tr>
-		<td><code>rpit4</code></td>
-		<td><code>192.168.8.24</code></td>
-	      </tr>
-	      <tr>
-		<td><code>rpip5</code></td>
-		<td><code>192.168.8.25</code></td>
-	      </tr>
-	      <tr>
-		<td><code>rpip6</code></td>
-		<td><code>192.168.8.26</code></td>
-	      </tr>
-	      <tr>
-		<td><code>rpip7</code></td>
-		<td><code>192.168.8.27</code></td>
-	      </tr>
-	      <tr>
-		<td><code>rpip8</code></td>
-		<td><code>192.168.8.28</code></td>
-	      </tr>
-	      <tr>
-		<td><code>rpip9</code></td>
-		<td><code>192.168.8.29</code></td>
-	      </tr>
-	      <tr>
-		<td><code>rpip10</code></td>
-		<td><code>192.168.8.30</code></td>
-	      </tr>
-	    </tbody>
-	  </table>
-	  <code>&lt;NAME&gt;.local</code> works too (Zeroconf)
-	</section>
 
 	<section>
 	  <h2>Live Dashboard</h2>
@@ -302,17 +310,51 @@ $ <b>node index.js</b>
 
 	</section>
 
+	<section>
+	  <h2>Button and LEDs</h2>
+	  <p>Switch presses and LEDs are handled using <a href="https://github.com/fivdi/onoff" target="_blank">onoff</a> library.</p>
+	  <pre><code class"lang-javascript" data-trim data-noescape>
+var button = new Gpio(button_Gpio, 'in', 'both', {debounceTimeout: 20});
+var redLed = new Gpio(redLed_Gpio, 'low');
+var buttonPressedCount = 0;
+
+button.watch(function (err, value) {
+  if (value === 0) {
+    console.log('BUTTON PRESSED!');
+    // implement a toggle based on button presses
+    buttonPressedCount += 1;
+    if (buttonPressedCount % 2) {
+      client.publish(pubRedLed, 'on', {qos: 1, retain: true});
+      redLed.writeSync(1); // 1 = on, 0 = off
+    } else {
+      client.publish(pubRedLed, 'off', {qos: 1, retain: true});
+      redLed.writeSync(0); // 1 = on, 0 = off
+    }
+  }
+}
+	  </code></pre>
+	</section>
+
 	<section data-background="img/XXvnnrJJnOVl6.gif"> <!-- "http://i.giphy.com/XXvnnrJJnOVl6.gif" -->
 	  <h1>Watch it light up</h1>
 	</section>
 
 	<section>
-	  <h2>Wiring Guidelines</h2>
+	  <section>
+	  <h4>Wiring Diagram</h4>
+	  <img src="img/Wire_BB_Main.png" />
+	  <img src="img/Wire_BB_Switch1.png" />
+	  </section>
+
+	  <section>
+	    <h4>Wiring Diagram w/ Debounce</h4>
+	    <img src="img/Wire_BB_Main.png" />
+	    <img src="img/Wire_BB_Switch2.png" />
+	  </section>
 	</section>
 
-	<section>
-	  <h4>Future directions</h4>
-	  <img src="img/InternetOfRansomwareThings.png" />
+	<section data-background="img/InternetOfRansomwareThings.png">
+	  &nbsp;
 	</section>
 
 
