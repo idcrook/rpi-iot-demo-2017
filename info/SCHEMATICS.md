@@ -12,20 +12,25 @@ A "debounce" circuit allows better reliability for determining switch presses. I
 
 ## Parts list
 
+See [SPECS.md](SPECS.md) for any further component details.
 
-LEDs and Switch
-
- - 2x 330 **Ω** Resistors (LED current limiters)
- - 2x 3mm PTH LEDs (one red, one green)
- - 1x 5mm momentary contact tactile switch (breadboard friendly)
+Need:
 
  - Raspberry Pi, Power Supply, Ethernet cable, and mini-breadboard
- - Wires that can connect to header pins on Pi and breadboardg
+ - Wires that can connect to header pins on Pi and breadboard
 
-Debounce circuit hardware
+LEDs and Switch hardware
 
- - 1x 10 **kΩ** resistor
- - 1x 100 **nF** capacitor
+| Quantity | Component           | Description |
+| :-----:  | -----               | -----       |
+| 2        | 330 **Ω** Resistor  | LED Current limiters |
+| 2        | 3mm PTH LED         |   one red, one green |
+| 1        | 5mm tactile switch  |  breadboard friendly |
+| &nbsp;   |                     |                      |
+| _optional_ |  _Debounce circuitry_ | _For switch_     |
+| 1        | 10 **kΩ** resistor  |             |
+| 1        | 100 **nF** capacitor |             |
+
 
 
 ## Wiring Diagram
