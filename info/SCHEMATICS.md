@@ -1,14 +1,19 @@
 
 # Hardware Setup
 
-Description of the hardware and electrical circuits used in the demo.
+Description of the hardware and electrical circuits used in the demo. It consists of LEDs driven by GPIO pins from the Pi as well as a Pi-readable switch. A "mini-breadboard" is used to be able to wire up the circuit elements.
 
-There are [Fritzing](http://fritzing.org/home/) files that also have editable versions of the design:
+A "debounce" circuit allows better reliability for determining switch presses. To add hardware debounce circuitry to a switch circuit is relatively simple.
+
+There are [breadboard](#wiring-diagrams) and [electrical schematic](#electrical-schematic-diagrams) views included.
+
+[Fritzing](http://fritzing.org/home/) files have editable versions of the design:
 
  - Download [Sketch_1_-_no_HW_debounce.fzz](https://github.com/idcrook/rpi-iot-demo-2017/raw/master/info/Sketch_1_-_no_HW_debounce.fzz)
  - Download [Sketch_1_-_with_HW_debounce.fzz](https://github.com/idcrook/rpi-iot-demo-2017/raw/master/info/Sketch_1_-_with_HW_debounce.fzz)
 
-A "debounce" circuit allows better reliability for determining switch presses. It is simple to add on to an existing circuit.
+
+![][bb_overview]
 
 ## Parts list
 
@@ -33,11 +38,42 @@ LEDs and Switch hardware
 
 
 
-## Wiring Diagram
+## Wiring Diagrams
 
-TBD
+### Simplest Circuit
+
+![][bb_wiring_main]
+
+![][bb_wiring_sw1]
 
 
-## Add Debounce Circuit
+### Add Debounce Circuit
 
-TBD
+LEDs are the same.
+
+![][bb_wiring_main]
+
+Rewire a capacitor and resistor into the switch circuit as a hardware "debounce" circuit.
+
+![][bb_wiring_sw2]
+
+
+## Electrical schematic diagrams
+
+
+### No debounce circuit
+
+![][schem_no_debounce]
+
+### With Debounce circuit
+
+![][schem_with_debounce]
+
+<!-- footnote links -->
+
+[bb_overview]:         https://github.com/idcrook/rpi-iot-demo-2017/raw/master/info/Sketch_1_-_with_HW_debounce_bb.png
+[bb_wiring_main]:      https://github.com/idcrook/rpi-iot-demo-2017/raw/master/info/Wire_BB_Main.png
+[bb_wiring_sw1]:       https://github.com/idcrook/rpi-iot-demo-2017/raw/master/info/Wire_BB_Switch1.png
+[bb_wiring_sw2]:       https://github.com/idcrook/rpi-iot-demo-2017/raw/master/info/Wire_BB_Switch2.png
+[schem_no_debounce]:   https://github.com/idcrook/rpi-iot-demo-2017/raw/master/info/Sketch_1_-_no_HW_debounce_schem.png
+[schem_with_debounce]: https://github.com/idcrook/rpi-iot-demo-2017/raw/master/info/Sketch_1_-_with_HW_debounce_schem.png
