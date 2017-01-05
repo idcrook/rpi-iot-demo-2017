@@ -174,6 +174,7 @@ var sensor = {
                 ', errors: '+readout.errors);
 
     if (readout.isValid) {
+      // retain: false means that won't receive value in immediate first publish
       client.publish(pubCpuTemp, readout.cpuTemp.toString(), {qos: 0, retain: false});
       client.publish(pubGpuTemp, readout.gpuTemp.toString(), {qos: 0, retain: false});
     }
