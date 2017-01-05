@@ -14,7 +14,10 @@
     <link rel="stylesheet" href="lib/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Theme used for syntax highlighting of code -->
-    <link rel="stylesheet" href="lib/css/zenburn.css">
+    <!-- <link rel="stylesheet" href="lib/css/zenburn.css"> -->
+    <!-- <link rel="stylesheet" href="lib/css/darkula.css"> -->
+    <!-- <link rel="stylesheet" href="lib/css/tomorrow-night-bright.css"> -->
+    <link rel="stylesheet" href="lib/css/xt256.css">
 
     <!-- Printing and PDF exports -->
     <script>
@@ -36,8 +39,6 @@
 	    January 9, 2017
 	  </p>
 	  <p>
-	    David Crook
-	    <br />
 	    <i class="fa fa-twitter-square"> <a href="https://twitter.com/idcrook">@idcrook</a></i>
 	    <i class="fa fa-github-square"> <a href="https://github.com/idcrook">@idcrook</a></i>
 	    <br />
@@ -80,12 +81,56 @@
 			       - low resource requirements, e.g. Raspberry Pi
 			       - event-based I/O, data streams
 
-			      IoT Frameworks: [Node RED](https://developer.ibm.com/recipes/tutorials/deploy-watson-iot-node-on-raspberry-pi/), [Particle.io](https://docs.particle.io/guide/getting-started/intro/raspberry-pi/), [AWS IoT Device SDK](http://docs.aws.amazon.com/iot/latest/developerguide/iot-device-sdk-node.html)
-
 			      Communications: HTTP, WebSockets, [MQTT](https://github.com/mqttjs/MQTT.js), [AMQP](https://www.rabbitmq.com/tutorials/tutorial-one-javascript.html)
+
+   			      IoT Frameworks: [Node RED](https://developer.ibm.com/recipes/tutorials/deploy-watson-iot-node-on-raspberry-pi/), [Particle.io](https://docs.particle.io/guide/getting-started/intro/raspberry-pi/), [AWS IoT Device SDK](http://docs.aws.amazon.com/iot/latest/developerguide/iot-device-sdk-node.html)
 
 			      Robotics: [Johnny Five](http://johnny-five.io/examples/raspi-io/), [Cylon.js](https://cylonjs.com/documentation/platforms/raspberry-pi/)
 	  </script>
+	</section>
+
+	<section>
+	  <h2>MQTT</h2>
+	  <p><cite>'<a href="http://mqtt.org/" target="_blank">MQTT</a> is a machine-to-machine (M2M)/"Internet of Things" connectivity protocol.'</cite></p>
+	  <ul>
+	    <li>PubSub model - "Topics"</li>
+	    <li>Simple, low-resource endpoints</li>
+	    <li>MQTT "Broker" server does most of the work</li>
+	  </ul>
+	  <p>In our demo: MQTT Broker is using WebSockets and running on a Pi!</p>
+	</section>
+
+	<section>
+	  <h2>More on MQTT Topics</h2>
+	  Examples.
+	  Touch on wildcards.
+	</section>
+
+	<!-- Example of MQTT real-time temperature -->
+	<section mqtt>
+	  <h3>rpit5 Temperature:</h3>
+	  <p>rpit5 connected ->
+	    <span style="color: #fff000">
+              iot-demo/rpit5/connected
+            </span>
+	  </p>
+	  <h4>CPU:
+            <span style="color: #fff000">
+              iot-demo/rpit5/raspi/cputemp
+            </span> °C
+	  </h4>
+	  <h4>GPU:
+            <span style="color: #fff000">
+              iot-demo/rpit5/raspi/gputemp
+            </span> °C
+	  </h4>
+	  <p>
+	    If MQTT streaming is:
+	    <ul>
+	      <li> <b>working:</b> live temperatures will be displayed above.</li>
+	      <li> <b>disabled:</b> just the topic paths will be displayed, like<pre>iot-demo/rpit5/raspi/cputemp</pre></li>
+	    </ul>
+	  </p>
 	</section>
 
 	<section>
@@ -104,25 +149,25 @@
 	    </thead>
 	    <tbody>
 	      <tr>
-		<td>Raspberry Pi Zero</td>
-		<td>$5</td>
+		<td>RasPi 3 (built-in WiFi, BT)</td>
+		<td>$35</td>
 	      </tr>
 	      <tr>
 		<td>RasPi Model B (Clearance)</td>
 		<td>$12</td>
 	      </tr>
 	      <tr>
-		<td>RasPi 3 (incl. WiFi+BT)</td>
-		<td>$35</td>
+		<td>Raspberry Pi Zero</td>
+		<td>$5</td>
 	      </tr>
 	      <!-- <tr>
 		   <td>Particle <a href="https://www.particle.io/products/hardware/electron-cellular-dev-kit">(Cellular)</a></td>
 		   <td><a href="https://store.particle.io/products/photon" target="_blank">$19</a>-<a href="https://store.particle.io/products/electron-2g" target="_blank">$49</a></td>
-		   </tr>
-		   <tr>
-		   <td>Many more exist</td>
-		   <td>...</td>
 		   </tr> -->
+	      <tr>
+		<td>Many more exist</td>
+		<td>...</td>
+	      </tr>
 	    </tbody>
 	  </table>
 	</section>
@@ -177,51 +222,6 @@
 	</section>
 
 	<section>
-	  <h2>MQTT Summary</h2>
-	  <p><a href="http://mqtt.org/">http://mqtt.org/</a> &dash; <cite>'MQTT is a machine-to-machine (M2M)/"Internet of Things" connectivity protocol.'</cite></p>
-	  <ul>
-	    <li>PubSub model - Using "Topics"</li>
-	    <li>Simple to publish or consume data</li>
-	    <li>MQTT "Broker" server does most of the work</li>
-	  </ul>
-	  <p>In our demo: MQTT Broker is using WebSockets and running on a Pi!</p>
-	</section>
-
-	<section>
-	  <h2>More on MQTT Topics</h2>
-	  Examples.
-	  Touch on wildcards.
-	</section>
-
-	<!-- Example of MQTT real-time temperature -->
-	<section mqtt>
-	  <h3>rpit5 Temperature:</h3>
-	  <p>rpit5 connected ->
-	    <span style="color: #fff000">
-            iot-demo/rpit5/connected
-            </span>
-	  </p>
-	  <h4>CPU:
-            <span style="color: #fff000">
-              iot-demo/rpit5/raspi/cputemp
-            </span> °C
-	  </h4>
-	  <h4>GPU:
-            <span style="color: #fff000">
-              iot-demo/rpit5/raspi/gputemp
-            </span> °C
-	  </h4>
-	  <p>
-	    If MQTT streaming is:
-	    <ul>
-	      <li> <b>working:</b> live temperatures will be displayed above.</li>
-	      <li> <b>disabled:</b> just the topic paths will be displayed, like<pre>iot-demo/rpit5/raspi/cputemp</pre></li>
-	    </ul>
-	  </p>
-	</section>
-
-
-	<section>
 	  <h4>Connecting to Pi - SSH</h4>
 	  Username: <b><code>pi</code></b> Password: <b><code>raspberry</code></b>
 	  <table>
@@ -268,6 +268,16 @@
 	  </table>
 	  <code>&lt;NAME&gt;.local</code> works too (Zeroconf)
 
+	</section>
+
+	<section>
+	  <h3>Running client (over SSH)</h3>
+	  <pre><code class="lang-bash" data-trim data-noescape>
+pi@rpi ~ $ <b>cd iot-demo/client</b>
+pi@rpi ~/iot-demo/client $ <b>screen -R</b>  # (screen is optional, but useful)
+ <mark>&lt;Enter&gt;</mark>
+pi@rpi ~/iot-demo/client $ <b>node index.js</b>
+	  </code></pre>
 	</section>
 
 	<section>
