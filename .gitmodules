@@ -1,8 +1,0 @@
-[submodule "plugin/controldeck-js"]
-	path = plugin/controldeck-js
-	url = https://github.com/johnpolacek/controldeck.js.git
-	branch = master
-[submodule "plugin/pubnub-remote-control"]
-	path = plugin/pubnub-remote-control
-	url = https://github.com/salvatorecordiano/reveal-js-pubnub-remote-control-plugin.git
-	branch = master
