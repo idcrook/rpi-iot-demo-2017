@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>Pi+IoT+JS</title>
+    <title>Pi+JS=IoT</title>
 
     <link rel="stylesheet" href="css/reveal.css">
     <link rel="stylesheet" href="css/theme/night.css">
@@ -53,9 +53,9 @@
 	    &ldquo;Oh, so they have internet on computers now!&rdquo; <b>~Homer Simpson</b>
 	  </blockquote>
 
-	  <p>The Internet of Things (abbreviated as "<b>IoT</b>") refers to ever-growing network of physical objects that feature an IP address and can communicate using the Internet.</p>
+	  <p>Abbreviated as "<b>IoT</b>", refers to network of physical objects that feature an IP address and can communicate using the Internet.</p>
 
-	  <p><b>Consumer Examples</b>: <a href="http://github.crookster.org/timetemp/charts/weekly/" target="_blank">Weather stations</a>, garage doors, baby monitors, Canary security system, Hue light bulbs, WeMo plugs, Nest thermostat, Amazon Echo ...</p>
+	  <p><b>Examples</b>: Webcams, baby monitors, <a href="http://github.crookster.org/timetemp/charts/weekly/" target="_blank">Weather stations</a>, Hue light bulbs, WeMo plugs, Nest thermostat, Amazon Echo ...</p>
 
 	</section>
 
@@ -74,32 +74,31 @@
 
 	<section data-markdown>
 	  <script type="text/template">
-			      ## Javascript and IoT
+	   ## Javascript and IoT
 
-			      **Node.js** is an excellent choice in IoT platforms
+	   **Node.js** is great choice for IoT
 
-			       - low resource requirements, e.g. Raspberry Pi
-			       - event-based I/O, data streams
+	    - low resource requirements
+	    - event-based I/O, data streams
+	    - NPM modules
 
-			      Communications: HTTP, WebSockets, [MQTT](https://github.com/mqttjs/MQTT.js), [AMQP](https://www.rabbitmq.com/tutorials/tutorial-one-javascript.html)
+	   **Communications**: HTTP, WebSockets, [MQTT](https://github.com/mqttjs/MQTT.js), [AMQP](https://www.rabbitmq.com/tutorials/tutorial-one-javascript.html), [ØMQ](http://zeromq.org)
 
-   			      IoT Frameworks: [Node RED](https://developer.ibm.com/recipes/tutorials/deploy-watson-iot-node-on-raspberry-pi/), [Particle.io](https://docs.particle.io/guide/getting-started/intro/raspberry-pi/), [AWS IoT Device SDK](http://docs.aws.amazon.com/iot/latest/developerguide/iot-device-sdk-node.html)
+	   Raspberry Pi **IoT Frameworks**: [Node RED](https://developer.ibm.com/recipes/tutorials/deploy-watson-iot-node-on-raspberry-pi/), [Particle.io](https://docs.particle.io/guide/getting-started/intro/raspberry-pi/), [AWS IoT Device SDK](http://docs.aws.amazon.com/iot/latest/developerguide/iot-device-sdk-node.html)
 
-			      Robotics: [Johnny Five](http://johnny-five.io/examples/raspi-io/), [Cylon.js](https://cylonjs.com/documentation/platforms/raspberry-pi/)
+	   Even **Robotics**: [Johnny Five](http://johnny-five.io/examples/raspi-io/), [Cylon.js](https://cylonjs.com/documentation/platforms/raspberry-pi/)
 	  </script>
 	</section>
 
 	<section>
-	  <h2>MQTT</h2>
-	  <p><cite>'<a href="http://mqtt.org/" target="_blank">MQTT</a> is a machine-to-machine (M2M)/"Internet of Things" connectivity protocol.'</cite></p>
+	  <h2>We're using MQTT</h2>
+	  <p><cite><a href="http://mqtt.org/" target="_blank">MQTT</a> is an "Internet of Things" connectivity protocol.</cite></p>
+	  <p>Originally created to <a href="http://www.hivemq.com/blog/mqtt-essentials-part-1-introducing-mqtt" target="_blank">monitor oil pipelines over satellite links</a>, MQTT is now a <a href="http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html" target="_blank" >standard</a>.</p>
 	  <ul>
-	    <li>"<b>PubSub</b>" model with "Topics". Very simple.</li>
-	    <li>Low resource requirements at endpoints</li>
-	    <li>MQTT "Broker" server does most of the work</li>
+	    <li>Simple, light-weight "<b>PubSub</b>" approach</li>
+	    <li>Easy to implement on client side</li>
 	  </ul>
-	  <p>For our demo:
-	    <br />
-	    MQTT Broker is using WebSockets and running on a Pi!</p>
+	  <p>In MQTT protocol, a server "Broker" does most of the work. For our demo, the MQTT Broker is using WebSockets and <u>running on a Pi!</u></p>
 	</section>
 
 	<section>
@@ -109,7 +108,7 @@
 
 	<!-- Example of MQTT real-time temperature -->
 	<section mqtt>
-	  <h3>rpit5 Temperature:</h3>
+	  <h3>Temperature Using MQTT</h3>
 	  <p>rpit5 connected ->
 	    <span style="color: #fff000">
               iot-demo/rpit5/connected
@@ -129,8 +128,8 @@
 	    If MQTT streaming is:
 	    <ul>
 	      <li> <b>working:</b> <a href="http://rpit5.local:3000" target="_blank">live temperatures</a> will be displayed above.</li>
-	      <li> <b>disabled:</b> just the topic paths will be displayed, like</li>
-	      <h3><pre>iot-demo/rpit5/raspi/cputemp</pre></h3>
+	      <li> <b>disabled:</b> just the topic paths will be displayed, e.g.</li>
+	      <h2><pre>iot-demo/rpit5/raspi/cputemp</pre></h2>
 	    </ul>
 	  </p>
 	</section>
@@ -139,37 +138,35 @@
 	  <h2>Raspberry Pi</h2>
 	  <p>Raspberry Pi example of a SBC (Single Board Computer)</p>
 	  <ul>
-	    <li>run complete, modern operating systems</li>
-	    <li>small, low-power, low-cost form factors</li>
-	    <li>include full assortment of connectivity</li>
+	    <li>Run full operating systems</li>
+	    <li>Low-power, low-cost form factors</li>
+	    <li>Often extended with micro-controllers</li>
+	    <li>Assortment of connectivity available</li>
 	  </ul>
+	  <p>Example Raspberry Pi</p>
 	  <table>
 	    <thead>
 	      <tr>
-		<th>SBC</th>
+		<th>Name</th>
 		<th>Price</th>
+		<th>Year</th>
 	      </tr>
 	    </thead>
 	    <tbody>
 	      <tr>
-		<td>RasPi 3 (built-in WiFi, BT)</td>
+		<td>Model B 3 (onboard WiFi, BT)</td>
 		<td>$35</td>
-	      </tr>
-	      <tr>
-		<td>RasPi Model B (Clearance)</td>
-		<td>$12</td>
+		<td>2016</td>
 	      </tr>
 	      <tr>
 		<td>Raspberry Pi Zero</td>
 		<td>$5</td>
+		<td>2015</td>
 	      </tr>
-	      <!-- <tr>
-		   <td>Particle <a href="https://www.particle.io/products/hardware/electron-cellular-dev-kit">(Cellular)</a></td>
-		   <td><a href="https://store.particle.io/products/photon" target="_blank">$19</a>-<a href="https://store.particle.io/products/electron-2g" target="_blank">$49</a></td>
-		   </tr> -->
 	      <tr>
-		<td>Many more exist</td>
-		<td>...</td>
+		<td>Original Model B</td>
+		<td>$12</td>
+		<td>2012</td>
 	      </tr>
 	    </tbody>
 	  </table>
@@ -184,20 +181,20 @@
 		<li>5 W power supply (cell-phone charger)</li>
 		<li>Wired Ethernet cable</li>
 	      </ul>
-	      <li>Pi also talks with onboard 40-pin header</li>
+	      <li>Talks with onboard 40-pin header</li>
 	      <ul>
-		<li>"breadboard" makes wiring easier</li>
 		<li><em>We'll use some of these pins today!</em></li>
+		<li>"breadboard" makes wiring easier</li>
 	      </ul>
 	    </ul>
 	  </p>
 	</section>
 
 	<section>
-	  <h2>Demo Preview</h2>
+	  <h2>Demo Overview</h2>
 	  <ol>
 	    <li>Network and power up Pi</li>
-	    <li>Chart live-streaming data on webpage</li>
+	    <li>Chart live data on webpage</li>
 	    <li>Wire LEDs to Pi and program</li>
 	  </ol>
 	  <p>Each Pi shares data using MQTT</p>
@@ -229,21 +226,23 @@
 	<section>
 
 	  <section>
-	    <h3>Running client</h3>
+	    <h3>How to Run Client</h3>
 	    <p>
 	      <ol>
 		<li>Connect to Wi-Fi (<b>raspi-demo</b>)</li>
-		<li>SSH into (powered on/connected) Pi</li>
-		username: <b>pi</b>
-		<br />password: <b>raspberry</b>
-		<li>Start node.js, using commands:</li>
+		<li>Connect and power on Pi</li>
+		<li>SSH into Pi <b><code>&lt;name&gt;.local</code></b>:
+		  <br />username: <b><code>pi</code></b> password: <b><code>raspberry</code></b>
+		</li>
+		<li>Run <code>~/iot-demo/client/index.js</code></li>
 	      </ol>
 	    </p>
-	    <h2><pre>cd iot-demo/client</pre></h2>
-	    <h2><pre>screen -R</pre></h2>
-	    <h2><pre>   &lt;Enter&gt;</pre></h2>
-	    <h2><pre>node index.js</pre></h2>
-	    Temperature chart: <a href="http://rpit5.local:3000/" target="_blank">http://&lt;name&gt;.local:3000</a>
+	    <h2><pre>cd iot-demo/client
+screen -R
+   &lt;Enter&gt;
+node index.js
+  ... &lt;Ctrl-C&gt; to quit ...</pre></h2>
+	    When running, view chart: <a href="http://rpit5.local:3000/" target="_blank">http://&lt;name&gt;.local:3000</a>
 	  </section>
 
 	  <section>
@@ -253,8 +252,8 @@
 
 	  <section>
 	    <h3>SSH to Pi</h3>
-	    Username: <b><code>pi</code></b>
-	    <br />Password: <b><code>raspberry</code></b>
+	    <p >username: <b><code>pi</code></b> &nbsp; password: <b><code>raspberry</code></b>
+	    </p>
 	    <table>
 	      <thead>
 		<tr>
@@ -264,41 +263,45 @@
 	      </thead>
 	      <tbody>
 		<tr>
-		  <td><code>rpit3</code></td>
+		  <td><code>rpit3.local</code></td>
 		  <td><code>192.168.8.23</code></td>
 		</tr>
 		<tr>
-		  <td><code>rpit4</code></td>
+		  <td><code>rpit4.local</code></td>
 		  <td><code>192.168.8.24</code></td>
 		</tr>
 		<tr>
-		  <td><code>rpip5</code></td>
+		  <td><code>rpip5.local</code></td>
 		  <td><code>192.168.8.25</code></td>
 		</tr>
 		<tr>
-		  <td><code>rpip6</code></td>
+		  <td><code>rpip6.local</code></td>
 		  <td><code>192.168.8.26</code></td>
 		</tr>
 		<tr>
-		  <td><code>rpip7</code></td>
+		  <td><code>rpip7.local</code></td>
 		  <td><code>192.168.8.27</code></td>
 		</tr>
 		<tr>
-		  <td><code>rpip8</code></td>
+		  <td><code>rpip8.local</code></td>
 		  <td><code>192.168.8.28</code></td>
 		</tr>
 		<tr>
-		  <td><code>rpip9</code></td>
+		  <td><code>rpip9.local</code></td>
 		  <td><code>192.168.8.29</code></td>
 		</tr>
 		<tr>
-		  <td><code>rpip10</code></td>
+		  <td><code>rpip10.local</code></td>
 		  <td><code>192.168.8.30</code></td>
 		</tr>
 	      </tbody>
 	    </table>
-	    Zeroconf also works: <code><b>&lt;name&gt;.local</b></code>
 	  </section>
+
+	  <section data-background="img/z4n0MyIPAarJu.gif"> <!-- http://i.giphy.com/z4n0MyIPAarJu.gif -->
+	    <h2 style="color:#ff0">Let's Get This Show On The Road</h2>
+	  </section>
+
 	</section>
 
 
@@ -354,7 +357,7 @@ button.watch(function (err, value) {
 	  </section>
 	</section>
 
-	<section data-background="img/InternetOfRansomwareThings.png">
+	<section data-background-image="img/InternetOfRansomwareThings.png" data-background-size="contain">
 	  &nbsp;
 	</section>
 
