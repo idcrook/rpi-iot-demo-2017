@@ -36,10 +36,11 @@
    var MQTTtopic = "iot-demo/rpit5";
    var MQTTsubTopic1 = MQTTtopic + "/raspi/cputemp";
    var MQTTsubTopic2 = MQTTtopic + "/raspi/gputemp";
+   var singleSeriesOnChart = true;
 
    // load config from server
-   $.getJSON( "api/config", function( data ) {
-     $.each( data, function( key, val ) {
+   $.getJSON( "api/config", function( d ) {
+     $.each( d, function( key, val ) {
        if        (key === 'mqttBrokerHost') {
 	 MQTTbroker = val;
        } else if (key === 'mqttBrokerPortWebsockets') {
@@ -102,11 +103,17 @@
      var thenum = message.payloadString.replace( /^\D+/g, ''); //remove any text spaces from the message
 
      if (topic1regex.test(message.destinationName)) {
-       data.push([x, CtoF(thenum), CtoF(lastTopic2)]);
+       if (singleSeriesOnChart) {
+	 data.push([x, CtoF(thenum)]);
+       } else {
+	 data.push([x, CtoF(thenum), CtoF(lastTopic2)]);
+       }
        lastTopic1 = thenum;
      }
      if (topic2regex.test(message.destinationName)) {
-       data.push([x, CtoF(lastTopic1), CtoF(thenum)]);
+       if (! singleSeriesOnChart) {
+	 data.push([x, CtoF(lastTopic1), CtoF(thenum)]);
+       }
        lastTopic2 = thenum;
      }
 
@@ -139,8 +146,11 @@
      var t = new Date();
      for (var i = 100; i >= 0; i--) {
        var x = new Date(t.getTime() - i * 1000);
-
-       data.push([x, null, null]);
+       if (singleSeriesOnChart) {
+	 data.push([x, null]);
+       } else {
+	 data.push([x, null, null]);
+       }
      }
 
      g = new Dygraph(document.getElementById("div_g"), data,
@@ -161,7 +171,7 @@
 			 }
                        },
                        valueRange: [CtoF(18), CtoF(58)],
-                       labels: ['Time', 'CPU Temp', 'GPU Temp']
+                       labels: !singleSeriesOnChart ? ['Time', 'CPU Temp', 'GPU Temp'] : ['Time', 'CPU Temp'],
                      });
    }
    );
