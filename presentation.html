@@ -373,6 +373,11 @@ button.watch(function (err, value) {
      Reveal.initialize({
        history: true,
 
+       keyboard: {
+	 65: function() { Reveal.slide(0) },                 // go to the first slide when the 'a' key is pressed
+	 69: function() { Reveal.slide( Number.MAX_VALUE ) } // go to the last  slide when the 'e' key is pressed
+       },
+
        mqtt_broker: 'rpit5.local', // Broker address
        mqtt_port: '9001', // MQTT over Web Socket port
        mqtt_username: 'pi', // username [optional]
@@ -383,6 +388,9 @@ button.watch(function (err, value) {
 	 { src: 'plugin/markdown/marked.js' },
 	 { src: 'plugin/markdown/markdown.js' },
 	 { src: 'plugin/notes/notes.js', async: true },
+	 // https://github.com/hakimel/reveal.js/#server-side-speaker-notes
+         //{ src: 'socket.io/socket.io.js', async: true },
+         //{ src: 'plugin/notes-server/client.js', async: true },
          // for MQTT plugin
          { src: 'plugin/mqtt/mqtt/mqttws31.js', async: true },
 	 { src: 'plugin/mqtt/mqtt/mqtt.js', async: true },
