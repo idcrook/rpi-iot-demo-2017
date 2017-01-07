@@ -108,19 +108,18 @@
        } else {
 	 data.push([x, CtoF(thenum), CtoF(lastTopic2)]);
        }
+       data.shift();
        lastTopic1 = thenum;
      }
      if (topic2regex.test(message.destinationName)) {
        if (! singleSeriesOnChart) {
 	 data.push([x, CtoF(lastTopic1), CtoF(thenum)]);
+	 data.shift();
        }
        lastTopic2 = thenum;
      }
 
-     //data.push([x, lastTopic1, lastTopic2]);
-     data.shift();
      g.updateOptions( { 'file': data } );
-
    };
 
    //check if a real number
