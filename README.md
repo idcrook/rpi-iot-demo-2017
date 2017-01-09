@@ -5,7 +5,8 @@
  - Presentation [slides](http://idcrook.github.io/rpi-iot-demo-2017/presentation.html)
  - [Client code and extensive documentation](https://github.com/idcrook/rpi-iot-demo-2017/tree/master/client/README.md)
    - Publish MQTT using Javascript (**node.js**)
-   - Use Javascript to display MQTT data
+   - Browser Javascript to display MQTT data
+   - Server Javascript to talk to electrical devices
 
 ![][chart]
 
