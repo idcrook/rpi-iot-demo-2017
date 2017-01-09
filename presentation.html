@@ -80,7 +80,7 @@
 
 	    - low resource requirements
 	    - event-based I/O, data streams
-	    - NPM package ecosystem
+	    - `NPM` package ecosystem
 
 	  </script>
 	</section>
@@ -99,7 +99,7 @@
 	</section>
 
 	<section>
-	  <h2>Using MQTT</h2>
+	  <h2>MQTT</h2>
 	  <p><cite><a href="http://mqtt.org/" target="_blank">MQTT</a> is an "Internet of Things" connectivity protocol.</cite></p>
 	  <p>Originally created to <a href="http://www.hivemq.com/blog/mqtt-essentials-part-1-introducing-mqtt" target="_blank">monitor oil pipelines over satellite links</a>, MQTT is now an open <a href="http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html" target="_blank" >standard</a>.</p>
 	  <ul>
@@ -146,7 +146,7 @@
 	    If MQTT streaming is:
 	    <ul>
 	      <li> <b>working:</b> <a href="http://rpit5.local:3000" target="_blank">live temperatures</a> will be displayed above.</li>
-	      <li> <b>disabled:</b> just the topic paths will be displayed, e.g.</li>
+	      <li> <b>disabled:</b> just the "topic" will be displayed, e.g.</li>
 	      <h2><pre>iot-demo/rpit5/raspi/cputemp</pre></h2>
 	    </ul>
 	  </p>
@@ -159,7 +159,7 @@
 	    <li>Runs complete, modern operating system</li>
 	    <li>Low-power, low-cost form factor</li>
 	    <li>Assortment of connectivity available</li>
-	    <li>Often extended with micro-controllers</li>
+	    <!-- <li>Often extended with micro-controllers</li> -->
 	  </ul>
 	  <p></p>
 	  <table>
@@ -209,7 +209,7 @@
 	</section>
 
 	<section>
-	  <h2>Demo Overview</h2>
+	  <h2>Demo Outline</h2>
 	  <ol>
 	    <li>Network and power up Pi</li>
 	    <li>Chart live data on webpage</li>
@@ -234,9 +234,9 @@
 	    Each station has
 	    <li>Networked and Powered Pi</li>
 	    <ul>
-	      <li>"Pi Pad" mount</li>
-	      <li>Components</li>
-	      <li>Wires and Breadboard</li>
+	      <li>On "Pi Pad" mount</li>
+	      <li>Components in bag</li>
+	      <li>Wires / Breadboard</li>
 	    </ul>
 	  </ul>
 	</section>
@@ -333,9 +333,20 @@ node index.js
 	</section>
 
 	<section>
+	  <h2>What is code doing?</h2>
+	  <p><code>index.js</code> has a few things going on:</p>
+	  <ul>
+	    <li>Publish data (e.g., temperature) using MQTT</li>
+	    <li>Serve webpages with charts</li>
+	    <li>Watch switch + control LEDs</li>
+	  </ul>
+	  <p>For that last part to work, it needs to be wired up</p>
+	</section>
+
+	<section>
 	  <h2>Demo: Part 2</h2>
-	  <p>Wire Pi up with some components to make a connected switch</p>
 	  <img src="img/pressing_switch_anim.gif" />
+	  <p>Wire Pi up to make a connected switch</p>
 	</section>
 
 	<section>
@@ -375,7 +386,7 @@ button.watch(function (err, value) {
 	  <p>An LED has a direction. Longer lead is "Positive"
 	  <br /><img src="img/led_example.png" />
 	  <br />
-	  Shown with a bend in the diagrams.
+	  Longer lead shown with a <b><i>bend</i></b> in diagram
 	  </p>
 	</section>
 
