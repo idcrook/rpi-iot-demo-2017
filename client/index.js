@@ -253,23 +253,49 @@ button.watch(function (err, value) {
     buttonPressedCount += 1;
     if (buttonPressedCount % 2) {
       client.publish(pubRedLed, 'on', {qos: 1, retain: true});
-      redLed.writeSync(1); // 1 = on, 0 = off
+      //redLed.writeSync(1); // 1 = on, 0 = off
     } else {
       client.publish(pubRedLed, 'off', {qos: 1, retain: true});
-      redLed.writeSync(0); // 1 = on, 0 = off
+      //redLed.writeSync(0); // 1 = on, 0 = off
     }
   } else {
     console.log('BUTTON RELEASED!');
     buttonReleasedCount += 1;
     if (buttonReleasedCount % 2) {
       client.publish(pubGreenLed, 'on', {qos: 1, retain: true});
-      greenLed.writeSync(1); // 1 = on, 0 = off
+      //greenLed.writeSync(1); // 1 = on, 0 = off
     } else {
       client.publish(pubGreenLed, 'off', {qos: 1, retain: true});
-      greenLed.writeSync(0); // 1 = on, 0 = off
+      //greenLed.writeSync(0); // 1 = on, 0 = off
     }
   }
 });
+
+////////////////////////////////////////////////////////////////////////
+// subscribe to LED Topics
+////////////////////////////////////////////////////////////////////////
+
+// qos == 1 for each
+var subscribeTopics = {};
+subscribeTopics[pubRedLed] = 1;
+subscribeTopics[pubGreenLed] = 1;
+
+client.subscribe(subscribeTopics, null, function (error, granted) {
+  console.log(granted);
+});
+
+
+client.on('message', function (topic, message, packet) {
+  // message is Buffer
+  var value = message.toString();
+  if (topic == pubRedLed) {
+    (value === 'on') ? redLed.writeSync(1) : redLed.writeSync(0);
+  } else if (topic == pubGreenLed) {
+    (value === 'on') ? greenLed.writeSync(1) : greenLed.writeSync(0);
+  }
+  console.log(topic + '->' + value);
+});
+
 
 // Some of the following code borrowed ideas from
 // https://blog.risingstack.com/getting-started-with-nodejs-and-mqtt/
@@ -294,11 +320,11 @@ function handleAppExit (options, err) {
     console.log('turning off LEDs');
     client.publish(pubRedLed, 'off', {qos: 1, retain: true}, function() {
       console.log(pubRedLed + " is published");
-      redLed.writeSync(0);   // 1 = on, 0 = off
+      // redLed.writeSync(0);   // 1 = on, 0 = off
     });
     client.publish(pubGreenLed, 'off', {qos: 1, retain: true},  function() {
       console.log(pubGreenLed + " is published");
-      greenLed.writeSync(0); // 1 = on, 0 = off
+      // greenLed.writeSync(0); // 1 = on, 0 = off
     });
 
     client.publish(pubCpuTemp, '0.0', {qos: 0, retain: true});
